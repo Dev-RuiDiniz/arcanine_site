@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Instagram } from 'lucide-react'
 import { ArtisticText } from '@/components/ui/artistic-text'
+import { siteConfig } from '@/lib/site-config'
 
 interface InstagramPost {
   id: string
@@ -28,12 +29,12 @@ interface InstagramPost {
 
 // Fallback images caso não tenha posts no banco
 const fallbackImages = [
-  { id: '1', src: '/2026/HOME/GALERIA INICIAL/beautiful and timeless comporta summer house interior design by RAIZ.jpg', alt: 'RAIZ Interiors', url: 'https://www.instagram.com/raiz.interiors.living' },
-  { id: '2', src: '/2026/HOME/GALERIA INICIAL/contemporary minimalist living room suspended staircase and fireplace interior design by RAIZ .jpg', alt: 'RAIZ Interiors', url: 'https://www.instagram.com/raiz.interiors.living' },
-  { id: '3', src: '/2026/HOME/GALERIA INICIAL/contemporary-beach-house-living-room-with-fireplace-interior-design-by-RAIZ.jpg', alt: 'RAIZ Interiors', url: 'https://www.instagram.com/raiz.interiors.living' },
-  { id: '4', src: '/2026/HOME/GALERIA INICIAL/elegant timeless luxury master suite interior design by RAIZ.jpg', alt: 'RAIZ Interiors', url: 'https://www.instagram.com/raiz.interiors.living' },
-  { id: '5', src: '/2026/HOME/GALERIA INICIAL/IMG_0820_SnapseedCopy.jpg', alt: 'RAIZ Interiors', url: 'https://www.instagram.com/raiz.interiors.living' },
-  { id: '6', src: '/2026/HOME/GALERIA INICIAL/SUITE 4K.jpg', alt: 'RAIZ Interiors', url: 'https://www.instagram.com/raiz.interiors.living' },
+  { id: '1', src: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1000&q=80&auto=format&fit=crop', alt: 'ARCANINE', url: siteConfig.links.instagram },
+  { id: '2', src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=80&auto=format&fit=crop', alt: 'ARCANINE', url: siteConfig.links.instagram },
+  { id: '3', src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1000&q=80&auto=format&fit=crop', alt: 'ARCANINE', url: siteConfig.links.instagram },
+  { id: '4', src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80&auto=format&fit=crop', alt: 'ARCANINE', url: siteConfig.links.instagram },
+  { id: '5', src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1000&q=80&auto=format&fit=crop', alt: 'ARCANINE', url: siteConfig.links.instagram },
+  { id: '6', src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1000&q=80&auto=format&fit=crop', alt: 'ARCANINE', url: siteConfig.links.instagram },
 ]
 
 export function InstagramFeed() {
@@ -90,7 +91,7 @@ export function InstagramFeed() {
     ? posts.map((post) => ({
         id: post.id,
         src: post.displayUrl,
-        alt: post.caption?.substring(0, 50) || 'Post do Instagram @raiz.interiors.living',
+        alt: post.caption?.substring(0, 50) || 'Post do Instagram @arcanine.tecnologia',
         url: post.url,
       }))
     : fallbackImages
@@ -111,11 +112,11 @@ export function InstagramFeed() {
         >
           <ArtisticText
             as="p"
-            highlightWords={['INSPIRATION', 'DESIGN', 'WORLD', 'INSPIRED']}
+            highlightWords={['TECNOLOGIA', 'OPERACAO', 'RESULTADO', 'NEGOCIO']}
             className="font-inter text-sm sm:text-base lg:text-lg font-light text-stone-700 leading-relaxed"
             highlightClassName="text-stone-600"
           >
-            INSPIRATION through DESIGN. Welcome to our WORLD and get INSPIRED...
+            TECNOLOGIA aplicada a OPERACAO real, com foco em RESULTADO mensuravel de NEGOCIO.
           </ArtisticText>
         </motion.div>
       </div>
@@ -171,4 +172,3 @@ export function InstagramFeed() {
     </section>
   )
 }
-

@@ -3,11 +3,9 @@
 import Link from 'next/link'
 import { MessageCircle, CalendarDays, FileText } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { buildWhatsAppUrl, conversionCtas } from '@/lib/site-config'
 
-const WHATSAPP_NUMBER = '5511999999999'
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  'Olá! Quero falar com a ARCANINE Tecnologia sobre uma solução para minha empresa.'
-)
+const WHATSAPP_MESSAGE = 'Ola! Quero falar com a ARCANINE Tecnologia sobre uma solucao para minha empresa.'
 
 interface ConversionCTAsProps {
   className?: string
@@ -22,7 +20,7 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
   return (
     <div className={cn(wrapperClasses, className)}>
       <Link
-        href="/contact?intent=orcamento"
+        href={conversionCtas.budget.href}
         className={cn(
           'inline-flex items-center justify-center gap-2 border transition-colors',
           compact
@@ -32,11 +30,11 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
         )}
       >
         <FileText size={compact ? 13 : 14} />
-        Solicitar Orçamento
+        {conversionCtas.budget.label}
       </Link>
 
       <Link
-        href="/contact?intent=reuniao-tecnica"
+        href={conversionCtas.meeting.href}
         className={cn(
           'inline-flex items-center justify-center gap-2 border transition-colors',
           compact
@@ -46,11 +44,11 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
         )}
       >
         <CalendarDays size={compact ? 13 : 14} />
-        Agendar Reunião Técnica
+        {conversionCtas.meeting.label}
       </Link>
 
       <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+        href={buildWhatsAppUrl(WHATSAPP_MESSAGE)}
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
@@ -62,7 +60,7 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
         )}
       >
         <MessageCircle size={compact ? 13 : 14} />
-        Falar no WhatsApp
+        {conversionCtas.whatsapp.label}
       </a>
     </div>
   )

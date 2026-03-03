@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { ArtisticText } from '@/components/ui/artistic-text'
+import { services } from '@/lib/site-content/services'
 
 export function ServicesPreview() {
   return (
@@ -29,11 +30,11 @@ export function ServicesPreview() {
             <div className="mt-6">
               <ArtisticText
                 as="h2"
-                highlightWords={['ARQUITETURA', 'SOFTWARE', 'AUTOMAÇÃO', 'INTEGRAÇÃO', 'IA', 'CRESCIMENTO']}
+                highlightWords={['ARQUITETURA', 'SOFTWARE', 'AUTOMACAO', 'INTEGRACAO', 'IA', 'CRESCIMENTO']}
                 className="font-inter text-xl sm:text-2xl lg:text-3xl font-light text-stone-900 leading-relaxed"
                 highlightClassName="text-[#7A4A2F]"
               >
-                Combinamos ARQUITETURA de SOFTWARE, AUTOMAÇÃO de processos, INTEGRAÇÃO com operação real e IA aplicada para acelerar CRESCIMENTO com governança.
+                Combinamos ARQUITETURA de SOFTWARE, AUTOMACAO de processos, INTEGRACAO com operacao real e IA aplicada para acelerar CRESCIMENTO com governanca.
               </ArtisticText>
             </div>
 
@@ -48,7 +49,7 @@ export function ServicesPreview() {
                 href="/services"
                 className="inline-flex items-center gap-3 font-inter text-xs tracking-[0.2em] uppercase text-stone-600 hover:text-stone-900 transition-colors group"
               >
-                <span>Explorar serviços</span>
+                <span>Explorar servicos</span>
                 <ArrowRight
                   size={16}
                   className="text-stone-500 group-hover:text-stone-900 transform group-hover:translate-x-1 transition-transform"
@@ -64,7 +65,7 @@ export function ServicesPreview() {
             transition={{ duration: 0.75, delay: 0.15 }}
             className="space-y-0"
           >
-            {services.map((service, index) => (
+            {services.slice(0, 5).map((service, index) => (
               <motion.div
                 key={service.slug}
                 initial={{ opacity: 0, y: 20 }}
@@ -92,11 +93,3 @@ export function ServicesPreview() {
     </section>
   )
 }
-
-const services = [
-  { title: 'Sistemas Web Personalizados', slug: 'sistemas-web-personalizados' },
-  { title: 'Sistemas Exclusivos', slug: 'sistemas-exclusivos' },
-  { title: 'Automação e Integração', slug: 'automacao-e-integracao' },
-  { title: 'IA e Automações Comerciais', slug: 'ia-e-automacoes-comerciais' },
-  { title: 'Sites Premium e E-commerce', slug: 'sites-premium-e-ecommerce' },
-]

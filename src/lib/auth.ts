@@ -6,7 +6,6 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import bcrypt from 'bcryptjs'
 
 const nextAuthSecret = process.env.NEXTAUTH_SECRET
 
@@ -20,7 +19,7 @@ if (!nextAuthSecret) {
 const ADMIN_USER = {
   id: '1',
   name: 'Admin',
-  email: 'admin@raiz-interiors.com',
+  email: 'admin@arcanine.tech',
   // Senha: admin123 (hash bcrypt)
   password: '$2a$10$8K1p/a0dL1LXMIgoEDFrwOex5F3c.0P6T5Q5Q5Q5Q5Q5Q5Q5Q5Q5u',
 }
@@ -78,4 +77,3 @@ export const authOptions: NextAuthOptions = {
   },
   secret: nextAuthSecret || 'dev-only-nextauth-secret',
 }
-

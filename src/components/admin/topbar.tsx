@@ -36,7 +36,7 @@ const notifications = [
   {
     id: 1,
     title: 'New contact form submission',
-    message: 'John Doe submitted a contact form',
+    message: 'Lead B2B solicitou reuniao tecnica',
     time: '5 min ago',
     unread: true,
   },
@@ -50,7 +50,7 @@ const notifications = [
   {
     id: 3,
     title: 'Project updated',
-    message: 'Beach House in Troia was updated',
+    message: 'Case ERP Operacional foi atualizado',
     time: '2 hours ago',
     unread: false,
   },
@@ -309,4 +309,3 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
     </header>
   )
 }
-

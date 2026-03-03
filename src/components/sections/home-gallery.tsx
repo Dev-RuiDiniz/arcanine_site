@@ -10,12 +10,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const galleryImages = [
-  '/galeriaInicial/beautiful and timeless comporta summer house interior design by RAIZ.jpg',
-  '/galeriaInicial/contemporary minimalist living room suspended staircase and fireplace interior design by RAIZ .jpg',
-  '/galeriaInicial/contemporary-beach-house-living-room-with-fireplace-interior-design-by-RAIZ.jpg',
-  '/galeriaInicial/elegant timeless luxury master suite interior design by RAIZ.jpg',
-  '/galeriaInicial/IMG_0820_SnapseedCopy.jpg',
-  '/galeriaInicial/SUITE 4K.jpg',
+  'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80&auto=format&fit=crop',
 ]
 
 export function HomeGallery() {
@@ -34,7 +34,7 @@ export function HomeGallery() {
             >
               <Image
                 src={image}
-                alt={`RAIZ Interiors Gallery ${index + 1}`}
+                alt={`ARCANINE gallery ${index + 1}`}
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -45,4 +45,3 @@ export function HomeGallery() {
     </section>
   )
 }
-

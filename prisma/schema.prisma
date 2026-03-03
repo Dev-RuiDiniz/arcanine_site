@@ -4,8 +4,8 @@ Objetivo: Schema do banco de dados para o Prisma ORM.
 Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a exportacao principal.
 */
 
-// Raiz Interiors - Schema do Banco de Dados
-// Design de Interiores Premium
+// ARCANINE Tecnologia - Schema do Banco de Dados
+// Plataforma institucional e operacional
 
 generator client {
   provider = "prisma-client-js"

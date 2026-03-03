@@ -10,20 +10,15 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
+import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
 
 export function FloatingChat() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const whatsappNumber = '+5511999999999'
-  const defaultMessage = encodeURIComponent(
-    'Olá! Quero conversar sobre um projeto com a ARCANINE Tecnologia.'
-  )
+  const defaultMessage = 'Ola! Quero conversar sobre um projeto com a ARCANINE Tecnologia.'
 
   const handleWhatsAppClick = () => {
-    window.open(
-      `https://wa.me/${whatsappNumber.replace(/\D/g, '')}?text=${defaultMessage}`,
-      '_blank'
-    )
+    window.open(buildWhatsAppUrl(defaultMessage), '_blank')
   }
 
   return (
@@ -80,10 +75,10 @@ export function FloatingChat() {
                 </div>
                 <div>
                   <h3 className="font-inter text-sm font-medium text-white">
-                    ARCANINE Tecnologia
+                    {siteConfig.brand.name}
                   </h3>
                   <p className="font-inter text-xs text-white/80">
-                    Resposta média em até 1 hora útil
+                    Resposta media em ate 1 hora util
                   </p>
                 </div>
               </div>
@@ -94,10 +89,10 @@ export function FloatingChat() {
               <div className="bg-white rounded-lg p-4 shadow-sm relative">
                 <div className="absolute -left-2 top-3 w-0 h-0 border-t-8 border-t-transparent border-r-8 border-r-white border-b-8 border-b-transparent" />
                 <p className="font-inter text-sm text-stone-700 leading-relaxed">
-                  Olá.
+                  Ola.
                   <br />
                   <br />
-                  Conte rapidamente o desafio técnico do seu negócio e nosso time retorna com próximos passos.
+                  Conte rapidamente o desafio tecnico do seu negocio e nosso time retorna com proximos passos.
                 </p>
                 <span className="block text-right font-inter text-[10px] text-stone-400 mt-2">
                   agora

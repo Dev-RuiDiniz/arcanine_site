@@ -6,9 +6,10 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Mail, MapPin, Send, Instagram, Linkedin } from 'lucide-react'
@@ -16,13 +17,16 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { siteConfig } from '@/lib/site-config'
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email'),
-  phone: z.string().optional(),
-  subject: z.string().min(2, 'Please enter a subject'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  name: z.string().min(2, 'Informe seu nome completo'),
+  company: z.string().min(2, 'Informe a empresa'),
+  email: z.string().email('Informe um e-mail valido'),
+  phone: z.string().min(8, 'Informe um WhatsApp para retorno'),
+  projectType: z.string().min(2, 'Informe o tipo de projeto'),
+  budgetRange: z.string().min(2, 'Selecione uma faixa de investimento'),
+  message: z.string().min(10, 'Descreva o desafio com mais detalhes'),
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
@@ -31,34 +35,47 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'contato@arcanine.tech',
-    href: 'mailto:contato@arcanine.tech',
+    value: siteConfig.contact.email,
+    href: `mailto:${siteConfig.contact.email}`,
   },
   {
     icon: MapPin,
     label: 'Localização',
-    value: 'São Paulo, Brasil',
+    value: siteConfig.contact.city,
     href: null,
   },
 ]
 
 const socialLinks = [
-  { icon: Instagram, href: 'https://www.instagram.com/arcanine.tecnologia', label: 'Instagram' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/arcanine-tecnologia', label: 'LinkedIn' },
+  { icon: Instagram, href: siteConfig.links.instagram, label: 'Instagram' },
+  { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
 ]
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const searchParams = useSearchParams()
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   })
+
+  const intent = searchParams.get('intent')
+
+  useEffect(() => {
+    if (intent === 'orcamento') {
+      setValue('projectType', 'Solicitacao de orcamento tecnico')
+    }
+    if (intent === 'reuniao-tecnica') {
+      setValue('projectType', 'Agendamento de reuniao tecnica')
+    }
+  }, [intent, setValue])
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
@@ -87,10 +104,10 @@ export default function ContactPage() {
             className="max-w-2xl"
           >
             <h1 className="font-cormorant text-3xl lg:text-4xl font-light text-stone-800 leading-tight">
-              Vamos estruturar sua próxima <span className="italic">solução</span>
+              Vamos estruturar sua proxima <span className="italic">solucao</span>
             </h1>
             <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed max-w-lg">
-              Fale com nosso time técnico-comercial para mapear seu desafio e definir o melhor caminho de implementação.
+              Fale com nosso time tecnico-comercial para mapear seu desafio e definir o melhor caminho de implementacao.
             </p>
           </motion.div>
         </div>
@@ -199,7 +216,7 @@ export default function ContactPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
                         Nome *
@@ -219,12 +236,31 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        E-mail *
+                        Empresa *
+                      </label>
+                      <Input
+                        {...register('company')}
+                        placeholder="Nome da empresa"
+                        className={cn(
+                          'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
+                          errors.company && 'border-red-400'
+                        )}
+                      />
+                      {errors.company && (
+                        <p className="mt-1 text-xs text-red-500">{errors.company.message}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                        E-mail corporativo *
                       </label>
                       <Input
                         {...register('email')}
                         type="email"
-                        placeholder="your@email.com"
+                        placeholder="voce@empresa.com"
                         className={cn(
                           'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
                           errors.email && 'border-red-400'
@@ -239,7 +275,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        WhatsApp
+                        WhatsApp *
                       </label>
                       <Input
                         {...register('phone')}
@@ -253,17 +289,34 @@ export default function ContactPage() {
                         Tipo de projeto *
                       </label>
                       <Input
-                        {...register('subject')}
+                        {...register('projectType')}
                         placeholder="Ex.: Sistema web, IA, integração"
                         className={cn(
                           'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
-                          errors.subject && 'border-red-400'
+                          errors.projectType && 'border-red-400'
                         )}
                       />
-                      {errors.subject && (
-                        <p className="mt-1 text-xs text-red-500">{errors.subject.message}</p>
+                      {errors.projectType && (
+                        <p className="mt-1 text-xs text-red-500">{errors.projectType.message}</p>
                       )}
                     </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                      Faixa de investimento *
+                    </label>
+                    <Input
+                      {...register('budgetRange')}
+                      placeholder="Ex.: 20k-60k, 60k-120k, acima de 120k"
+                      className={cn(
+                        'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
+                        errors.budgetRange && 'border-red-400'
+                      )}
+                    />
+                    {errors.budgetRange && (
+                      <p className="mt-1 text-xs text-red-500">{errors.budgetRange.message}</p>
+                    )}
                   </div>
 
                   <div>

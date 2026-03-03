@@ -5,7 +5,7 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 */
 
 // ===========================================
-// RAIZ INTERIORS - TYPES
+// ARCANINE - TYPES
 // ===========================================
 
 export type ProjectCategory = 'RESIDENTIAL' | 'COMMERCIAL' | 'HOSPITALITY' | 'RETAIL'
@@ -100,4 +100,3 @@ export interface ApiResponse<T> {
   data?: T
   error?: string
 }
-

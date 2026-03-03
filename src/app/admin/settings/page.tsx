@@ -108,7 +108,7 @@ export default function SettingsPage() {
                     </label>
                     <input
                       type="text"
-                      defaultValue="RAIZ Interiors"
+                      defaultValue="ARCANINE Tecnologia"
                       className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
                     />
                   </div>
@@ -119,7 +119,7 @@ export default function SettingsPage() {
                     </label>
                     <textarea
                       rows={3}
-                      defaultValue="Creating meaningful spaces that tell your story through thoughtful design and attention to detail."
+                      defaultValue="Tecnologia que organiza, automatiza e escala negocios com engenharia e visao operacional."
                       className="w-full px-4 py-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400 resize-none"
                     />
                   </div>
@@ -131,7 +131,7 @@ export default function SettingsPage() {
                       </label>
                       <input
                         type="email"
-                        defaultValue="hello@raiz-interiors.com"
+                        defaultValue="contato@arcanine.tech"
                         className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
                       />
                     </div>
@@ -141,7 +141,7 @@ export default function SettingsPage() {
                       </label>
                       <input
                         type="tel"
-                        defaultValue="+351 912 345 678"
+                        defaultValue="+55 11 99999-9999"
                         className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
                       />
                     </div>
@@ -153,7 +153,7 @@ export default function SettingsPage() {
                     </label>
                     <input
                       type="text"
-                      defaultValue="Lisbon, Portugal"
+                      defaultValue="Sao Paulo, Brasil"
                       className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
                     />
                   </div>
@@ -342,7 +342,7 @@ export default function SettingsPage() {
                     </label>
                     <input
                       type="email"
-                      defaultValue="admin@raiz-interiors.com"
+                      defaultValue="admin@arcanine.tech"
                       className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
                     />
                   </div>
@@ -355,4 +355,3 @@ export default function SettingsPage() {
     </div>
   )
 }
-

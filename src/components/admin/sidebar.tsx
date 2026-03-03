@@ -23,6 +23,7 @@ import {
   Image as ImageIcon,
   FileText,
   Bell,
+  Megaphone,
 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 import { cn } from '@/lib/utils'
@@ -64,6 +65,11 @@ const menuItems = [
     href: '/admin/pages',
   },
   {
+    title: 'CTA Config',
+    icon: Megaphone,
+    href: '/admin/pages/ctas',
+  },
+  {
     title: 'Notifications',
     icon: Bell,
     href: '/admin/notifications',
@@ -102,7 +108,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
             >
               <Link href="/admin" className="flex items-center gap-2">
                 <span className="font-cormorant text-xl font-light tracking-[0.2em] text-stone-900 dark:text-white">
-                  RAIZ
+                  ARCANINE
                 </span>
                 <span className="font-inter text-[8px] tracking-[0.2em] uppercase text-stone-500 dark:text-stone-400">
                   Admin
@@ -183,4 +189,3 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
     </motion.aside>
   )
 }
-

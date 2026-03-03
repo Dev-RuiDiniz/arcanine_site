@@ -13,12 +13,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
+import { siteConfig } from '@/lib/site-config'
 
 const navItems = [
-  { label: 'Início', href: '/' },
-  { label: 'Serviços', href: '/services' },
+  { label: 'Inicio', href: '/' },
+  { label: 'Servicos', href: '/services' },
   { label: 'Cases', href: '/projects' },
   { label: 'Sobre', href: '/about' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contato', href: '/contact' },
 ]
 
@@ -43,6 +45,13 @@ export function Header() {
     setIsOpen(false)
   }, [pathname])
 
+  const isItemActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
+
   return (
     <>
       <header
@@ -66,7 +75,7 @@ export function Header() {
                     useDarkText ? 'text-[#2A2421]' : 'text-white'
                   )}
                 >
-                  ARCANINE
+                  {siteConfig.brand.shortName}
                 </span>
                 <span
                   className={cn(
@@ -74,7 +83,7 @@ export function Header() {
                     useDarkText ? 'text-[#5B5049]' : 'text-white/85'
                   )}
                 >
-                  Tecnologia
+                  {siteConfig.brand.subLabel}
                 </span>
               </motion.div>
             </Link>
@@ -92,7 +101,7 @@ export function Header() {
                       href={item.href}
                       className={cn(
                         'relative font-inter text-[11px] tracking-[0.18em] uppercase transition-colors duration-300 group',
-                        pathname === item.href
+                        isItemActive(item.href)
                           ? useDarkText
                             ? 'text-[#2A2421]'
                             : 'text-white'
@@ -105,7 +114,7 @@ export function Header() {
                       <span
                         className={cn(
                           'absolute -bottom-1 left-0 h-px bg-current transition-all duration-300',
-                          pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                          isItemActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
                         )}
                       />
                     </Link>
@@ -159,7 +168,7 @@ export function Header() {
                         href={item.href}
                         className={cn(
                           'font-cormorant text-4xl tracking-[0.08em] transition-colors duration-300',
-                          pathname === item.href
+                          isItemActive(item.href)
                             ? 'text-[#2A2421]'
                             : 'text-stone-500 hover:text-[#2A2421]'
                         )}

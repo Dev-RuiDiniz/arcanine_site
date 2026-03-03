@@ -10,15 +10,17 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
+import { siteConfig } from '@/lib/site-config'
 
 const socialLinks = [
-  { icon: Instagram, href: 'https://www.instagram.com/arcanine.tecnologia', label: 'Instagram' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/arcanine-tecnologia', label: 'LinkedIn' },
+  { icon: Instagram, href: siteConfig.links.instagram, label: 'Instagram' },
+  { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
 ]
 
 const navLinks = [
-  { label: 'Serviços', href: '/services' },
+  { label: 'Servicos', href: '/services' },
   { label: 'Cases', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Sobre', href: '/about' },
   { label: 'Contato', href: '/contact' },
 ]
@@ -37,10 +39,10 @@ export function Footer() {
           className="p-6 lg:p-8 border border-stone-900/15 bg-[#EDE2DA]"
         >
           <h2 className="font-cormorant text-2xl lg:text-3xl tracking-[0.04em] text-stone-900">
-            Sua operação precisa de estrutura para escalar com segurança.
+            Sua operacao precisa de estrutura para escalar com seguranca.
           </h2>
           <p className="mt-3 font-inter text-sm text-stone-700 max-w-3xl">
-            Converse com a ARCANINE para desenhar uma arquitetura tecnológica alinhada ao resultado do seu negócio.
+            Converse com a ARCANINE para desenhar uma arquitetura tecnologica alinhada ao resultado do seu negocio.
           </p>
           <ConversionCTAs className="mt-6" />
         </motion.div>
@@ -54,13 +56,13 @@ export function Footer() {
             className="lg:col-span-1"
           >
             <Link href="/" className="inline-block mb-4">
-              <span className="font-cormorant text-2xl tracking-[0.2em] text-stone-900">ARCANINE</span>
+              <span className="font-cormorant text-2xl tracking-[0.2em] text-stone-900">{siteConfig.brand.shortName}</span>
               <span className="block font-inter text-[10px] tracking-[0.28em] text-stone-700 mt-1 uppercase">
-                Tecnologia
+                {siteConfig.brand.subLabel}
               </span>
             </Link>
             <p className="font-inter text-sm text-stone-700 leading-relaxed">
-              Engenharia de software, automação e integração para empresas que exigem performance e controle.
+              Engenharia de software, automacao e integracao para empresas que exigem performance e controle.
             </p>
           </motion.div>
 
@@ -97,22 +99,22 @@ export function Footer() {
             </h4>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:contato@arcanine.tech"
+                href={`mailto:${siteConfig.contact.email}`}
                 className="flex items-center gap-3 font-inter text-sm text-stone-700 hover:text-stone-900 transition-colors"
               >
                 <Mail size={16} />
-                contato@arcanine.tech
+                {siteConfig.contact.email}
               </a>
               <a
-                href="tel:+5511999999999"
+                href={`tel:+${siteConfig.contact.phoneE164}`}
                 className="flex items-center gap-3 font-inter text-sm text-stone-700 hover:text-stone-900 transition-colors"
               >
                 <span className="w-4 h-4 inline-flex items-center justify-center text-[11px]">+</span>
-                +55 11 99999-9999
+                {siteConfig.contact.phoneDisplay}
               </a>
               <div className="flex items-start gap-3 font-inter text-sm text-stone-700">
                 <MapPin size={16} className="mt-0.5 shrink-0" />
-                <span>São Paulo, Brasil</span>
+                <span>{siteConfig.contact.city}</span>
               </div>
             </div>
           </motion.div>
@@ -148,7 +150,7 @@ export function Footer() {
         <div className="container mx-auto px-6 lg:px-12 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-inter text-xs text-stone-700">
-              © {currentYear} ARCANINE Tecnologia. Todos os direitos reservados.
+              © {currentYear} {siteConfig.brand.name}. Todos os direitos reservados.
             </p>
             <div className="flex gap-6">
               <Link
@@ -162,6 +164,12 @@ export function Footer() {
                 className="font-inter text-xs text-stone-700 hover:text-stone-900 transition-colors"
               >
                 Termos de Uso
+              </Link>
+              <Link
+                href="/cookies"
+                className="font-inter text-xs text-stone-700 hover:text-stone-900 transition-colors"
+              >
+                Cookies
               </Link>
             </div>
           </div>

@@ -124,7 +124,7 @@ export async function getInstagramPosts(): Promise<ApifyInstagramPost[]> {
 
 // Iniciar um novo scrape
 export async function startInstagramScrape(
-  username: string = "raiz.interiors.living",
+  username: string = "arcanine.tecnologia",
   resultsLimit: number = 12
 ): Promise<ApifyRunResult | null> {
   if (!hasApifyToken()) {
@@ -186,4 +186,3 @@ export async function getRunStatus(runId: string): Promise<ApifyRunResult | null
     return null;
   }
 }
-

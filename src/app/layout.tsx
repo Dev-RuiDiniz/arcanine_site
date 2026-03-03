@@ -9,38 +9,40 @@ import "./globals.css"
 import { cormorant, inter, playfair } from "@/lib/fonts"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { SessionProvider } from "@/components/providers/session-provider"
+import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: "ARCANINE Tecnologia | Soluções Digitais Sob Medida",
-  description: "Tecnologia que organiza, automatiza e escala negócios. Sistemas exclusivos, automações inteligentes e integração entre software e operação real.",
+  metadataBase: new URL("https://arcanine.tech"),
+  title: siteConfig.seo.title,
+  description: siteConfig.seo.description,
   keywords: [
     "desenvolvimento de sistemas",
-    "automação de processos",
-    "integração com hardware",
+    "automacao de processos",
+    "integracao com hardware",
     "software sob medida",
-    "inteligência artificial aplicada",
-    "transformação digital",
+    "inteligencia artificial aplicada",
+    "transformacao digital",
   ],
-  authors: [{ name: "ARCANINE Tecnologia" }],
+  authors: [{ name: siteConfig.brand.name }],
   openGraph: {
-    title: "ARCANINE Tecnologia | Soluções Digitais Sob Medida",
-    description: "Entregamos estrutura, controle e crescimento através de tecnologia estratégica.",
+    title: siteConfig.seo.title,
+    description: "Entregamos estrutura, controle e crescimento atraves de tecnologia estrategica.",
     type: "website",
     locale: "pt_BR",
     images: [
       {
-        url: "/og-arcanine.svg",
+        url: siteConfig.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: "ARCANINE Tecnologia",
+        alt: siteConfig.brand.name,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ARCANINE Tecnologia | Soluções Digitais Sob Medida",
-    description: "Sistemas exclusivos, automações e integração para empresas em crescimento.",
-    images: ["/og-arcanine.svg"],
+    title: siteConfig.seo.title,
+    description: "Sistemas exclusivos, automacoes e integracao para empresas em crescimento.",
+    images: [siteConfig.seo.ogImage],
   },
 }
 

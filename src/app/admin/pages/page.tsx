@@ -17,6 +17,7 @@ import {
   Users,
   Briefcase,
   Lock,
+  Megaphone,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -65,6 +66,42 @@ const pages = [
     status: 'draft',
     lastModified: '2024-01-10',
     sections: ['Content'],
+  },
+  {
+    id: 'terms',
+    title: 'Terms of Use',
+    slug: '/terms',
+    icon: Lock,
+    status: 'draft',
+    lastModified: '2026-03-02',
+    sections: ['Content'],
+  },
+  {
+    id: 'cookies',
+    title: 'Cookies Policy',
+    slug: '/cookies',
+    icon: Lock,
+    status: 'draft',
+    lastModified: '2026-03-02',
+    sections: ['Content'],
+  },
+  {
+    id: 'blog',
+    title: 'Blog',
+    slug: '/blog',
+    icon: FileText,
+    status: 'published',
+    lastModified: '2026-03-02',
+    sections: ['Listing', 'Highlights', 'CTA'],
+  },
+  {
+    id: 'ctas',
+    title: 'Global CTAs',
+    slug: '/contact',
+    icon: Megaphone,
+    status: 'published',
+    lastModified: '2026-03-02',
+    sections: ['Orcamento', 'Reuniao tecnica', 'WhatsApp'],
   },
 ]
 
@@ -179,4 +216,3 @@ export default function PagesPage() {
     </div>
   )
 }
-
