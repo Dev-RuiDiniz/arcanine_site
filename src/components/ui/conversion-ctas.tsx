@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { MessageCircle, CalendarDays, FileText } from 'lucide-react'
+import { MessageCircle, FileText } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { buildWhatsAppUrl, conversionCtas } from '@/lib/site-config'
 
@@ -22,29 +22,15 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
       <Link
         href={conversionCtas.budget.href}
         className={cn(
-          'inline-flex items-center justify-center gap-2 border transition-colors',
+          'inline-flex items-center justify-center gap-2 border transition-colors font-inter font-semibold uppercase',
           compact
-            ? 'h-9 px-3 text-[10px] tracking-[0.14em]'
-            : 'h-11 px-5 text-[11px] tracking-[0.16em]',
-          'border-[#C96D3C] bg-[#C96D3C] text-white hover:bg-[#B95F2F] hover:border-[#B95F2F] font-inter uppercase'
+            ? 'h-10 px-4 text-[11px] tracking-[0.08em]'
+            : 'h-12 px-6 text-xs tracking-[0.1em]',
+          'border-[#C96D3C] bg-[#C96D3C] text-white hover:bg-[#B95F2F] hover:border-[#B95F2F] shadow-sm'
         )}
       >
         <FileText size={compact ? 13 : 14} />
         {conversionCtas.budget.label}
-      </Link>
-
-      <Link
-        href={conversionCtas.meeting.href}
-        className={cn(
-          'inline-flex items-center justify-center gap-2 border transition-colors',
-          compact
-            ? 'h-9 px-3 text-[10px] tracking-[0.14em]'
-            : 'h-11 px-5 text-[11px] tracking-[0.16em]',
-          'border-stone-700 text-stone-700 hover:bg-stone-100 font-inter uppercase'
-        )}
-      >
-        <CalendarDays size={compact ? 13 : 14} />
-        {conversionCtas.meeting.label}
       </Link>
 
       <a
@@ -52,11 +38,11 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          'inline-flex items-center justify-center gap-2 border transition-colors',
+          'inline-flex items-center justify-center gap-2 border transition-colors font-inter font-semibold uppercase',
           compact
-            ? 'h-9 px-3 text-[10px] tracking-[0.14em]'
-            : 'h-11 px-5 text-[11px] tracking-[0.16em]',
-          'border-[#25D366] text-[#128C4A] hover:bg-[#EAFBF1] font-inter uppercase'
+            ? 'h-10 px-4 text-[11px] tracking-[0.08em]'
+            : 'h-12 px-6 text-xs tracking-[0.1em]',
+          'border-[#25D366] bg-[#25D366] text-white hover:bg-[#20BD5A] hover:border-[#20BD5A] shadow-sm'
         )}
       >
         <MessageCircle size={compact ? 13 : 14} />

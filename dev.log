@@ -1,0 +1,36 @@
+
+> arcanine-site@0.1.0 dev C:\Users\RUI FRANCISCO\Documents\GitHub\arcanine_site
+> next dev
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   ▲ Next.js 16.0.7 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://169.254.245.101:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+Creating turbopack project {
+  dir: 'C:\\Users\\RUI FRANCISCO\\Documents\\GitHub\\arcanine_site',
+  testMode: true
+}
+ ✓ Ready in 3.2s
+ ○ Compiling /about ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ GET /about 200 in 24.2s (compile: 22.5s, render: 1661ms)
+ ○ Compiling /contact ...
+ GET /contact 200 in 4.2s (compile: 3.7s, render: 499ms)
+ GET /solicitar-orcamento 200 in 2.3s (compile: 2.2s, render: 193ms)
+ GET /api/auth/session 200 in 4.2s (compile: 4.1s, render: 64ms)
+ GET /agendar-reuniao 200 in 1751ms (compile: 1597ms, render: 154ms)
+ GET /contact 200 in 81ms (compile: 21ms, render: 60ms)
+ GET /solicitar-orcamento 200 in 41ms (compile: 7ms, render: 34ms)
+ GET /contact 200 in 47ms (compile: 9ms, render: 38ms)
+ GET / 200 in 1776ms (compile: 1686ms, render: 90ms)
+ GET /projects/crm-comercial-inteligente 200 in 2.1s (compile: 1977ms, render: 77ms)
+ GET /services 200 in 1116ms (compile: 968ms, render: 148ms)
+ GET /about 200 in 101ms (compile: 11ms, render: 90ms)
+ GET / 200 in 36ms (compile: 9ms, render: 28ms)
+ GET / 200 in 36ms (compile: 6ms, render: 30ms)
+ GET /services 200 in 847ms (compile: 59ms, render: 788ms)
+ GET /projects 200 in 1071ms (compile: 948ms, render: 122ms)
+ GET /solicitar-orcamento 200 in 31ms (compile: 5ms, render: 26ms)

@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
-import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Mail, MapPin, Send, Instagram, Linkedin } from 'lucide-react'
@@ -13,17 +12,15 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/lib/site-config'
 
-const contactSchema = z.object({
+const supportSchema = z.object({
   name: z.string().min(2, 'Informe seu nome completo'),
-  company: z.string().min(2, 'Informe a empresa'),
   email: z.string().email('Informe um e-mail valido'),
-  phone: z.string().min(8, 'Informe um WhatsApp para retorno'),
-  projectType: z.string().min(2, 'Informe o tipo de projeto'),
-  budgetRange: z.string().optional(),
-  message: z.string().min(10, 'Descreva o desafio com mais detalhes'),
+  phone: z.string().optional(),
+  subject: z.string().min(3, 'Informe o assunto'),
+  message: z.string().min(10, 'Descreva sua duvida com mais detalhes'),
 })
 
-type ContactFormData = z.infer<typeof contactSchema>
+type SupportFormData = z.infer<typeof supportSchema>
 
 const contactInfo = [
   {
@@ -45,72 +42,25 @@ const socialLinks = [
   { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
 ]
 
-type ContactIntent = 'orcamento' | 'reuniao-tecnica'
-
-interface ContactLeadPageProps {
-  defaultIntent?: ContactIntent
-  objectiveLabel?: string
-  heroTitle?: string
-  heroDescription?: string
-  formTitle?: string
-  submitLabel?: string
-  successTitle?: string
-  successMessage?: string
-}
-
-export function ContactLeadPage({
-  defaultIntent,
-  objectiveLabel = 'Contato',
-  heroTitle = 'Vamos estruturar sua proxima solucao',
-  heroDescription = 'Fale com nosso time tecnico-comercial para mapear seu desafio e definir o melhor caminho de implementacao.',
-  formTitle = 'Enviar Mensagem',
-  submitLabel = 'Enviar Mensagem',
-  successTitle = 'Recebido',
-  successMessage = 'Mensagem enviada com sucesso. Nosso time retorna em breve.',
-}: ContactLeadPageProps) {
+export function ContactSupportPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const searchParams = useSearchParams()
 
   const {
     register,
     handleSubmit,
-    setValue,
-    setError,
-    clearErrors,
     formState: { errors },
     reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+  } = useForm<SupportFormData>({
+    resolver: zodResolver(supportSchema),
   })
 
-  const intent = (searchParams.get('intent') as ContactIntent | null) || defaultIntent || null
-  const requiresBudget = intent === 'orcamento'
-
-  useEffect(() => {
-    if (intent === 'orcamento') {
-      setValue('projectType', 'Solicitacao de orcamento tecnico')
-    }
-    if (intent === 'reuniao-tecnica') {
-      setValue('projectType', 'Agendamento de reuniao tecnica')
-    }
-  }, [intent, setValue])
-
-  const onSubmit = async (data: ContactFormData) => {
-    if (requiresBudget && (!data.budgetRange || data.budgetRange.trim().length < 2)) {
-      setError('budgetRange', {
-        type: 'manual',
-        message: 'Selecione uma faixa de investimento',
-      })
-      return
-    }
-    clearErrors('budgetRange')
-
+  const onSubmit = async (data: SupportFormData) => {
     setIsSubmitting(true)
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1200))
 
-    console.log('Form submitted:', data)
+    console.log('Support form submitted:', data)
     setIsSubmitting(false)
     setIsSubmitted(true)
     reset()
@@ -126,16 +76,17 @@ export function ContactLeadPage({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl"
+            className="max-w-3xl"
           >
             <span className="inline-flex items-center px-3 py-1 bg-stone-200/80 text-stone-700 font-inter text-[10px] tracking-[0.18em] uppercase">
-              {objectiveLabel}
+              Contato geral
             </span>
             <h1 className="mt-4 font-cormorant text-3xl lg:text-4xl font-light text-stone-800 leading-tight">
-              {heroTitle}
+              Fale com a ARCANINE
             </h1>
-            <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed max-w-lg">
-              {heroDescription}
+            <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed max-w-2xl">
+              Este canal e para duvidas, informacoes institucionais e atendimento geral.
+              Para valores e proposta comercial, use a pagina de solicitar orcamento.
             </p>
           </motion.div>
         </div>
@@ -151,7 +102,7 @@ export function ContactLeadPage({
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">
-                Canal de <span className="italic">Contato</span>
+                Canais de <span className="italic">Contato</span>
               </h2>
 
               <div className="space-y-8 mb-12">
@@ -192,7 +143,7 @@ export function ContactLeadPage({
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
               >
                 <h3 className="font-inter text-xs tracking-[0.2em] uppercase text-stone-500 mb-4">
                   Redes
@@ -221,7 +172,7 @@ export function ContactLeadPage({
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">
-                {formTitle}
+                Enviar duvida
               </h2>
 
               {isSubmitted ? (
@@ -231,10 +182,10 @@ export function ContactLeadPage({
                   className="p-8 bg-green-50 border border-green-200 text-center"
                 >
                   <h3 className="font-cormorant text-2xl text-green-800 mb-2">
-                    {successTitle}
+                    Mensagem recebida
                   </h3>
                   <p className="font-inter text-sm text-green-700">
-                    {successMessage}
+                    Obrigado. Retornaremos em breve pelo canal informado.
                   </p>
                 </motion.div>
               ) : (
@@ -252,33 +203,12 @@ export function ContactLeadPage({
                           errors.name && 'border-red-400'
                         )}
                       />
-                      {errors.name && (
-                        <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
-                      )}
+                      {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
                     </div>
 
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        Empresa *
-                      </label>
-                      <Input
-                        {...register('company')}
-                        placeholder="Nome da empresa"
-                        className={cn(
-                          'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
-                          errors.company && 'border-red-400'
-                        )}
-                      />
-                      {errors.company && (
-                        <p className="mt-1 text-xs text-red-500">{errors.company.message}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        E-mail corporativo *
+                        E-mail *
                       </label>
                       <Input
                         {...register('email')}
@@ -289,16 +219,14 @@ export function ContactLeadPage({
                           errors.email && 'border-red-400'
                         )}
                       />
-                      {errors.email && (
-                        <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
-                      )}
+                      {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        WhatsApp *
+                        WhatsApp
                       </label>
                       <Input
                         {...register('phone')}
@@ -309,57 +237,34 @@ export function ContactLeadPage({
 
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        Tipo de projeto *
+                        Assunto *
                       </label>
                       <Input
-                        {...register('projectType')}
-                        placeholder="Ex.: Sistema web, IA, integracao"
+                        {...register('subject')}
+                        placeholder="Ex.: suporte, parceria, duvida"
                         className={cn(
                           'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
-                          errors.projectType && 'border-red-400'
+                          errors.subject && 'border-red-400'
                         )}
                       />
-                      {errors.projectType && (
-                        <p className="mt-1 text-xs text-red-500">{errors.projectType.message}</p>
-                      )}
+                      {errors.subject && <p className="mt-1 text-xs text-red-500">{errors.subject.message}</p>}
                     </div>
                   </div>
 
-                  {requiresBudget && (
-                    <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        Faixa de investimento *
-                      </label>
-                      <Input
-                        {...register('budgetRange')}
-                        placeholder="Ex.: 20k-60k, 60k-120k, acima de 120k"
-                        className={cn(
-                          'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
-                          errors.budgetRange && 'border-red-400'
-                        )}
-                      />
-                      {errors.budgetRange && (
-                        <p className="mt-1 text-xs text-red-500">{errors.budgetRange.message}</p>
-                      )}
-                    </div>
-                  )}
-
                   <div>
                     <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                      Descricao do desafio *
+                      Mensagem *
                     </label>
                     <Textarea
                       {...register('message')}
-                      placeholder="Contexto atual, problema, objetivo e prazo desejado."
+                      placeholder="Descreva sua duvida ou solicitacao."
                       rows={6}
                       className={cn(
                         'bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm resize-none',
                         errors.message && 'border-red-400'
                       )}
                     />
-                    {errors.message && (
-                      <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>
-                    )}
+                    {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>}
                   </div>
 
                   <Button
@@ -378,7 +283,7 @@ export function ContactLeadPage({
                       </span>
                     ) : (
                       <span className="flex items-center gap-2">
-                        {submitLabel}
+                        Enviar duvida
                         <Send size={14} />
                       </span>
                     )}
