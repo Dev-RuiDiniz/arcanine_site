@@ -5,6 +5,7 @@ Base Next.js (App Router) para o site institucional e admin da ARCANINE Tecnolog
 ## Documentacao
 
 - [Sprint 1 - Fundacao de Marca e Rebranding](docs/sprint-01-rebranding.md)
+- [Correcao de Build - /contact com Suspense](docs/fix-contact-suspense.md)
 
 ## Scripts
 
