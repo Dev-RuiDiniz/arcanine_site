@@ -30,11 +30,11 @@ export const siteConfig = {
 export const conversionCtas = {
   budget: {
     label: 'Solicitar Orcamento',
-    href: '/contact?intent=orcamento',
+    href: '/solicitar-orcamento',
   },
   meeting: {
     label: 'Agendar Reuniao Tecnica',
-    href: '/contact?intent=reuniao-tecnica',
+    href: '/agendar-reuniao',
   },
   whatsapp: {
     label: 'Falar no WhatsApp',

@@ -111,7 +111,7 @@ export default function ServiceDetailPage({ params }: PageProps) {
               Este servico faz sentido para o seu desafio atual?
             </p>
             <Link
-              href="/contact?intent=orcamento"
+              href="/solicitar-orcamento"
               className="inline-flex items-center gap-2 px-8 py-3 border border-white/55 text-white font-inter text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-stone-800 transition-all"
             >
               Solicitar escopo inicial

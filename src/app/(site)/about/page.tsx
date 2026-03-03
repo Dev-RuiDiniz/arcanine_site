@@ -140,7 +140,7 @@ export default function AboutPage() {
               Sua empresa está pronta para evoluir tecnologicamente?
             </p>
             <Link
-              href="/contact?intent=reuniao-tecnica"
+              href="/agendar-reuniao"
               className="inline-block px-8 py-3 border border-white/50 text-white font-inter text-[10px] tracking-[0.2em] uppercase hover:bg-white hover:text-stone-800 transition-all duration-300"
             >
               Agendar reunião técnica
@@ -151,3 +151,4 @@ export default function AboutPage() {
     </>
   )
 }
+

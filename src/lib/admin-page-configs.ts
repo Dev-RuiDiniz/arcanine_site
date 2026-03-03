@@ -62,7 +62,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
             defaultValue: 'Estrategia, engenharia e resultado no mesmo projeto.',
           },
           { id: 'hero_cta_label', label: 'Texto CTA', type: 'text', defaultValue: 'Solicitar Orcamento' },
-          { id: 'hero_cta_url', label: 'URL CTA', type: 'url', defaultValue: '/contact?intent=orcamento' },
+          { id: 'hero_cta_url', label: 'URL CTA', type: 'url', defaultValue: '/solicitar-orcamento' },
         ],
       },
       {
@@ -111,7 +111,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         fields: [
           { id: 'projects_cta_title', label: 'Titulo CTA', type: 'text', defaultValue: 'Quer um case como este no seu negocio?' },
           { id: 'projects_cta_button', label: 'Texto botao', type: 'text', defaultValue: 'Agendar reuniao tecnica' },
-          { id: 'projects_cta_url', label: 'URL botao', type: 'url', defaultValue: '/contact?intent=reuniao-tecnica' },
+          { id: 'projects_cta_url', label: 'URL botao', type: 'url', defaultValue: '/agendar-reuniao' },
         ],
       },
     ],
@@ -180,7 +180,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         fields: [
           { id: 'about_cta_title', label: 'Titulo CTA', type: 'text', defaultValue: 'Sua empresa esta pronta para evoluir tecnologicamente?' },
           { id: 'about_cta_button', label: 'Texto do botao', type: 'text', defaultValue: 'Agendar reuniao tecnica' },
-          { id: 'about_cta_url', label: 'URL do botao', type: 'url', defaultValue: '/contact?intent=reuniao-tecnica' },
+          { id: 'about_cta_url', label: 'URL do botao', type: 'url', defaultValue: '/agendar-reuniao' },
         ],
       },
     ],
@@ -313,7 +313,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         helperText: 'Botao para abertura de escopo comercial.',
         fields: [
           { id: 'cta_budget_label', label: 'Texto', type: 'text', defaultValue: 'Solicitar Orcamento' },
-          { id: 'cta_budget_url', label: 'URL', type: 'url', defaultValue: '/contact?intent=orcamento' },
+          { id: 'cta_budget_url', label: 'URL', type: 'url', defaultValue: '/solicitar-orcamento' },
         ],
       },
       {
@@ -322,7 +322,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         helperText: 'Botao para reunioes de diagnostico.',
         fields: [
           { id: 'cta_meeting_label', label: 'Texto', type: 'text', defaultValue: 'Agendar Reuniao Tecnica' },
-          { id: 'cta_meeting_url', label: 'URL', type: 'url', defaultValue: '/contact?intent=reuniao-tecnica' },
+          { id: 'cta_meeting_url', label: 'URL', type: 'url', defaultValue: '/agendar-reuniao' },
         ],
       },
       {

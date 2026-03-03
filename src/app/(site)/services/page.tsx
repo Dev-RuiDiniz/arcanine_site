@@ -139,7 +139,7 @@ export default function ServicesPage() {
               Vamos desenhar a proxima etapa da sua operacao.
             </p>
             <Link
-              href="/contact?intent=reuniao-tecnica"
+              href="/agendar-reuniao"
               className="inline-block px-9 py-3 border border-white/60 text-white font-inter text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-stone-800 transition-all duration-300"
             >
               Agendar reuniao tecnica
