@@ -7,7 +7,6 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { useSearchParams } from 'next/navigation'
@@ -52,7 +51,7 @@ const socialLinks = [
   { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
 ]
 
-function ContactPageContent() {
+export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const searchParams = useSearchParams()
@@ -367,13 +366,5 @@ function ContactPageContent() {
       </section>
 
     </>
-  )
-}
-
-export default function ContactPage() {
-  return (
-    <Suspense fallback={null}>
-      <ContactPageContent />
-    </Suspense>
   )
 }
