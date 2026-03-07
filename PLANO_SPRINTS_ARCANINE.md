@@ -48,6 +48,8 @@ Migrar o site atual (base RAIZ Interiors) para a marca **ARCANINE Tecnologia**, 
 - Lighthouse mobile/desktop sem queda relevante em performance.
 
 ## Sprint 3 - Servicos e Detalhes Tecnicos
+**Status:** Concluida em 7 de marco de 2026.
+
 **Meta:** transformar a secao de servicos em oferta comercial clara e escalavel.
 
 **Entregas:**

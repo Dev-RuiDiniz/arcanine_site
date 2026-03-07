@@ -10,30 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { services } from '@/lib/site-content/services'
-
-const executionModel = [
-  {
-    number: '01',
-    title: 'Diagnostico Tecnico',
-    description: 'Mapeamos processo, gargalos e risco para definir arquitetura e prioridades com criterio de negocio.',
-  },
-  {
-    number: '02',
-    title: 'Blueprint e Roadmap',
-    description: 'Detalhamos escopo por ondas, stack recomendada, metas por fase e estimativa de impacto operacional.',
-  },
-  {
-    number: '03',
-    title: 'Entrega Iterativa',
-    description: 'Implementamos em ciclos curtos com visibilidade executiva, testes e validacao continua com o time cliente.',
-  },
-  {
-    number: '04',
-    title: 'Escala e Sustentacao',
-    description: 'Evoluimos produto e operacao com observabilidade, manutencao orientada a KPI e melhoria continua.',
-  },
-]
+import { serviceProcessSteps, services } from '@/lib/site-content/services'
 
 export default function ServicesPage() {
   return (
@@ -48,11 +25,11 @@ export default function ServicesPage() {
           >
             <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Servicos</span>
             <h1 className="mt-4 font-cormorant text-3xl lg:text-5xl text-stone-900 leading-tight">
-              Solucoes de tecnologia para operacoes que nao podem parar.
+              Servicos de tecnologia orientados a resultado e escala.
             </h1>
             <p className="mt-5 font-inter text-sm lg:text-base text-stone-600 leading-relaxed max-w-3xl">
-              Atuamos de ponta a ponta: estrategia, implementacao e evolucao continua. Cada servico foi desenhado para
-              gerar controle operacional, ganho de produtividade e previsibilidade de crescimento.
+              Ofertas estruturadas para empresas que precisam eficiencia operacional, integracao entre sistemas e
+              crescimento com previsibilidade.
             </p>
           </motion.div>
         </div>
@@ -69,7 +46,10 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.05 }}
               >
-                <Link href={`/services/${service.slug}`} className="group block relative aspect-[4/3] overflow-hidden bg-stone-300">
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="group block relative aspect-[4/3] overflow-hidden bg-stone-300"
+                >
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -82,7 +62,7 @@ export default function ServicesPage() {
                     <h2 className="font-cormorant text-2xl lg:text-3xl text-white leading-tight">{service.title}</h2>
                     <p className="mt-2 font-inter text-xs lg:text-sm text-white/80 leading-relaxed">{service.excerpt}</p>
                     <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.18em] uppercase text-white/90">
-                      Ver detalhes
+                      Ver aplicacoes e beneficios
                       <ArrowRight size={13} />
                     </span>
                   </div>
@@ -102,14 +82,14 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h2 className="font-cormorant text-2xl lg:text-4xl text-stone-900">Modelo de execucao ARCANINE</h2>
+            <h2 className="font-cormorant text-2xl lg:text-4xl text-stone-900">Processo de trabalho em 7 etapas</h2>
             <p className="mt-3 font-inter text-sm text-stone-600">
-              Clareza de escopo, engenharia solida e foco em impacto de negocio em todas as etapas.
+              Metodo claro para reduzir risco tecnico, acelerar entrega e capturar resultado de negocio.
             </p>
           </motion.div>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4">
-            {executionModel.map((step, index) => (
+            {serviceProcessSteps.map((step, index) => (
               <motion.article
                 key={step.number}
                 initial={{ opacity: 0, y: 20 }}
@@ -136,13 +116,13 @@ export default function ServicesPage() {
             transition={{ duration: 0.7 }}
           >
             <p className="font-cormorant text-2xl lg:text-4xl text-white italic mb-7">
-              Vamos desenhar a proxima etapa da sua operacao.
+              Vamos transformar sua necessidade tecnica em plano de execucao.
             </p>
             <Link
               href="/solicitar-orcamento"
               className="inline-block px-9 py-3 border border-white/60 text-white font-inter text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-stone-800 transition-all duration-300"
             >
-              Solicitar orcamento
+              Solicitar escopo inicial
             </Link>
           </motion.div>
         </div>

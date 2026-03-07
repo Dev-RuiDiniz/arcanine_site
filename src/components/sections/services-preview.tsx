@@ -65,7 +65,7 @@ export function ServicesPreview() {
             transition={{ duration: 0.75, delay: 0.15 }}
             className="space-y-0"
           >
-            {services.slice(0, 5).map((service, index) => (
+            {services.map((service, index) => (
               <motion.div
                 key={service.slug}
                 initial={{ opacity: 0, y: 20 }}
