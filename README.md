@@ -17,6 +17,13 @@ Base Next.js (App Router) para o site institucional e admin da ARCANINE Tecnolog
 - `npm run lint`
 - `npm run typecheck`
 
+## Atualizacao de Ferramentas (Windows)
+
+Em terminal PowerShell aberto como Administrador:
+
+- `.\scripts\update-dev-tools.ps1`
+- `.\scripts\update-dev-tools.ps1 -IncludeAll`
+
 ## Observacao de ambiente
 
 A versao atual de Prisma requer Node.js `22.12+` (ou `20.19+`).
