@@ -23,13 +23,13 @@ export default function ProjectsPage() {
             transition={{ duration: 0.7 }}
             className="max-w-4xl"
           >
-            <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Portfolio / Cases</span>
+            <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Portfólio / Cases</span>
             <h1 className="mt-4 font-cormorant text-3xl lg:text-5xl text-stone-900 leading-tight">
-              Casos reais de transformacao digital orientada a resultado.
+              Casos reais de transformação digital orientada a resultado.
             </h1>
             <p className="mt-5 font-inter text-sm lg:text-base text-stone-600 leading-relaxed max-w-3xl">
-              Cada case apresenta desafio, estrategia tecnica e impacto de negocio. Sem narrativa inflada: apenas o que
-              foi construido, medido e entregue.
+              Cada case apresenta desafio, estratégia técnica e impacto de negócio. Sem narrativa inflada: apenas o que
+              foi construído, medido e entregue.
             </p>
           </motion.div>
         </div>
@@ -64,7 +64,7 @@ function ProjectCard({ project }: ProjectCardProps) {
   const isComingSoon = project.stage === 'COMING_SOON'
   const isWorkInProgress = project.stage === 'WORK_IN_PROGRESS'
 
-  const statusLabel = isComingSoon ? 'coming soon' : isWorkInProgress ? 'work in progress' : null
+  const statusLabel = isComingSoon ? 'em breve' : isWorkInProgress ? 'em implantação' : null
 
   return (
     <Link

@@ -19,13 +19,13 @@ const heroSlides = [
   },
   {
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=2000&q=80&auto=format&fit=crop',
-    line1: 'Sistemas exclusivos para operações reais.',
-    line2: 'Controle total de dados, processos e performance.',
+    line1: 'Sistemas sob medida para operações críticas.',
+    line2: 'Controle total de dados, processos e desempenho.',
   },
   {
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=2000&q=80&auto=format&fit=crop',
-    line1: 'Integração de software com rotina operacional.',
-    line2: 'Da arquitetura técnica à evolução contínua.',
+    line1: 'Integração entre software, times e operação real.',
+    line2: 'Da arquitetura técnica ao ganho operacional contínuo.',
   },
 ]
 
@@ -147,8 +147,8 @@ export function Hero({
             </h1>
 
             <p className="mt-6 font-inter text-sm lg:text-base text-white/85 max-w-3xl mx-auto leading-relaxed">
-              Desenvolvemos sistemas sob medida, automações inteligentes e integrações robustas para empresas que
-              precisam crescer com estrutura e previsibilidade.
+              Projetamos plataformas, automações e integrações para empresas que precisam reduzir atrito operacional,
+              ganhar previsibilidade e crescer com base técnica sólida.
             </p>
 
             <ConversionCTAs className="mt-8 justify-center" />

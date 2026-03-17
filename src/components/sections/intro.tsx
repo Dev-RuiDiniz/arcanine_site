@@ -24,11 +24,12 @@ export function IntroSection() {
           >
             <ArtisticText
               as="p"
-              highlightWords={['DESAFIOS', 'SISTEMAS', 'RESULTADO', 'ESCALA', 'SEGURANÇA', 'CONTROLE']}
+              highlightWords={['GARGALOS', 'PLATAFORMAS', 'RESULTADO', 'ESCALA', 'SEGURANÇA', 'CONTROLE']}
               className="font-cormorant text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-stone-800 leading-relaxed"
               highlightClassName="uppercase text-[#7A4A2F]"
             >
-              Transformamos DESAFIOS complexos em SISTEMAS inteligentes, orientados a RESULTADO, com base técnica para ESCALA, SEGURANÇA e CONTROLE operacional.
+              Transformamos GARGALOS operacionais em PLATAFORMAS orientadas a RESULTADO, com base técnica para ESCALA,
+              SEGURANÇA e CONTROLE executivo.
             </ArtisticText>
           </motion.div>
 

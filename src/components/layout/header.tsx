@@ -16,8 +16,8 @@ import { ConversionCTAs } from '@/components/ui/conversion-ctas'
 import { siteConfig } from '@/lib/site-config'
 
 const navItems = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Servicos', href: '/services' },
+  { label: 'Início', href: '/' },
+  { label: 'Serviços', href: '/services' },
   { label: 'Cases', href: '/projects' },
   { label: 'Sobre', href: '/about' },
   { label: 'Blog', href: '/blog' },
@@ -40,10 +40,6 @@ export function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
 
   const isItemActive = (href: string) => {
     if (href === '/') {
@@ -99,6 +95,7 @@ export function Header() {
                   >
                     <Link
                       href={item.href}
+                      onClick={() => setIsOpen(false)}
                       className={cn(
                         'relative font-inter text-[11px] tracking-[0.18em] uppercase transition-colors duration-300 group',
                         isItemActive(item.href)

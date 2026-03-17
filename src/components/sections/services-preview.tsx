@@ -30,11 +30,12 @@ export function ServicesPreview() {
             <div className="mt-6">
               <ArtisticText
                 as="h2"
-                highlightWords={['ARQUITETURA', 'SOFTWARE', 'AUTOMACAO', 'INTEGRACAO', 'IA', 'CRESCIMENTO']}
+                highlightWords={['ARQUITETURA', 'SOFTWARE', 'AUTOMAÇÃO', 'INTEGRAÇÃO', 'IA', 'RECEITA']}
                 className="font-inter text-xl sm:text-2xl lg:text-3xl font-light text-stone-900 leading-relaxed"
                 highlightClassName="text-[#7A4A2F]"
               >
-                Combinamos ARQUITETURA de SOFTWARE, AUTOMACAO de processos, INTEGRACAO com operacao real e IA aplicada para acelerar CRESCIMENTO com governanca.
+                Combinamos ARQUITETURA de SOFTWARE, AUTOMAÇÃO de processos, INTEGRAÇÃO com a operação real e IA aplicada
+                para acelerar RECEITA, eficiência e governança.
               </ArtisticText>
             </div>
 
@@ -49,7 +50,7 @@ export function ServicesPreview() {
                 href="/services"
                 className="inline-flex items-center gap-3 font-inter text-xs tracking-[0.2em] uppercase text-stone-600 hover:text-stone-900 transition-colors group"
               >
-                <span>Explorar servicos</span>
+                <span>Explorar serviços</span>
                 <ArrowRight
                   size={16}
                   className="text-stone-500 group-hover:text-stone-900 transform group-hover:translate-x-1 transition-transform"

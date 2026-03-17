@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!service) {
     return {
-      title: 'Servico nao encontrado | ARCANINE Tecnologia',
+      title: 'Serviço não encontrado | ARCANINE Tecnologia',
     }
   }
 
@@ -54,7 +54,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             className="inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.15em] uppercase text-stone-500 hover:text-stone-700 transition-colors"
           >
             <ArrowLeft size={12} />
-            Voltar para servicos
+            Voltar para serviços
           </Link>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-6">
@@ -75,7 +75,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-14">
             <article className="border border-stone-300/45 bg-white/75 p-6">
-              <h2 className="font-cormorant text-3xl text-stone-900">Aplicacoes</h2>
+              <h2 className="font-cormorant text-3xl text-stone-900">Aplicações</h2>
               <ul className="mt-4 space-y-3">
                 {service.applications.map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -87,7 +87,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </article>
 
             <article className="border border-stone-300/45 bg-white/75 p-6">
-              <h2 className="font-cormorant text-3xl text-stone-900">Beneficios</h2>
+              <h2 className="font-cormorant text-3xl text-stone-900">Benefícios</h2>
               <ul className="mt-4 space-y-3">
                 {service.benefits.map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -117,7 +117,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </article>
 
             <article className="border border-stone-300/45 bg-white/75 p-6">
-              <h2 className="font-cormorant text-3xl text-stone-900">Foco tecnico e indicadores</h2>
+              <h2 className="font-cormorant text-3xl text-stone-900">Foco técnico e indicadores</h2>
               <div className="mt-5">
                 <h3 className="font-inter text-[10px] tracking-[0.2em] uppercase text-stone-500">Pilares</h3>
                 <ul className="mt-3 space-y-2">

@@ -38,14 +38,14 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           className="flex items-center justify-between mb-8"
         >
           <span className="font-inter text-[10px] tracking-[0.2em] uppercase text-stone-500">
-            Cases em Destaque
+            Cases em destaque
           </span>
 
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.15em] uppercase text-stone-500 hover:text-stone-700 transition-colors group"
           >
-            <span>Ver Todos os Cases</span>
+            <span>Ver todos os cases</span>
             <ArrowRight
               size={12}
               className="transform group-hover:translate-x-1 transition-transform"
@@ -76,11 +76,7 @@ function ProjectCard({ project }: { project: Project }) {
   const isComingSoon = project.status === 'COMING_SOON'
   const isWorkInProgress = project.status === 'WORK_IN_PROGRESS'
 
-  const statusLabel = isComingSoon 
-    ? 'Coming soon' 
-    : isWorkInProgress 
-      ? 'work in progress' 
-      : null
+  const statusLabel = isComingSoon ? 'em breve' : isWorkInProgress ? 'em implantação' : null
 
   return (
     <Link

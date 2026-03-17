@@ -14,10 +14,10 @@ export default function BlogPage() {
         <div className="max-w-4xl">
           <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Blog</span>
           <h1 className="mt-4 font-cormorant text-3xl lg:text-5xl text-stone-900 leading-tight">
-            Conteudo tecnico para decisao de negocio.
+            Conteúdo técnico para decisão de negócio.
           </h1>
           <p className="mt-5 font-inter text-sm lg:text-base text-stone-600 max-w-3xl">
-            Publicacoes objetivas sobre engenharia de software, automacao, IA aplicada e integracao de sistemas em cenarios reais.
+            Publicações objetivas sobre engenharia de software, automação, IA aplicada e integração de sistemas em cenários reais.
           </p>
         </div>
 

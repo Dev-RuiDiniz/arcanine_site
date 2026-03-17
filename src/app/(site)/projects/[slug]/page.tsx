@@ -53,7 +53,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <h2 className="font-cormorant text-3xl text-stone-900">Desafio</h2>
             <p className="mt-3 font-inter text-sm text-stone-700 leading-relaxed">{project.challenge}</p>
 
-            <h2 className="mt-8 font-cormorant text-3xl text-stone-900">Solucao implementada</h2>
+            <h2 className="mt-8 font-cormorant text-3xl text-stone-900">Solução implementada</h2>
             <p className="mt-3 font-inter text-sm text-stone-700 leading-relaxed">{project.solution}</p>
           </motion.article>
 
@@ -67,7 +67,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <h3 className="font-inter text-[11px] tracking-[0.2em] uppercase text-stone-500">Dados do case</h3>
             <ul className="mt-4 space-y-4">
               <li>
-                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-stone-500">Duracao</span>
+                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-stone-500">Duração</span>
                 <span className="font-inter text-sm text-stone-800">{project.duration}</span>
               </li>
               <li>
@@ -92,7 +92,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
             transition={{ duration: 0.55 }}
             className="max-w-3xl"
           >
-            <h2 className="font-cormorant text-3xl text-stone-900">Impacto mensuravel</h2>
+            <h2 className="font-cormorant text-3xl text-stone-900">Impacto mensurável</h2>
             <ul className="mt-4 space-y-3">
               {project.outcomes.map((outcome) => (
                 <li key={outcome} className="font-inter text-sm text-stone-700 leading-relaxed">
@@ -127,7 +127,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
               {nextProject && (
                 <Link href={`/projects/${nextProject.slug}`} className="group text-left inline-flex items-center gap-2">
                   <div>
-                    <span className="block font-inter text-[10px] tracking-[0.18em] uppercase text-stone-500">Proximo</span>
+                    <span className="block font-inter text-[10px] tracking-[0.18em] uppercase text-stone-500">Próximo</span>
                     <span className="font-cormorant text-lg text-stone-700 group-hover:text-stone-900 transition-colors">
                       {nextProject.title}
                     </span>

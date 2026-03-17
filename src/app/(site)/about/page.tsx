@@ -13,19 +13,19 @@ import { motion } from 'framer-motion'
 const values = [
   {
     title: 'Transparência',
-    description: 'Decisões técnicas e comerciais claras, com critérios objetivos e previsibilidade de entrega.',
+    description: 'Decisões técnicas e comerciais claras, com critérios objetivos, riscos visíveis e previsibilidade de entrega.',
   },
   {
     title: 'Excelência Técnica',
-    description: 'Arquiteturas sólidas, código sustentável e foco em qualidade operacional no longo prazo.',
+    description: 'Arquiteturas sólidas, código sustentável e disciplina de engenharia para suportar crescimento contínuo.',
   },
   {
     title: 'Compromisso com Resultado',
-    description: 'Cada entrega precisa gerar impacto real em produtividade, controle e crescimento.',
+    description: 'Cada entrega precisa gerar impacto mensurável em produtividade, controle e crescimento.',
   },
   {
     title: 'Inovação com Responsabilidade',
-    description: 'Evolução contínua sem promessas irreais, sempre alinhada ao contexto do negócio.',
+    description: 'Evolução contínua sem promessas irreais, sempre alinhada ao contexto operacional e financeiro do negócio.',
   },
 ]
 
@@ -45,12 +45,12 @@ export default function AboutPage() {
               </h1>
               <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed">
                 A ARCANINE Tecnologia nasceu para resolver problemas reais com engenharia de software moderna,
-                arquitetura estratégica e visão comercial. Atuamos no desenvolvimento de sistemas personalizados,
-                automação de processos, integração com hardware e aplicação prática de IA.
+                arquitetura de produto e visão operacional. Atuamos na criação de sistemas sob medida, automação de
+                processos, integração entre software e hardware e aplicação prática de IA em fluxos comerciais e operacionais.
               </p>
               <p className="mt-3 font-inter text-sm text-stone-600 leading-relaxed">
                 Nossa proposta é transformar complexidade em estrutura: mais controle da operação, decisões orientadas
-                por dados e crescimento sustentável.
+                por dados confiáveis e crescimento sustentável sem improviso técnico.
               </p>
             </motion.div>
 
@@ -95,13 +95,13 @@ export default function AboutPage() {
             <div className="p-6 border border-stone-400/25 bg-white/45">
               <h3 className="font-cormorant text-xl text-stone-900">Visão</h3>
               <p className="mt-3 font-inter text-sm text-stone-600 leading-relaxed">
-                Ser referência em sistemas personalizados e soluções tecnológicas escaláveis para empresas que exigem performance e controle.
+                Ser referência em sistemas personalizados e soluções tecnológicas escaláveis para empresas que exigem desempenho, previsibilidade e controle.
               </p>
             </div>
             <div className="p-6 border border-stone-400/25 bg-white/45">
               <h3 className="font-cormorant text-xl text-stone-900">Posicionamento</h3>
               <p className="mt-3 font-inter text-sm text-stone-600 leading-relaxed">
-                Engenharia sólida + estratégia comercial + integração com operação real.
+                Engenharia sólida + estratégia de negócio + integração com a operação real.
               </p>
             </div>
           </div>

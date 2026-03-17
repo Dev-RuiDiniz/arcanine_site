@@ -4,7 +4,7 @@ export const siteConfig = {
     shortName: 'ARCANINE',
     legalName: 'ARCANINE Tecnologia LTDA',
     subLabel: 'Tecnologia',
-    tagline: 'Tecnologia que organiza, automatiza e escala negocios.',
+    tagline: 'Tecnologia que organiza, automatiza e escala negócios.',
   },
   contact: {
     email: 'contato@arcanine.tech',
@@ -19,20 +19,20 @@ export const siteConfig = {
     whatsapp: 'https://wa.me/5511999999999?text=Ola!%20Quero%20falar%20com%20a%20ARCANINE%20Tecnologia%20sobre%20uma%20solucao%20para%20minha%20empresa.',
   },
   seo: {
-    title: 'ARCANINE Tecnologia | Solucoes Digitais Sob Medida',
+    title: 'ARCANINE Tecnologia | Soluções Digitais Sob Medida',
     description:
-      'Tecnologia que organiza, automatiza e escala negocios. Sistemas exclusivos, automacoes inteligentes e integracao entre software e operacao real.',
+      'Tecnologia que organiza, automatiza e escala negócios. Sistemas sob medida, automações inteligentes e integração entre software e operação real.',
     ogImage: '/og-arcanine.svg',
   },
 }
 
 export const conversionCtas = {
   budget: {
-    label: 'Solicitar Orcamento',
+    label: 'Solicitar orçamento',
     href: '/solicitar-orcamento',
   },
   meeting: {
-    label: 'Agendar Reuniao Tecnica',
+    label: 'Agendar reunião técnica',
     href: '/agendar-reuniao',
   },
   whatsapp: {

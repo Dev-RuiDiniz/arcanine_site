@@ -11,44 +11,44 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: 'arquitetura-de-sistemas-para-escalar-operacoes',
-    title: 'Arquitetura de sistemas para escalar operacoes sem perder controle',
+    title: 'Arquitetura de sistemas para escalar operações sem perder controle',
     excerpt:
-      'Como estruturar camadas, processos e governanca para crescer sem transformar tecnologia em gargalo.',
+      'Como estruturar camadas, processos e governança para crescer sem transformar tecnologia em gargalo.',
     publishedAt: '2026-03-02',
     readingTime: '6 min',
     category: 'Engenharia de Software',
     content: [
-      'Escalar sem arquitetura e um atalho para aumentar custo operacional e risco tecnico. A base precisa sustentar novas demandas sem quebrar o que ja funciona.',
-      'O primeiro passo e mapear o fluxo critico do negocio e separar componentes por responsabilidade. Isso reduz dependencia entre modulos e acelera evolucao do produto.',
-      'Com observabilidade desde o inicio, o time identifica gargalos antes de virarem incidente. Em paralelo, um backlog priorizado por impacto de negocio evita dispersao tecnica.',
+      'Escalar sem arquitetura é um atalho para aumentar custo operacional e risco técnico. A base precisa sustentar novas demandas sem quebrar o que já funciona.',
+      'O primeiro passo é mapear o fluxo crítico do negócio e separar componentes por responsabilidade. Isso reduz dependência entre módulos e acelera a evolução do produto.',
+      'Com observabilidade desde o início, o time identifica gargalos antes de virarem incidente. Em paralelo, um backlog priorizado por impacto de negócio evita dispersão técnica.',
     ],
   },
   {
     slug: 'automacao-comercial-com-ia-na-pratica',
-    title: 'Automacao comercial com IA na pratica',
+    title: 'Automação comercial com IA na prática',
     excerpt:
-      'Onde IA realmente gera retorno em vendas B2B e como evitar implementacoes sem resultado concreto.',
+      'Onde IA realmente gera retorno em vendas B2B e como evitar implementações sem resultado concreto.',
     publishedAt: '2026-02-25',
     readingTime: '5 min',
     category: 'IA Aplicada',
     content: [
-      'IA em vendas nao substitui processo comercial. Ela potencializa times que ja possuem criterios de qualificacao, cadencia e metas claras por etapa do funil.',
-      'Os ganhos mais rapidos aparecem em tarefas repetitivas: scoring de lead, resumo de contexto e recomendacao de proximas acoes para SDR e executivos.',
-      'Sem metricas de base, nao ha como provar impacto. O minimo e acompanhar tempo de resposta, conversao por etapa e taxa de no-show apos automacao.',
+      'IA em vendas não substitui processo comercial. Ela potencializa times que já possuem critérios de qualificação, cadência e metas claras por etapa do funil.',
+      'Os ganhos mais rápidos aparecem em tarefas repetitivas: scoring de lead, resumo de contexto e recomendação de próximas ações para SDRs e executivos.',
+      'Sem métricas de base, não há como provar impacto. O mínimo é acompanhar tempo de resposta, conversão por etapa e taxa de no-show após a automação.',
     ],
   },
   {
     slug: 'integracao-entre-sistemas-legados-e-novas-plataformas',
-    title: 'Integracao entre sistemas legados e novas plataformas',
+    title: 'Integração entre sistemas legados e novas plataformas',
     excerpt:
-      'Estrategia para evoluir o stack sem paralisar operacao ou acumular divida tecnica inviavel.',
+      'Estratégia para evoluir o stack sem paralisar a operação ou acumular dívida técnica inviável.',
     publishedAt: '2026-02-18',
     readingTime: '7 min',
-    category: 'Integracao',
+    category: 'Integração',
     content: [
-      'Migracao total raramente e o melhor caminho inicial. Em muitos cenarios, a estrategia incremental por dominios traz menos risco e mais previsibilidade.',
-      'Uma camada de integracao com contratos bem definidos evita que sistemas antigos ditem a velocidade de todo o negocio. Essa camada tambem protege futuras evolucoes.',
-      'Governanca tecnica e tao importante quanto codigo: versionamento de APIs, monitoramento de falhas e plano de contingencia sao obrigatorios em operacoes criticas.',
+      'Migração total raramente é o melhor caminho inicial. Em muitos cenários, a estratégia incremental por domínios traz menos risco e mais previsibilidade.',
+      'Uma camada de integração com contratos bem definidos evita que sistemas antigos ditem a velocidade de todo o negócio. Essa camada também protege evoluções futuras.',
+      'Governança técnica é tão importante quanto código: versionamento de APIs, monitoramento de falhas e plano de contingência são obrigatórios em operações críticas.',
     ],
   },
 ]

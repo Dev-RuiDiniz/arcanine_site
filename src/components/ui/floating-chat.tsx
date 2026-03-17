@@ -15,7 +15,7 @@ import { buildWhatsAppUrl, siteConfig } from '@/lib/site-config'
 export function FloatingChat() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const defaultMessage = 'Ola! Quero conversar sobre um projeto com a ARCANINE Tecnologia.'
+  const defaultMessage = 'Olá! Quero conversar sobre um projeto com a ARCANINE Tecnologia.'
 
   const handleWhatsAppClick = () => {
     window.open(buildWhatsAppUrl(defaultMessage), '_blank')
@@ -30,7 +30,7 @@ export function FloatingChat() {
         transition={{ delay: 1, type: 'spring', stiffness: 200 }}
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center"
-        aria-label="Open chat"
+        aria-label="Abrir conversa"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -78,7 +78,7 @@ export function FloatingChat() {
                     {siteConfig.brand.name}
                   </h3>
                   <p className="font-inter text-xs text-white/80">
-                    Resposta media em ate 1 hora util
+                    Resposta média em até 1 hora útil
                   </p>
                 </div>
               </div>
@@ -89,10 +89,10 @@ export function FloatingChat() {
               <div className="bg-white rounded-lg p-4 shadow-sm relative">
                 <div className="absolute -left-2 top-3 w-0 h-0 border-t-8 border-t-transparent border-r-8 border-r-white border-b-8 border-b-transparent" />
                 <p className="font-inter text-sm text-stone-700 leading-relaxed">
-                  Ola.
+                  Olá.
                   <br />
                   <br />
-                  Conte rapidamente o desafio tecnico do seu negocio e nosso time retorna com proximos passos.
+                  Conte rapidamente o desafio técnico do seu negócio e nosso time retorna com os próximos passos.
                 </p>
                 <span className="block text-right font-inter text-[10px] text-stone-400 mt-2">
                   agora

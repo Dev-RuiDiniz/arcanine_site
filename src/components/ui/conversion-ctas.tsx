@@ -5,7 +5,7 @@ import { MessageCircle, FileText } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { buildWhatsAppUrl, conversionCtas } from '@/lib/site-config'
 
-const WHATSAPP_MESSAGE = 'Ola! Quero falar com a ARCANINE Tecnologia sobre uma solucao para minha empresa.'
+const WHATSAPP_MESSAGE = 'Olá! Quero falar com a ARCANINE Tecnologia sobre uma solução para a minha empresa.'
 
 interface ConversionCTAsProps {
   className?: string

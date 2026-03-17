@@ -44,9 +44,9 @@ export function AboutPreview() {
             className="text-center lg:text-left"
           >
             <p className="font-cormorant text-lg sm:text-xl lg:text-2xl font-light text-stone-800 leading-relaxed">
-              Não entregamos apenas software. Entregamos <span className="uppercase">estrutura</span>,{' '}
-              <span className="uppercase">controle</span> e <span className="uppercase">crescimento</span> para empresas
-              que precisam transformar operação em vantagem competitiva.
+              Não entregamos apenas software. Entregamos <span className="uppercase">clareza operacional</span>,{' '}
+              <span className="uppercase">controle gerencial</span> e <span className="uppercase">capacidade de escala</span>{' '}
+              para empresas que precisam transformar tecnologia em vantagem competitiva.
             </p>
 
             <motion.div

@@ -23,13 +23,13 @@ export default function ServicesPage() {
             transition={{ duration: 0.7 }}
             className="max-w-4xl"
           >
-            <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Servicos</span>
+            <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Serviços</span>
             <h1 className="mt-4 font-cormorant text-3xl lg:text-5xl text-stone-900 leading-tight">
-              Servicos de tecnologia orientados a resultado e escala.
+              Serviços de tecnologia para destravar operação, receita e escala.
             </h1>
             <p className="mt-5 font-inter text-sm lg:text-base text-stone-600 leading-relaxed max-w-3xl">
-              Ofertas estruturadas para empresas que precisam eficiencia operacional, integracao entre sistemas e
-              crescimento com previsibilidade.
+              Ofertas estruturadas para empresas que precisam eliminar gargalos, integrar sistemas críticos e crescer
+              com previsibilidade técnica e comercial.
             </p>
           </motion.div>
         </div>
@@ -62,7 +62,7 @@ export default function ServicesPage() {
                     <h2 className="font-cormorant text-2xl lg:text-3xl text-white leading-tight">{service.title}</h2>
                     <p className="mt-2 font-inter text-xs lg:text-sm text-white/80 leading-relaxed">{service.excerpt}</p>
                     <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.18em] uppercase text-white/90">
-                      Ver aplicacoes e beneficios
+                      Ver aplicações e benefícios
                       <ArrowRight size={13} />
                     </span>
                   </div>
@@ -84,7 +84,7 @@ export default function ServicesPage() {
           >
             <h2 className="font-cormorant text-2xl lg:text-4xl text-stone-900">Processo de trabalho em 7 etapas</h2>
             <p className="mt-3 font-inter text-sm text-stone-600">
-              Metodo claro para reduzir risco tecnico, acelerar entrega e capturar resultado de negocio.
+              Método claro para reduzir risco técnico, acelerar entrega e capturar resultado de negócio.
             </p>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.7 }}
           >
             <p className="font-cormorant text-2xl lg:text-4xl text-white italic mb-7">
-              Vamos transformar sua necessidade tecnica em plano de execucao.
+              Vamos transformar sua necessidade técnica em um plano de execução.
             </p>
             <Link
               href="/solicitar-orcamento"
