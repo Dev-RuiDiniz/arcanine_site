@@ -55,7 +55,7 @@ export const services: ServiceItem[] = [
       secondaryHref: '/solicitar-orcamento',
     },
     image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80&auto=format&fit=crop',
   },
   {
     slug: 'sistemas-exclusivos',
@@ -91,7 +91,7 @@ export const services: ServiceItem[] = [
       secondaryHref: '/solicitar-orcamento',
     },
     image:
-      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1400&q=80&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1400&q=80&auto=format&fit=crop',
   },
   {
     slug: 'sites-premium',

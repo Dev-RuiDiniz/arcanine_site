@@ -6,6 +6,7 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -78,11 +79,22 @@ export function ServicesPreview() {
                   href={`/services/${service.slug}`}
                   className="group panel-shell flex items-center justify-between gap-5 px-5 py-6 transition-all hover:-translate-y-0.5 hover:border-brand-cyan/40"
                 >
-                  <div>
+                  <div className="flex items-center gap-4">
+                    <div className="relative hidden h-20 w-28 overflow-hidden border border-line-subtle md:block">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.05)_0%,rgba(15,23,42,0.22)_100%)]" />
+                    </div>
+                    <div>
                     <span className="font-cormorant text-xl lg:text-2xl text-slate-950 group-hover:text-slate-950 transition-colors">
                       {service.title}
                     </span>
                     <p className="mt-2 max-w-xl font-inter text-sm text-slate-600">{service.excerpt}</p>
+                    </div>
                   </div>
                   <ArrowRight
                     size={20}
