@@ -6,11 +6,11 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
 import { siteConfig } from '@/lib/site-config'
@@ -34,8 +34,9 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 40)
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -44,6 +45,7 @@ export function Header() {
     if (href === '/') {
       return pathname === '/'
     }
+
     return pathname === href || pathname.startsWith(`${href}/`)
   }
 
@@ -51,24 +53,24 @@ export function Header() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'fixed left-0 right-0 top-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-slate-950/86 backdrop-blur-xl border-b border-white/10 shadow-[0_18px_48px_-32px_rgba(15,23,42,0.85)]'
+            ? 'border-b border-white/10 bg-slate-950/72 shadow-[0_22px_80px_-44px_rgba(2,6,23,0.82)] backdrop-blur-2xl'
             : 'bg-transparent'
         )}
       >
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20 lg:h-24 gap-6">
+          <div className="flex h-[5.25rem] items-center justify-between gap-6 lg:h-24">
             <Link href="/" className="relative z-50">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -14 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.45 }}
                 className="leading-none"
               >
                 <span
                   className={cn(
-                    'block font-cormorant text-2xl lg:text-3xl tracking-[0.22em] transition-colors',
+                    'block font-cormorant text-[1.7rem] tracking-[0.24em] transition-colors lg:text-[2rem]',
                     useDarkText ? 'text-slate-950' : 'text-white'
                   )}
                 >
@@ -76,8 +78,8 @@ export function Header() {
                 </span>
                 <span
                   className={cn(
-                    'block mt-1 font-inter text-[10px] tracking-[0.36em] uppercase transition-colors',
-                    useDarkText ? 'text-brand-cyan-strong' : 'text-white/70'
+                    'mt-1 block font-inter text-[10px] uppercase tracking-[0.34em] transition-colors',
+                    useDarkText ? 'text-brand-cyan-strong' : 'text-white/72'
                   )}
                 >
                   {siteConfig.brand.subLabel}
@@ -85,53 +87,85 @@ export function Header() {
               </motion.div>
             </Link>
 
-            <div className="hidden xl:flex items-center gap-10">
-              <nav className="flex items-center gap-8">
+            <div className="hidden xl:flex items-center gap-8">
+              <div
+                className={cn(
+                  'flex items-center gap-1 rounded-full border px-2 py-1 backdrop-blur-md transition-all duration-300',
+                  useDarkText
+                    ? 'border-slate-300/80 bg-white/72'
+                    : 'border-white/12 bg-white/6'
+                )}
+              >
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.href}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: index * 0.06 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
                     <Link
                       href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        'relative font-inter text-[11px] tracking-[0.18em] uppercase transition-colors duration-300 group',
+                        'relative inline-flex items-center rounded-full px-4 py-2 font-inter text-[11px] uppercase tracking-[0.14em] transition-all duration-300',
                         isItemActive(item.href)
                           ? useDarkText
-                            ? 'text-brand-cyan-strong'
-                            : 'text-white'
+                            ? 'bg-slate-950 text-white shadow-[0_14px_30px_-20px_rgba(7,17,31,0.54)]'
+                            : 'bg-white/10 text-white'
                           : useDarkText
-                            ? 'text-slate-500 hover:text-slate-950'
-                            : 'text-white/80 hover:text-white'
+                            ? 'text-slate-600 hover:bg-white hover:text-slate-950'
+                            : 'text-white/74 hover:bg-white/6 hover:text-white'
                       )}
                     >
                       {item.label}
-                      <span
-                        className={cn(
-                          'absolute -bottom-1 left-0 h-px bg-current transition-all duration-300',
-                          isItemActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
-                        )}
-                      />
                     </Link>
                   </motion.div>
                 ))}
-              </nav>
+              </div>
 
-              <ConversionCTAs compact className="justify-end" />
+              <div className="hidden 2xl:flex items-center gap-3">
+                <span
+                  className={cn(
+                    'inline-flex items-center gap-2 rounded-full border px-3 py-2 font-inter text-[10px] uppercase tracking-[0.18em] transition-colors',
+                    useDarkText
+                      ? 'border-slate-300/90 bg-white/70 text-slate-600'
+                      : 'border-white/12 bg-white/6 text-white/72'
+                  )}
+                >
+                  Operação crítica, engenharia autoral
+                </span>
+                <a
+                  href={`mailto:${siteConfig.contact.salesEmail}`}
+                  className={cn(
+                    'inline-flex items-center gap-2 font-inter text-[10px] uppercase tracking-[0.18em] transition-colors',
+                    useDarkText ? 'text-slate-600 hover:text-brand-cyan-strong' : 'text-white/72 hover:text-white'
+                  )}
+                >
+                  {siteConfig.contact.salesEmail}
+                  <ArrowUpRight size={12} />
+                </a>
+              </div>
+
+              <ConversionCTAs
+                compact
+                primaryAction="meeting"
+                secondaryAction="budget"
+                surface={useDarkText ? 'light' : 'dark'}
+                className="justify-end"
+              />
             </div>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
-                'xl:hidden relative z-50 p-2 transition-colors duration-300',
-                useDarkText ? 'text-slate-950' : 'text-white'
+                'xl:hidden relative z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300',
+                useDarkText
+                  ? 'border-slate-300/80 bg-white/72 text-slate-950'
+                  : 'border-white/12 bg-white/6 text-white'
               )}
               aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -151,33 +185,50 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35 }}
-              className="absolute inset-0 section-shell-dark"
+              className="absolute inset-0 premium-grid section-shell-dark"
             >
-              <div className="flex flex-col items-center justify-center h-full px-8">
-                <nav className="flex flex-col items-center gap-7 mb-10">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.href}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.08 + index * 0.06 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className={cn(
-                          'font-cormorant text-4xl tracking-[0.08em] transition-colors duration-300',
-                          isItemActive(item.href)
-                            ? 'text-brand-cyan'
-                            : 'text-slate-300 hover:text-white'
-                        )}
+              <div className="flex h-full flex-col justify-between px-8 pb-10 pt-28">
+                <div>
+                  <span className="section-kicker">Mapa do site</span>
+                  <nav className="mt-8 flex flex-col gap-4">
+                    {navItems.map((item, index) => (
+                      <motion.div
+                        key={item.href}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.08 + index * 0.06 }}
                       >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </nav>
+                        <Link
+                          href={item.href}
+                          className={cn(
+                            'group flex items-center justify-between border-b border-white/8 py-4 font-cormorant text-[2rem] tracking-[0.08em] transition-colors duration-300',
+                            isItemActive(item.href)
+                              ? 'text-brand-cyan'
+                              : 'text-slate-300 hover:text-white'
+                          )}
+                        >
+                          {item.label}
+                          <ArrowUpRight
+                            size={18}
+                            className="opacity-70 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          />
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </nav>
+                </div>
 
-                <ConversionCTAs className="w-full max-w-xl" />
+                <div className="space-y-5">
+                  <p className="max-w-md font-inter text-sm leading-relaxed text-slate-300">
+                    Arquitetura técnica, automação e software sob medida para operações que exigem controle real.
+                  </p>
+                  <ConversionCTAs
+                    primaryAction="meeting"
+                    secondaryAction="whatsapp"
+                    surface="dark"
+                    className="w-full max-w-xl"
+                  />
+                </div>
               </div>
             </motion.div>
           </motion.div>
