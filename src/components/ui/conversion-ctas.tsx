@@ -22,11 +22,11 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
       <Link
         href={conversionCtas.budget.href}
         className={cn(
-          'inline-flex items-center justify-center gap-2 border transition-colors font-inter font-semibold uppercase',
+          'inline-flex items-center justify-center gap-2 border transition-colors font-inter font-semibold uppercase rounded-none',
           compact
             ? 'h-10 px-4 text-[11px] tracking-[0.08em]'
             : 'h-12 px-6 text-xs tracking-[0.1em]',
-          'border-[#C96D3C] bg-[#C96D3C] text-white hover:bg-[#B95F2F] hover:border-[#B95F2F] shadow-sm'
+          'border-brand-cyan bg-brand-cyan text-slate-950 hover:bg-brand-cyan-strong hover:border-brand-cyan-strong hover:text-white shadow-[0_18px_40px_-24px_rgba(6,182,212,0.65)]'
         )}
       >
         <FileText size={compact ? 13 : 14} />
@@ -38,11 +38,11 @@ export function ConversionCTAs({ className, compact = false }: ConversionCTAsPro
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          'inline-flex items-center justify-center gap-2 border transition-colors font-inter font-semibold uppercase',
+          'inline-flex items-center justify-center gap-2 border transition-colors font-inter font-semibold uppercase rounded-none',
           compact
             ? 'h-10 px-4 text-[11px] tracking-[0.08em]'
             : 'h-12 px-6 text-xs tracking-[0.1em]',
-          'border-[#25D366] bg-[#25D366] text-white hover:bg-[#20BD5A] hover:border-[#20BD5A] shadow-sm'
+          'border-slate-700/70 bg-slate-950/85 text-slate-50 hover:border-brand-cyan hover:text-brand-cyan hover:bg-slate-950 shadow-[0_18px_40px_-28px_rgba(15,23,42,0.7)]'
         )}
       >
         <MessageCircle size={compact ? 13 : 14} />
