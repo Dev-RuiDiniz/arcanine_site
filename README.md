@@ -72,6 +72,13 @@ pnpm typecheck
 pnpm build
 ```
 
+Banco / Supabase:
+
+```bash
+pnpm prisma:migrate:deploy
+pnpm prisma:migrate:status
+```
+
 ## Variáveis de ambiente
 
 Use `.env.example` como base.
@@ -98,6 +105,8 @@ Campos relevantes:
 - `pnpm lint`
 - `pnpm typecheck`
 - `pnpm prisma:generate`
+- `pnpm prisma:migrate:deploy`
+- `pnpm prisma:migrate:status`
 - `pnpm create:admin -- --email admin@empresa.com --password "senha-forte" --name "Admin"`
 
 ## Leads
@@ -176,6 +185,21 @@ Documentação complementar:
 
 - [Operação do admin e leads](docs/operacao-admin-e-leads.md)
 - [Deploy frontend-only na Vercel](docs/deploy-vercel-frontend-only.md)
+
+## Supabase / Banco
+
+Migration inicial criada em:
+
+- `prisma/migrations/20260317170000_init_supabase/migration.sql`
+
+Fluxo recomendado para o Supabase:
+
+1. configure `DATABASE_URL` com a connection string Postgres do projeto Supabase
+2. rode `pnpm prisma:migrate:deploy`
+3. confirme com `pnpm prisma:migrate:status`
+4. crie o primeiro usuário admin com `pnpm create:admin -- --email admin@empresa.com --password "senha-forte"`
+
+Se preferir aplicar manualmente no SQL Editor do Supabase, use o conteúdo de `migration.sql`.
 
 ## Autenticação admin
 

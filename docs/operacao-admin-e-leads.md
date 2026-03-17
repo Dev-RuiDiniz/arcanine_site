@@ -96,6 +96,23 @@ Bootstrap do primeiro usuário:
 pnpm create:admin -- --email admin@empresa.com --password "senha-forte" --name "Admin"
 ```
 
+## Banco no Supabase
+
+Migration inicial do projeto:
+
+- `prisma/migrations/20260317170000_init_supabase/migration.sql`
+
+Aplicação recomendada:
+
+```bash
+pnpm prisma:migrate:deploy
+pnpm prisma:migrate:status
+```
+
+Alternativa:
+
+- aplicar o SQL da migration diretamente no SQL Editor do Supabase
+
 ## Observações operacionais
 
 - Em produção, aplique migration compatível com os novos campos de `Contact`.
