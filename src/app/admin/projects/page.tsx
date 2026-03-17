@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Eye, FileText } from 'lucide-react'
+import { ArrowRight, Eye, FileText, Star } from 'lucide-react'
 import { cases } from '@/lib/site-content/projects'
 import { cn } from '@/lib/utils'
 
@@ -23,11 +23,11 @@ export default function ProjectsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-white">
+          <h1 className="font-cormorant text-2xl font-light text-white lg:text-3xl">
             Cases
           </h1>
           <p className="mt-1 max-w-2xl font-inter text-sm text-slate-400">
-            Base editorial dos cases exibidos no site. Use esta visão para revisar narrativa, status e ordem de prioridade comercial.
+            Curadoria editorial dos cases públicos. Revise categoria, posicionamento comercial, copy de apoio e destaque na home.
           </p>
         </div>
 
@@ -49,18 +49,33 @@ export default function ProjectsPage() {
             transition={{ duration: 0.25, delay: index * 0.05 }}
             className="rounded-xl border border-white/10 bg-slate-900 p-5"
           >
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3">
                   <h2 className="font-inter text-base font-medium text-white">{project.title}</h2>
-                  <span className={cn('px-2.5 py-1 rounded-full font-inter text-xs', statusStyles[project.stage])}>
+                  <span className={cn('rounded-full px-2.5 py-1 font-inter text-xs', statusStyles[project.stage])}>
                     {statusLabels[project.stage]}
                   </span>
+                  {project.featured ? (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-brand-cyan/12 px-2.5 py-1 font-inter text-xs text-brand-cyan">
+                      <Star size={12} />
+                      Destaque na home
+                    </span>
+                  ) : null}
                 </div>
-                <p className="font-inter text-sm text-slate-400">{project.segment}</p>
-                <p className="font-inter text-sm text-slate-300 leading-relaxed max-w-3xl">
-                  {project.challenge}
-                </p>
+
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <span className="rounded-full border border-white/10 px-2.5 py-1 font-inter text-slate-300">
+                    {project.category}
+                  </span>
+                  <span className="rounded-full border border-white/10 px-2.5 py-1 font-inter text-slate-400">
+                    {project.segment}
+                  </span>
+                </div>
+
+                <p className="max-w-3xl font-inter text-sm leading-relaxed text-slate-300">{project.excerpt}</p>
+                <p className="max-w-3xl font-inter text-sm leading-relaxed text-slate-400">{project.context}</p>
+
                 <div className="flex flex-wrap gap-2">
                   {project.stack.map((item) => (
                     <span
@@ -75,8 +90,8 @@ export default function ProjectsPage() {
 
               <div className="flex items-center gap-4 shrink-0">
                 <div className="text-right">
-                  <p className="font-inter text-xs text-slate-500">Duração</p>
-                  <p className="font-inter text-sm text-slate-200">{project.duration}</p>
+                  <p className="font-inter text-xs text-slate-500">Slug público</p>
+                  <p className="max-w-48 font-inter text-sm text-slate-200">{project.slug}</p>
                 </div>
                 <Link
                   href={`/projects/${project.slug}`}
@@ -91,7 +106,7 @@ export default function ProjectsPage() {
 
             <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
               <p className="font-inter text-xs text-slate-500">
-                Resultado principal: {project.outcomes[0]}
+                Impacto principal: {project.outcomes[0]}
               </p>
               <Link
                 href={`/projects/${project.slug}`}

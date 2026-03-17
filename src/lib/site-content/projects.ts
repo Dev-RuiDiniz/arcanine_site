@@ -1,113 +1,273 @@
+export const caseCategories = [
+  'Fintech & Web3',
+  'IA & Automação SaaS',
+  'IoT & Sistemas de Gestão',
+] as const
+
+export type CaseCategory = (typeof caseCategories)[number]
+export type CaseStage = 'PUBLISHED' | 'WORK_IN_PROGRESS' | 'COMING_SOON'
+
 export interface CaseItem {
   id: string
   slug: string
   title: string
+  category: CaseCategory
   segment: string
-  stage: 'PUBLISHED' | 'WORK_IN_PROGRESS' | 'COMING_SOON'
-  challenge: string
+  stage: CaseStage
+  excerpt: string
+  context: string
   solution: string
+  architecture: string
   outcomes: string[]
   stack: string[]
-  duration: string
   coverImage: string
+  coverAlt: string
+  featured: boolean
+  confidentialityNote?: string
+}
+
+export const categoryDescriptions: Record<CaseCategory, string> = {
+  'Fintech & Web3':
+    'Arquiteturas financeiras, engines transacionais e operações digitais com requisitos elevados de consistência, rastreabilidade e resiliência.',
+  'IA & Automação SaaS':
+    'Produtos com IA aplicada e automações operacionais desenhadas para acelerar triagem, decisão, produtividade e qualidade de execução.',
+  'IoT & Sistemas de Gestão':
+    'Plataformas conectadas à operação real, integrando dispositivos, workflows internos, governança de dados e software orientado a controle.',
 }
 
 export const cases: CaseItem[] = [
   {
     id: '1',
-    slug: 'erp-operacional-industria',
-    title: 'ERP Operacional para Indústria',
-    segment: 'Indústria de manufatura',
+    slug: 'plataforma-fintech-ledger-imutavel',
+    title: 'Plataforma Fintech Cloud-Native com Ledger Imutável',
+    category: 'Fintech & Web3',
+    segment: 'Operação financeira digital',
     stage: 'PUBLISHED',
-    challenge:
-      'A operação dependia de planilhas e sistemas desconectados, o que atrasava apontamentos de produção, comprometia a acurácia do estoque e dificultava decisões diárias da liderança.',
+    excerpt:
+      'Core financeiro em AWS com ledger double-entry, microsserviços e integração EVM para produtos que exigem consistência contábil e trilha confiável de eventos.',
+    context:
+      'A operação precisava consolidar eventos financeiros críticos em uma base única, auditável e preparada para evoluir produtos digitais sem depender de controles paralelos ou reconciliações manuais frágeis.',
     solution:
-      'A ARCANINE implementou um ERP web modular com planejamento de produção, apontamento em tempo real, trilha de auditoria e dashboards operacionais para chão de fábrica e diretoria.',
-    outcomes: ['-28% no tempo de fechamento diário', '+42% de acurácia de estoque', '-35% em retrabalho de apontamento'],
-    stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Fila de eventos', 'Dashboards BI'],
-    duration: '4 meses',
-    coverImage:
-      'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1400&q=80&auto=format&fit=crop',
+      'A ARCANINE estruturou uma plataforma financeira cloud-native com domínio contábil orientado a ledger imutável, serviços desacoplados por contexto de negócio e integrações blockchain para ativos e liquidações em redes EVM.',
+    architecture:
+      'Arquitetura em AWS com microsserviços, event-driven workflows, ledger double-entry, APIs transacionais, observabilidade operacional e camada de integração on-chain para leitura e escrita de eventos em redes compatíveis com EVM.',
+    outcomes: [
+      'Rastreabilidade ponta a ponta entre lançamentos internos, saldos e eventos de integração.',
+      'Base técnica preparada para reconciliação financeira com separação clara entre domínio contábil e produtos de borda.',
+      'Governança de evolução com menor acoplamento entre serviços transacionais, integrações e regras de negócio.',
+    ],
+    stack: ['AWS', 'Microsserviços', 'Ledger double-entry', 'EVM', 'Mensageria', 'Observabilidade'],
+    coverImage: '/projects/fintech-ledger.jpg',
+    coverAlt: 'Tela com gráficos financeiros e monitoramento de indicadores em ambiente corporativo.',
+    featured: true,
+    confidentialityNote:
+      'Algumas denominações internas e referências ao contexto do cliente foram abstraídas para preservar confidencialidade comercial.',
   },
   {
     id: '2',
-    slug: 'crm-comercial-inteligente',
-    title: 'CRM Comercial Inteligente',
-    segment: 'Serviços B2B',
+    slug: 'bot-trading-spot-gestao-risco',
+    title: 'Bot de Trading Spot com Gestão de Risco',
+    category: 'Fintech & Web3',
+    segment: 'Trading algorítmico',
     stage: 'PUBLISHED',
-    challenge:
-      'Leads sem qualificação, follow-up inconsistente e baixa previsibilidade do funil comercial comprometiam velocidade de resposta e taxa de avanço entre etapas.',
+    excerpt:
+      'Engine profissional para execução spot com ordens idempotentes, regras de risco parametrizadas e dashboard operacional para acompanhamento em tempo real.',
+    context:
+      'A estratégia dependia de uma camada de execução mais previsível, com tratamento consistente de eventos, proteção contra duplicidade de ordens e visibilidade operacional para revisão de posições e comportamento da engine.',
     solution:
-      'Construímos um CRM com scoring automático, roteamento de oportunidades, cadências multicanal e contexto consolidado para SDRs e closers.',
-    outcomes: ['+37% na taxa de conversão MQL -> SQL', '-52% no tempo de resposta', '+25% em receita recorrente trimestral'],
-    stack: ['Next.js', 'Prisma', 'PostgreSQL', 'OpenAI API', 'WhatsApp API'],
-    duration: '3 meses',
-    coverImage:
-      'https://images.unsplash.com/photo-1551281044-8b1d45c5be0c?w=1400&q=80&auto=format&fit=crop',
+      'Foi construída uma engine de trading com pipelines de execução determinísticos, gerenciamento de risco por estratégia, trilha de eventos para ordens e interface operacional para acompanhamento de sinais, posições e incidentes.',
+    architecture:
+      'Serviços de execução e monitoramento separados por responsabilidade, filas para processamento idempotente, camada de risco antes do envio de ordens e dashboard em FastAPI para leitura de estado, alertas e auditoria operacional.',
+    outcomes: [
+      'Execução padronizada com regras explícitas de risco e validação antes de cada operação.',
+      'Menor exposição a duplicidade operacional por desenho idempotente no fluxo de ordens.',
+      'Visibilidade centralizada para latência, estado de posições, falhas e eventos relevantes da estratégia.',
+    ],
+    stack: ['Python', 'FastAPI', 'Engine de execução', 'Risk management', 'Filas', 'Dashboards operacionais'],
+    coverImage: '/projects/trading-bot.jpg',
+    coverAlt: 'Monitor com gráfico de trading e séries temporais de mercado.',
+    featured: false,
+    confidentialityNote:
+      'A nomenclatura pública do case foi mantida em formato descritivo para evitar exposição de produto e estratégia proprietária.',
   },
   {
     id: '3',
-    slug: 'integracao-hardware-software',
-    title: 'Integração Hardware + Software',
-    segment: 'Logística e IoT',
-    stage: 'WORK_IN_PROGRESS',
-    challenge:
-      'Equipamentos em campo geravam dados sem padronização, o que prejudicava o monitoramento da operação e a manutenção preventiva.',
+    slug: 'entrevistas-ia-whatsapp',
+    title: 'Plataforma de Entrevistas via IA no WhatsApp',
+    category: 'IA & Automação SaaS',
+    segment: 'RH conversacional e triagem',
+    stage: 'PUBLISHED',
+    excerpt:
+      'Orquestração de entrevistas via WhatsApp com sessões guiadas por IA, leitura de sentimento e ranking automático para acelerar triagem em escala.',
+    context:
+      'O processo de triagem exigia alto esforço manual para conduzir entrevistas iniciais, consolidar impressões qualitativas e manter padrão de avaliação entre candidatos em diferentes vagas e volumes de demanda.',
     solution:
-      'Criamos uma camada de ingestão com normalização de telemetria, alertas por evento crítico e dashboard de operação em tempo real para equipes de campo e coordenação.',
-    outcomes: ['Projeto em execução com piloto validado em duas unidades'],
-    stack: ['Node.js', 'MQTT', 'PostgreSQL', 'Timeseries', 'Grafana'],
-    duration: '6 meses',
-    coverImage:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop',
+      'A ARCANINE desenvolveu um orquestrador de sessões conversacionais via WhatsApp, com prompts por etapa, análise automática de respostas, leitura de sentimento e ranqueamento assistido por LLM para apoiar recrutadores.',
+    architecture:
+      'Fluxo conversacional integrado ao WhatsApp, orquestração de sessões com controle de estado, pipelines de processamento textual, LLM para análise e ranking, além de painel para revisão humana e priorização de candidatos.',
+    outcomes: [
+      'Triagem inicial em escala com maior consistência entre entrevistas e critérios aplicados.',
+      'Consolidação automática de sinais qualitativos para apoiar decisões sem perder rastreabilidade.',
+      'Redução do trabalho manual de leitura, classificação e organização de respostas em fases iniciais.',
+    ],
+    stack: ['WhatsApp API', 'LLM', 'Orquestração de sessões', 'Análise de sentimento', 'Ranking automático'],
+    coverImage: '/projects/ia-entrevistas.jpg',
+    coverAlt: 'Equipe analisando dados em tela grande durante operação de atendimento digital.',
+    featured: true,
   },
   {
     id: '4',
-    slug: 'portal-gestao-projetos',
-    title: 'Portal de Gestão de Projetos',
-    segment: 'Engenharia e serviços técnicos',
+    slug: 'otimizacao-anuncios-marketplace',
+    title: 'SaaS de Otimização de Anúncios para Marketplace',
+    category: 'IA & Automação SaaS',
+    segment: 'Marketplace e growth commerce',
     stage: 'PUBLISHED',
-    challenge:
-      'A diretoria não tinha visibilidade consolidada de prazo, custo e risco entre projetos em andamento.',
+    excerpt:
+      'Plataforma de análise competitiva para Mercado Livre com sugestões orientadas por IA para títulos, preços e posicionamento comercial.',
+    context:
+      'A operação precisava reagir com mais velocidade à dinâmica competitiva do marketplace, identificando oportunidades de otimização sem depender de revisão manual extensa de anúncio por anúncio.',
     solution:
-      'Implantamos um portal único com governança de portfólio, marcos, alertas de risco e visão executiva por unidade de negócio.',
-    outcomes: ['-40% no tempo de consolidação mensal', '+31% de previsibilidade de entrega'],
-    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Metabase'],
-    duration: '2,5 meses',
-    coverImage:
-      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1400&q=80&auto=format&fit=crop',
+      'Foi criado um SaaS que consolida dados competitivos, compara posicionamento entre ofertas e sugere ajustes de título, preço e argumentação comercial com apoio de IA para ciclos mais rápidos de otimização.',
+    architecture:
+      'Pipelines de coleta e enriquecimento de dados de anúncios, regras comparativas por categoria, geração assistida por IA para copy comercial e painel de revisão para tomada de decisão antes da publicação.',
+    outcomes: [
+      'Leitura mais rápida do cenário competitivo por SKU, categoria e faixa de preço.',
+      'Padronização do processo de melhoria de títulos e ofertas com apoio analítico e editorial.',
+      'Base de trabalho mais ágil para times que operam marketplace com alto volume de anúncios.',
+    ],
+    stack: ['SaaS analytics', 'IA aplicada', 'Comparativos competitivos', 'Catálogo', 'Pricing intelligence'],
+    coverImage: '/projects/marketplace-ml.jpg',
+    coverAlt: 'Profissional analisando gráficos de vendas e desempenho de marketplace em notebook.',
+    featured: false,
+    confidentialityNote:
+      'Referências operacionais foram descritas por função e contexto, sem expor conta, seller ou estrutura comercial do cliente.',
   },
   {
     id: '5',
-    slug: 'app-forca-de-campo',
-    title: 'App para Força de Campo',
-    segment: 'Distribuição e serviços externos',
-    stage: 'COMING_SOON',
-    challenge:
-      'A equipe externa operava sem padrão de coleta de informação e com baixa rastreabilidade de atendimento em campo.',
+    slug: 'cadencia-emails-auditoria',
+    title: 'Automação de Cadência de E-mails com Auditoria',
+    category: 'IA & Automação SaaS',
+    segment: 'Automação comercial B2B',
+    stage: 'PUBLISHED',
+    excerpt:
+      'Cadência profissional via Power Automate com controle de estado, governança de disparos e histórico auditável para processos comerciais recorrentes.',
+    context:
+      'A equipe precisava organizar cadências recorrentes sem perder rastreabilidade sobre quem entrou em cada fluxo, em qual etapa se encontrava e quais eventos já haviam sido processados ou bloqueados.',
     solution:
-      'Aplicativo mobile com checklists operacionais, geolocalização, evidências de execução e sincronização offline-first.',
-    outcomes: ['Case em fase final de implantação'],
-    stack: ['React Native', 'Node.js', 'PostgreSQL', 'Cloud Storage'],
-    duration: '3 meses',
-    coverImage:
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1400&q=80&auto=format&fit=crop',
+      'A ARCANINE modelou uma automação com estados explícitos de jornada, gatilhos condicionais, auditoria de execuções e proteção contra reprocessamentos indevidos, usando Power Automate como motor operacional.',
+    architecture:
+      'Fluxos acionados por eventos e regras de negócio, armazenamento de estado por contato ou processo, checkpoints para auditoria e conectores com serviços de e-mail e bases de suporte ao acompanhamento operacional.',
+    outcomes: [
+      'Execução mais previsível de cadências com histórico claro por etapa e por contato.',
+      'Redução de ambiguidades sobre reenvio, pausa, retomada e exceções operacionais.',
+      'Governança melhor para times que precisam auditar jornadas e manter padrão de execução.',
+    ],
+    stack: ['Power Automate', 'State management', 'Auditoria', 'Integrações de e-mail', 'Workflows'],
+    coverImage: '/projects/cadencia-emails.jpg',
+    coverAlt: 'Tela de notebook com interface de e-mail e produtividade digital.',
+    featured: false,
   },
   {
     id: '6',
-    slug: 'data-platform-logistica',
-    title: 'Data Platform para Logística',
-    segment: 'Operação logística',
-    stage: 'COMING_SOON',
-    challenge:
-      'Dados fragmentados por filial impediam planejamento de rota, leitura de margem por operação e controle de custo por entrega.',
+    slug: 'gasnow-monitoramento-gas',
+    title: 'GasNow: Monitoramento Inteligente de Gás',
+    category: 'IoT & Sistemas de Gestão',
+    segment: 'IoT para utilidades e distribuição',
+    stage: 'PUBLISHED',
+    excerpt:
+      'Solução conectada com ESP32 e LoRa para monitoramento remoto de gás, consolidação de telemetria e predição de consumo.',
+    context:
+      'A operação precisava transformar leituras físicas e rotinas reativas em acompanhamento contínuo, com dados confiáveis para planejar reposição, identificar variações e antecipar comportamento de consumo.',
     solution:
-      'Plataforma unificada para consolidação, limpeza e análise de dados operacionais com painéis táticos e executivos.',
-    outcomes: ['Case em onboarding'],
-    stack: ['ELT', 'PostgreSQL', 'BI', 'Automações'],
-    duration: '4 meses',
-    coverImage:
-      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80&auto=format&fit=crop',
+      'A ARCANINE integrou dispositivos embarcados, comunicação LoRa e backend analítico para captar medições, acompanhar nível e comportamento de uso, além de projetar consumo com base em histórico operacional.',
+    architecture:
+      'Dispositivos ESP32 em campo, comunicação LoRa para transmissão de telemetria, backend para ingestão e normalização de dados, dashboards operacionais e modelos de previsão para apoiar planejamento e alertas.',
+    outcomes: [
+      'Leitura remota mais frequente e organizada para acompanhamento de ativos distribuídos.',
+      'Visibilidade histórica para entender padrões de consumo e orientar reposição.',
+      'Base técnica para alertas operacionais e evolução de previsões conforme a operação amadurece.',
+    ],
+    stack: ['ESP32', 'LoRa', 'IoT backend', 'Predição de consumo', 'Dashboards'],
+    coverImage: '/projects/gasnow.jpg',
+    coverAlt: 'Placa eletrônica e componentes de hardware representando telemetria e IoT.',
+    featured: true,
+  },
+  {
+    id: '7',
+    slug: 'etiquetas-eletronicas-atualizacao-massiva',
+    title: 'Plataforma de Etiquetas Eletrônicas com Atualização Massiva',
+    category: 'IoT & Sistemas de Gestão',
+    segment: 'Varejo conectado e pricing',
+    stage: 'PUBLISHED',
+    excerpt:
+      'Camada operacional para atualização massiva de preços em ESL, com distribuição via MQTT e HTTPS para ambientes que exigem sincronismo e escala.',
+    context:
+      'A atualização de preços em loja exigia um fluxo mais confiável entre decisão comercial e ponta física, reduzindo latência, inconsistências e dependência de processos manuais para publicação em massa.',
+    solution:
+      'Foi implementada uma plataforma de orquestração de updates para etiquetas eletrônicas, com distribuição em lote, confirmação de processamento e integração com canais de comunicação adequados ao parque instalado.',
+    architecture:
+      'Serviços de preparação e despacho de payloads, distribuição híbrida por MQTT e HTTPS, controles de reenvio e monitoramento de entrega para operações de atualização massiva com rastreabilidade operacional.',
+    outcomes: [
+      'Publicação de preços em escala com processo centralizado e mais controlado.',
+      'Melhor alinhamento entre decisão comercial e atualização visível no ponto de venda.',
+      'Menor fricção operacional para campanhas, ajustes recorrentes e rotinas de pricing.',
+    ],
+    stack: ['MQTT', 'HTTPS', 'ESL', 'Mensageria', 'Operação de pricing'],
+    coverImage: '/projects/esl-pricing.jpg',
+    coverAlt: 'Corredor de varejo com prateleiras e etiquetas de preço em ambiente comercial.',
+    featured: false,
+  },
+  {
+    id: '8',
+    slug: 'gestao-acao-social-lgpd',
+    title: 'Sistema de Gestão de Ação Social com Rastreabilidade LGPD',
+    category: 'IoT & Sistemas de Gestão',
+    segment: 'Gestão social e compliance',
+    stage: 'PUBLISHED',
+    excerpt:
+      'Plataforma React + FastAPI para organizar atendimentos, fluxos sociais e trilhas de dados sensíveis com governança aderente à LGPD.',
+    context:
+      'O processo social exigia maior controle sobre cadastro, histórico de atendimento, fluxos internos e tratamento de dados pessoais, com necessidade de rastreabilidade sem comprometer a experiência operacional das equipes.',
+    solution:
+      'A ARCANINE entregou um sistema completo para gestão de ações sociais, com controle de perfis, histórico por atendimento, organização de fluxos e mecanismos de governança voltados à proteção e uso adequado dos dados.',
+    architecture:
+      'Frontend em React, APIs em FastAPI, camada de autenticação e autorização, trilhas de auditoria e modelagem orientada a consentimento, acesso contextual e governança sobre dados sensíveis.',
+    outcomes: [
+      'Rastreabilidade mais clara sobre atendimentos, movimentações e histórico operacional.',
+      'Estrutura técnica melhor alinhada a controle de acesso e tratamento responsável de dados pessoais.',
+      'Base unificada para equipes sociais operarem com mais previsibilidade e menor dispersão de informação.',
+    ],
+    stack: ['React', 'FastAPI', 'LGPD', 'RBAC', 'Auditoria', 'Workflows operacionais'],
+    coverImage: '/projects/acao-social.jpg',
+    coverAlt: 'Pessoas reunidas em ação colaborativa com foco social e comunitário.',
+    featured: true,
+    confidentialityNote:
+      'O nome do case foi mantido em formato descritivo para preservar instituições, territórios e dados operacionais sensíveis do contexto real.',
+  },
+  {
+    id: '9',
+    slug: 'saas-gestao-personal-trainers',
+    title: 'SaaS de Gestão para Personal Trainers',
+    category: 'IoT & Sistemas de Gestão',
+    segment: 'Fitness e gestão recorrente',
+    stage: 'PUBLISHED',
+    excerpt:
+      'SaaS para gestão financeira e de alunos com isolamento de dados por usuário, voltado a profissionais que precisam operar rotina e recorrência em uma base própria.',
+    context:
+      'O produto precisava combinar simplicidade de uso com separação segura entre contas, oferecendo ao profissional visão integrada de alunos, cobranças e rotina operacional sem misturar dados entre usuários.',
+    solution:
+      'A ARCANINE estruturou uma plataforma SaaS com tenancy por usuário, organização de alunos e finanças, além de fluxos desenhados para operação diária de profissionais autônomos e negócios de treinamento.',
+    architecture:
+      'Aplicação web com isolamento lógico de dados por conta, módulos de gestão financeira e operacional, autenticação, políticas de acesso e estrutura preparada para expansão funcional do produto.',
+    outcomes: [
+      'Visão mais organizada da operação financeira e da carteira de alunos por usuário.',
+      'Base multitenant preparada para escalar sem comprometer separação de dados entre contas.',
+      'Experiência mais consistente para rotina de atendimento, cobrança e acompanhamento operacional.',
+    ],
+    stack: ['SaaS', 'Multitenancy', 'Gestão financeira', 'Gestão de alunos', 'Aplicação web'],
+    coverImage: '/projects/personal-trainers.jpg',
+    coverAlt: 'Personal trainer acompanhando treino com tablet em ambiente fitness.',
+    featured: false,
   },
 ]
 
