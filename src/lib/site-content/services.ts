@@ -55,7 +55,7 @@ export const services: ServiceItem[] = [
       secondaryHref: '/solicitar-orcamento',
     },
     image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1400&q=80&auto=format&fit=crop',
   },
   {
     slug: 'sistemas-exclusivos',
@@ -127,7 +127,7 @@ export const services: ServiceItem[] = [
       secondaryHref: '/solicitar-orcamento',
     },
     image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1400&q=80&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=80&auto=format&fit=crop',
   },
   {
     slug: 'e-commerce',
@@ -235,7 +235,7 @@ export const services: ServiceItem[] = [
       secondaryHref: '/solicitar-orcamento',
     },
     image:
-      'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1400&q=80&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80&auto=format&fit=crop',
   },
 ]
 
