@@ -20,17 +20,19 @@ datasource db {
 // ============================================
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          Role      @default(ADMIN)
-  accounts      Account[]
-  sessions      Session[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id                   String        @id @default(cuid())
+  name                 String?
+  email                String        @unique
+  emailVerified        DateTime?
+  image                String?
+  password             String?
+  role                 Role          @default(ADMIN)
+  accounts             Account[]
+  sessions             Session[]
+  updatedPageContents  PageContent[] @relation("PageContentUpdatedBy")
+  publishedPageContents PageContent[] @relation("PageContentPublishedBy")
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
 }
 
 model Account {
@@ -191,4 +193,17 @@ model SiteSettings {
   metaTitle       String?
   metaDescription String?  @db.Text
   updatedAt       DateTime @updatedAt
+}
+
+model PageContent {
+  id            String   @id @default(cuid())
+  pageId        String   @unique
+  draft         Json
+  published     Json
+  updatedAt     DateTime @updatedAt
+  publishedAt   DateTime?
+  updatedById   String?
+  publishedById String?
+  updatedBy     User?    @relation("PageContentUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+  publishedBy   User?    @relation("PageContentPublishedBy", fields: [publishedById], references: [id], onDelete: SetNull)
 }

@@ -16,7 +16,15 @@ const capabilities = [
   'Execução com contexto de negócio',
 ]
 
-export function IntroSection() {
+interface IntroSectionProps {
+  title?: string
+  description?: string
+}
+
+export function IntroSection({
+  title = 'Tecnologia para organizar operação, ganhar previsibilidade e sustentar crescimento.',
+  description = 'Entramos quando o negócio precisa de uma base técnica mais sólida para operar melhor e evoluir com menos ruído.',
+}: IntroSectionProps) {
   return (
     <section className="section-shell relative overflow-hidden py-18 lg:py-24">
       <div className="container mx-auto px-6 lg:px-12">
@@ -29,10 +37,10 @@ export function IntroSection() {
           >
             <span className="section-kicker justify-center">O que entregamos</span>
             <h2 className="mt-5 font-cormorant text-[2.1rem] leading-[1.02] text-slate-950 lg:text-[3rem]">
-              Tecnologia para organizar operação, ganhar previsibilidade e sustentar crescimento.
+              {title}
             </h2>
             <p className="mx-auto mt-5 max-w-2xl font-inter text-sm leading-relaxed text-slate-700 lg:text-base">
-              Entramos quando o negócio precisa de uma base técnica mais sólida para operar melhor e evoluir com menos ruído.
+              {description}
             </p>
           </motion.div>
 

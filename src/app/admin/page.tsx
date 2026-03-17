@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { ArrowRight, FileText, FolderKanban, Layers, MessageSquareMore } from 'lucide-react'
 import { services } from '@/lib/site-content/services'
@@ -61,6 +62,12 @@ const quickActions = [
 ]
 
 export default function AdminDashboard() {
+  const { data: session } = useSession()
+  const isAdmin = session?.user?.role === 'ADMIN'
+  const visibleQuickActions = isAdmin
+    ? quickActions
+    : quickActions.filter((action) => action.href !== '/admin/contacts')
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
@@ -113,7 +120,7 @@ export default function AdminDashboard() {
           </div>
 
           <div className="mt-5 space-y-3">
-            {quickActions.map((action, index) => (
+            {visibleQuickActions.map((action, index) => (
               <motion.div
                 key={action.href}
                 initial={{ opacity: 0, y: 12 }}

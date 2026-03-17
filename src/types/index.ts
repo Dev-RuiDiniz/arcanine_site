@@ -69,6 +69,7 @@ export interface Contact {
   status: 'NEW' | 'READ' | 'REPLIED' | 'ARCHIVED'
   source?: string | null
   createdAt: Date
+  updatedAt?: Date
 }
 
 export interface LeadPayload {
@@ -100,6 +101,16 @@ export interface SiteSettings {
   heroSubtitle?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
+}
+
+export interface PageContent {
+  pageId: string
+  draft: Record<string, string>
+  published: Record<string, string>
+  updatedAt: string | null
+  publishedAt: string | null
+  updatedById: string | null
+  publishedById: string | null
 }
 
 // Navigation

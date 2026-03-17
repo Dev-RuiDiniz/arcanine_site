@@ -62,8 +62,8 @@ export function GDPRBanner() {
                         Privacidade e Cookies
                       </h3>
                       <p className="font-inter text-sm text-stone-600 leading-relaxed">
-                        Utilizamos cookies para operação essencial, análise de tráfego e melhoria da experiência.
-                        Ao clicar em &quot;Aceitar todos&quot;, você concorda com o uso completo de cookies.{' '}
+                        Utilizamos armazenamento local para registrar sua preferência de consentimento e manter o funcionamento essencial do site.
+                        Se novas categorias de cookies forem ativadas, esta política será atualizada antes da publicação.{' '}
                         <Link
                           href="/cookies"
                           className="text-stone-900 underline underline-offset-2 hover:text-stone-600"
@@ -135,7 +135,7 @@ export function GDPRBanner() {
                         Cookies Analíticos
                       </h4>
                       <p className="font-inter text-xs text-stone-500">
-                        Ajudam a entender como visitantes interagem com o site.
+                        Atualmente não estão ativos em produção.
                       </p>
                     </div>
                     <div className="w-10 h-6 bg-stone-300 rounded-full flex items-center px-1">
@@ -150,7 +150,7 @@ export function GDPRBanner() {
                         Cookies de Marketing
                       </h4>
                       <p className="font-inter text-xs text-stone-500">
-                        Usados para ações de comunicação e medição de campanhas.
+                        Atualmente não estão ativos em produção.
                       </p>
                     </div>
                     <div className="w-10 h-6 bg-stone-300 rounded-full flex items-center px-1">

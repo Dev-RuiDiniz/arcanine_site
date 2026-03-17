@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { join, extname } from 'node:path'
+import { EDITOR_ROLES, requireApiRole } from '@/lib/authz'
 
 export const runtime = 'nodejs'
 
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024
+const ALLOWED_MIME_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+const ALLOWED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif'])
 
 const sanitizeFilename = (name: string) =>
   name
@@ -15,6 +18,11 @@ const sanitizeFilename = (name: string) =>
     .toLowerCase()
 
 export async function POST(request: Request) {
+  const auth = await requireApiRole(EDITOR_ROLES)
+  if ('error' in auth) {
+    return auth.error
+  }
+
   try {
     const formData = await request.formData()
     const file = formData.get('file')
@@ -23,8 +31,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'File is required.' }, { status: 400 })
     }
 
-    if (!file.type.startsWith('image/')) {
-      return NextResponse.json({ error: 'Only image files are supported.' }, { status: 400 })
+    if (!ALLOWED_MIME_TYPES.has(file.type)) {
+      return NextResponse.json(
+        { error: 'Only JPG, PNG, WEBP and GIF image files are supported.' },
+        { status: 400 }
+      )
     }
 
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -42,6 +53,12 @@ export async function POST(request: Request) {
 
     const original = sanitizeFilename(file.name)
     const extension = extname(original) || '.jpg'
+    if (!ALLOWED_EXTENSIONS.has(extension)) {
+      return NextResponse.json(
+        { error: 'Unsupported file extension. Use JPG, PNG, WEBP or GIF.' },
+        { status: 400 }
+      )
+    }
     const base = original.replace(extension, '')
     const uniqueName = `${base}-${Date.now()}${extension}`
     const destination = join(uploadDir, uniqueName)

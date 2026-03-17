@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { CalendarDays, Linkedin, Mail, MapPin, Send } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
@@ -32,13 +33,21 @@ const contactInfo = [
     value: siteConfig.contact.email,
     href: `mailto:${siteConfig.contact.email}`,
   },
+  siteConfig.contact.phoneDisplay
+    ? {
+        icon: CalendarDays,
+        label: 'Canal rápido',
+        value: siteConfig.contact.phoneDisplay,
+        href: siteConfig.contact.phoneE164 ? `tel:+${siteConfig.contact.phoneE164}` : null,
+      }
+    : null,
   {
     icon: MapPin,
     label: 'Localização',
     value: siteConfig.contact.city,
     href: null,
   },
-]
+].filter(Boolean) as Array<{ icon: LucideIcon; label: string; value: string; href: string | null }>
 
 const socialLinks = [{ icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' }]
 
@@ -337,7 +346,7 @@ export function ContactLeadPage({
                     <Field label="WhatsApp *" error={errors.phone?.message}>
                       <Input
                         {...register('phone')}
-                        placeholder="+55 (11) 99999-9999"
+                        placeholder="Seu WhatsApp com DDD"
                         className={cn('field-shell font-inter text-sm', errors.phone && 'border-red-400')}
                       />
                     </Field>

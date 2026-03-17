@@ -11,13 +11,23 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
+import type { ConversionCtaConfig } from '@/lib/cta-config'
 
 interface HeroProps {
+  ctas: ConversionCtaConfig
+  title?: string
+  subtitle?: string
   videoUrl?: string
   slideshow?: boolean
 }
 
-export function Hero({ videoUrl, slideshow }: HeroProps) {
+export function Hero({
+  ctas,
+  title = 'Software sob medida para negócios que precisam operar com mais clareza e menos atrito.',
+  subtitle = 'Projetamos plataformas, automações e integrações para empresas que precisam reduzir improviso técnico e ganhar base real de execução.',
+  videoUrl,
+  slideshow,
+}: HeroProps) {
   void videoUrl
   void slideshow
 
@@ -47,16 +57,16 @@ export function Hero({ videoUrl, slideshow }: HeroProps) {
           <span className="section-kicker">Engenharia para operação crítica</span>
 
           <h1 className="mt-6 font-cormorant text-[2.85rem] leading-[0.97] text-white sm:text-[3.4rem] lg:text-[5.2rem]">
-            Software sob medida para negócios que precisam operar com mais clareza e menos atrito.
+            {title}
           </h1>
 
           <p className="mt-6 max-w-xl font-inter text-sm leading-relaxed text-slate-200 lg:text-base">
-            Projetamos plataformas, automações e integrações para empresas que precisam reduzir improviso técnico e
-            ganhar base real de execução.
+            {subtitle}
           </p>
 
           <div className="mt-9">
             <ConversionCTAs
+              ctas={ctas}
               primaryAction="meeting"
               secondaryAction="budget"
               surface="dark"

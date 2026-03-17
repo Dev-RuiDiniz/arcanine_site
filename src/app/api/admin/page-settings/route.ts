@@ -1,75 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { EDITOR_ROLES, requireApiRole } from '@/lib/authz'
+import { getPageContent, publishPageDraft, savePageDraft } from '@/lib/page-content'
 
 export const runtime = 'nodejs'
 
-interface PageSettingsEntry {
-  draft: Record<string, string>
-  published: Record<string, string>
-  updatedAt: string | null
-  publishedAt: string | null
-}
-
-type PageSettingsMap = Record<string, PageSettingsEntry>
-type LegacyPageSettingsMap = Record<string, Record<string, string>>
-
-const settingsDir = join(process.cwd(), 'data')
-const settingsPath = join(settingsDir, 'admin-page-settings.json')
-
-async function readSettings(): Promise<PageSettingsMap> {
-  try {
-    const content = await readFile(settingsPath, 'utf8')
-    const parsed = JSON.parse(content) as PageSettingsMap | LegacyPageSettingsMap
-
-    const migrated: PageSettingsMap = {}
-    for (const [pageId, value] of Object.entries(parsed)) {
-      const candidate = value as Partial<PageSettingsEntry>
-      if (
-        candidate &&
-        typeof candidate === 'object' &&
-        'draft' in candidate &&
-        'published' in candidate
-      ) {
-        migrated[pageId] = {
-          draft: candidate.draft || {},
-          published: candidate.published || {},
-          updatedAt: candidate.updatedAt || null,
-          publishedAt: candidate.publishedAt || null,
-        }
-      } else {
-        migrated[pageId] = {
-          draft: (value as Record<string, string>) || {},
-          published: (value as Record<string, string>) || {},
-          updatedAt: null,
-          publishedAt: null,
-        }
-      }
-    }
-    return migrated
-  } catch {
-    return {}
-  }
-}
-
-async function writeSettings(settings: PageSettingsMap) {
-  await mkdir(settingsDir, { recursive: true })
-  await writeFile(settingsPath, JSON.stringify(settings, null, 2), 'utf8')
-}
-
 export async function GET(request: NextRequest) {
+  const auth = await requireApiRole(EDITOR_ROLES)
+  if ('error' in auth) {
+    return auth.error
+  }
+
   const pageId = request.nextUrl.searchParams.get('pageId')
   if (!pageId) {
     return NextResponse.json({ error: 'pageId is required.' }, { status: 400 })
   }
 
-  const settings = await readSettings()
-  const entry = settings[pageId] || {
-    draft: {},
-    published: {},
-    updatedAt: null,
-    publishedAt: null,
-  }
+  const entry = await getPageContent(pageId)
+
   return NextResponse.json({
     pageId,
     values: entry.draft,
@@ -81,6 +28,11 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
+  const auth = await requireApiRole(EDITOR_ROLES)
+  if ('error' in auth) {
+    return auth.error
+  }
+
   try {
     const body = await request.json()
     const pageId = body?.pageId
@@ -94,19 +46,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'values object is required.' }, { status: 400 })
     }
 
-    const settings = await readSettings()
-    const existing = settings[pageId] || {
-      draft: {},
-      published: {},
-      updatedAt: null,
-      publishedAt: null,
-    }
-    settings[pageId] = {
-      ...existing,
-      draft: values as Record<string, string>,
-      updatedAt: new Date().toISOString(),
-    }
-    await writeSettings(settings)
+    await savePageDraft(pageId, values as Record<string, string>, auth.session.user.id)
 
     return NextResponse.json({ success: true, pageId })
   } catch (error) {
@@ -116,6 +56,11 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const auth = await requireApiRole(EDITOR_ROLES)
+  if ('error' in auth) {
+    return auth.error
+  }
+
   try {
     const body = await request.json()
     const pageId = body?.pageId
@@ -129,25 +74,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unsupported action.' }, { status: 400 })
     }
 
-    const settings = await readSettings()
-    const existing = settings[pageId] || {
-      draft: {},
-      published: {},
-      updatedAt: null,
-      publishedAt: null,
-    }
-
-    settings[pageId] = {
-      ...existing,
-      published: existing.draft || {},
-      publishedAt: new Date().toISOString(),
-    }
-    await writeSettings(settings)
+    const entry = await publishPageDraft(pageId, auth.session.user.id)
 
     return NextResponse.json({
       success: true,
       pageId,
-      publishedAt: settings[pageId].publishedAt,
+      publishedAt: entry.publishedAt,
     })
   } catch (error) {
     console.error('Failed to publish page settings:', error)

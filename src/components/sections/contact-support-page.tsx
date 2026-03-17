@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Inbox, Linkedin, Mail, MapPin, Send } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
@@ -35,7 +36,7 @@ const contactInfo = [
     value: siteConfig.contact.city,
     href: null,
   },
-]
+].filter(Boolean) as Array<{ icon: LucideIcon; label: string; value: string; href: string | null }>
 
 const socialLinks = [{ icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' }]
 
@@ -265,7 +266,7 @@ export function ContactSupportPage() {
                     <Field label="WhatsApp">
                       <Input
                         {...register('phone')}
-                        placeholder="+55 (11) 99999-9999"
+                        placeholder="Seu WhatsApp com DDD"
                         className="field-shell font-inter text-sm"
                       />
                     </Field>

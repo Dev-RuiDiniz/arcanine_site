@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Linkedin, Mail, MapPin } from 'lucide-react'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
+import type { ConversionCtaConfig } from '@/lib/cta-config'
 import { siteConfig } from '@/lib/site-config'
 
 const socialLinks = [
@@ -23,7 +24,7 @@ const navLinks = [
   { label: 'Contato', href: '/contact' },
 ]
 
-export function Footer() {
+export function Footer({ ctas }: { ctas: ConversionCtaConfig }) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -61,6 +62,7 @@ export function Footer() {
               </div>
 
               <ConversionCTAs
+                ctas={ctas}
                 primaryAction="meeting"
                 secondaryAction="budget"
                 surface="dark"
@@ -130,13 +132,15 @@ export function Footer() {
                 <Mail size={16} className="mt-0.5 shrink-0" />
                 <span>{siteConfig.contact.email}</span>
               </a>
-              <a
-                href={`tel:+${siteConfig.contact.phoneE164}`}
-                className="flex items-start gap-3 font-inter text-sm text-slate-300 transition-colors hover:text-brand-cyan"
-              >
-                <span className="inline-flex h-4 w-4 items-center justify-center text-[11px]">+</span>
-                <span>{siteConfig.contact.phoneDisplay}</span>
-              </a>
+              {siteConfig.contact.phoneDisplay && siteConfig.contact.phoneE164 ? (
+                <a
+                  href={`tel:+${siteConfig.contact.phoneE164}`}
+                  className="flex items-start gap-3 font-inter text-sm text-slate-300 transition-colors hover:text-brand-cyan"
+                >
+                  <span className="inline-flex h-4 w-4 items-center justify-center text-[11px]">+</span>
+                  <span>{siteConfig.contact.phoneDisplay}</span>
+                </a>
+              ) : null}
               <div className="flex items-start gap-3 font-inter text-sm text-slate-300">
                 <MapPin size={16} className="mt-0.5 shrink-0" />
                 <span>{siteConfig.contact.city}</span>

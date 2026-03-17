@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
+import type { ConversionCtaConfig } from '@/lib/cta-config'
 import { siteConfig } from '@/lib/site-config'
 
 const navItems = [
@@ -23,7 +24,7 @@ const navItems = [
   { label: 'Contato', href: '/contact' },
 ]
 
-export function Header() {
+export function Header({ ctas }: { ctas: ConversionCtaConfig }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
@@ -137,6 +138,7 @@ export function Header() {
               </div>
 
               <ConversionCTAs
+                ctas={ctas}
                 compact
                 primaryAction="meeting"
                 secondaryAction="budget"
@@ -213,6 +215,7 @@ export function Header() {
                     Arquitetura técnica, automação e software sob medida para operações que exigem controle real.
                   </p>
                   <ConversionCTAs
+                    ctas={ctas}
                     primaryAction="meeting"
                     secondaryAction="whatsapp"
                     surface="dark"

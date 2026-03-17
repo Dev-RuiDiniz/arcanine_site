@@ -18,6 +18,8 @@ export const leadPayloadSchema = z.object({
 })
 
 export type LeadPayload = z.infer<typeof leadPayloadSchema>
+export const leadStatusSchema = z.enum(['NEW', 'READ', 'REPLIED', 'ARCHIVED'])
+export type LeadStatus = z.infer<typeof leadStatusSchema>
 
 export interface LeadRecord {
   id: string
@@ -30,7 +32,7 @@ export interface LeadRecord {
   projectType: string | null
   budgetRange: string | null
   message: string
-  status: 'NEW' | 'READ' | 'REPLIED' | 'ARCHIVED'
+  status: LeadStatus
   source: string | null
   createdAt: string
   updatedAt: string
@@ -42,6 +44,10 @@ const leadsPath = join(dataDir, 'leads.json')
 function normalizeOptionalValue(value?: string) {
   const normalized = value?.trim()
   return normalized ? normalized : null
+}
+
+function canUseLocalFallback() {
+  return process.env.NODE_ENV !== 'production'
 }
 
 function serializeLead(record: {
@@ -102,6 +108,10 @@ export async function listLeads(): Promise<LeadRecord[]> {
     return leads.map((lead) => serializeLead(lead))
   }
 
+  if (!canUseLocalFallback()) {
+    throw new Error('DATABASE_URL is required to list leads outside local development.')
+  }
+
   return readFileLeads()
 }
 
@@ -127,6 +137,10 @@ export async function createLead(payload: LeadPayload): Promise<LeadRecord> {
     return serializeLead(lead)
   }
 
+  if (!canUseLocalFallback()) {
+    throw new Error('DATABASE_URL is required to create leads outside local development.')
+  }
+
   const now = new Date().toISOString()
   const lead = serializeLead({
     id: randomUUID(),
@@ -140,4 +154,39 @@ export async function createLead(payload: LeadPayload): Promise<LeadRecord> {
   await writeFileLeads([lead, ...leads])
 
   return lead
+}
+
+export async function updateLeadStatus(id: string, status: LeadStatus): Promise<LeadRecord> {
+  if (prisma) {
+    const lead = await prisma.contact.update({
+      where: { id },
+      data: { status },
+    })
+
+    return serializeLead(lead)
+  }
+
+  if (!canUseLocalFallback()) {
+    throw new Error('DATABASE_URL is required to update leads outside local development.')
+  }
+
+  const leads = await readFileLeads()
+  const leadIndex = leads.findIndex((lead) => lead.id === id)
+
+  if (leadIndex < 0) {
+    throw new Error('Lead not found.')
+  }
+
+  const existingLead = leads[leadIndex]
+  const updatedLead: LeadRecord = {
+    ...existingLead,
+    status,
+    updatedAt: new Date().toISOString(),
+  }
+
+  const nextLeads = [...leads]
+  nextLeads[leadIndex] = updatedLead
+  await writeFileLeads(nextLeads)
+
+  return updatedLead
 }

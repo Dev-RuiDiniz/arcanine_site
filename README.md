@@ -79,10 +79,12 @@ Use `.env.example` como base.
 Campos relevantes:
 
 - `DATABASE_URL`
-  - opcional em desenvolvimento
-  - quando ausente, leads usam fallback local em `data/leads.json`
+  - obrigatório em staging/produção
+  - opcional em desenvolvimento local
+  - quando ausente em desenvolvimento, leads e conteúdo editável usam fallback local em `data/*.json`
 - `NEXTAUTH_URL`
 - `NEXTAUTH_SECRET`
+  - obrigatório em produção para autenticação admin
 - `FRONTEND_ONLY`
   - opcional
   - quando `true`, o proxy bloqueia `/admin`, `/login` e `/api/*`
@@ -96,6 +98,7 @@ Campos relevantes:
 - `pnpm lint`
 - `pnpm typecheck`
 - `pnpm prisma:generate`
+- `pnpm create:admin -- --email admin@empresa.com --password "senha-forte" --name "Admin"`
 
 ## Leads
 
@@ -119,7 +122,7 @@ Payload aceito:
 Persistência:
 
 - com `DATABASE_URL`: grava em `Contact` via Prisma
-- sem `DATABASE_URL`: grava em `data/leads.json`
+- sem `DATABASE_URL` em desenvolvimento: grava em `data/leads.json`
 
 Leads ficam visíveis em `/admin/contacts`.
 
@@ -134,6 +137,14 @@ O que permanece:
 - visão editorial de cases
 - central de leads
 - resumo operacional e configurações
+
+Permissões atuais:
+
+- `ADMIN`
+  - acesso total ao painel, leads e configurações
+- `EDITOR`
+  - acesso ao editor de páginas, serviços, cases e uploads
+  - sem acesso à central de leads e configurações
 
 O que foi removido do template antigo:
 
@@ -168,12 +179,19 @@ Documentação complementar:
 
 ## Autenticação admin
 
-No estado atual, o login local usa credencial temporária:
+O login admin agora usa usuários persistidos no banco via Prisma.
 
-- usuário: `admin@arcanine.tech`
-- senha: `admin123`
+Fluxo recomendado:
 
-Isso é adequado apenas para desenvolvimento e verificação interna. Produção exige `NEXTAUTH_SECRET` configurado e revisão do fluxo de autenticação.
+1. configure `DATABASE_URL`
+2. gere o client com `pnpm prisma:generate`
+3. crie o primeiro usuário com:
+
+```bash
+pnpm create:admin -- --email admin@empresa.com --password "senha-forte" --name "Admin"
+```
+
+Sem `DATABASE_URL`, a autenticação admin não fica disponível. Em produção, `NEXTAUTH_SECRET` é obrigatório.
 
 ## Checklist de validação
 
@@ -183,7 +201,9 @@ Isso é adequado apenas para desenvolvimento e verificação interna. Produção
 - `pnpm build:frontend-only`
 - validar rotas públicas principais
 - validar envio de contato, orçamento e reunião técnica
-- validar leitura dos leads em `/admin/contacts`
+- validar leitura e atualização de status dos leads em `/admin/contacts`
+- validar proteção de `/admin`, `/api/admin/*`, `GET /api/leads` e `PATCH /api/leads/:id`
+- validar publicação do editor refletindo no site público
 - confirmar ausência total de `/blog` e `/admin/pages/blog`
 
 ## Atualização de ferramentas no Windows

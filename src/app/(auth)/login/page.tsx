@@ -127,7 +127,7 @@ export default function LoginPage() {
               <input
                 {...register('email')}
                 type="email"
-                placeholder="admin@arcanine.tech"
+                placeholder="voce@empresa.com"
                 className="w-full h-14 px-4 bg-slate-900 border border-white/10 text-white font-inter text-sm focus:outline-none focus:border-brand-cyan transition-colors"
               />
               {errors.email && <p className="mt-1 font-inter text-xs text-red-500">{errors.email.message}</p>}
@@ -186,7 +186,7 @@ export default function LoginPage() {
 
           <div className="mt-8 rounded-lg border border-white/10 bg-slate-900 p-4">
             <p className="font-inter text-xs text-slate-400 text-center">
-              <strong>Acesso local:</strong> admin@arcanine.tech / admin123
+              <strong>Primeiro acesso:</strong> crie o usuário com <code>pnpm create:admin -- --email voce@empresa.com --password &quot;senha-forte&quot;</code>
             </p>
           </div>
         </motion.div>

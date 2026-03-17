@@ -1,10 +1,16 @@
 import { NextResponse } from 'next/server'
 import { ZodError } from 'zod'
+import { requireApiRole, ADMIN_ROLES } from '@/lib/authz'
 import { createLead, leadPayloadSchema, listLeads } from '@/lib/leads'
 
 export const runtime = 'nodejs'
 
 export async function GET() {
+  const auth = await requireApiRole(ADMIN_ROLES)
+  if ('error' in auth) {
+    return auth.error
+  }
+
   try {
     const leads = await listLeads()
     return NextResponse.json({ success: true, data: leads })

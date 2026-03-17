@@ -10,13 +10,13 @@ export const siteConfig = {
     email: 'contato@arcanine.tech',
     salesEmail: 'comercial@arcanine.tech',
     privacyEmail: 'privacy@arcanine.tech',
-    phoneDisplay: '+55 11 99999-9999',
-    phoneE164: '5511999999999',
+    phoneDisplay: null,
+    phoneE164: null,
     city: 'Sao Paulo, Brasil',
   },
   links: {
     linkedin: 'https://www.linkedin.com/company/arcanine-tecnologia',
-    whatsapp: 'https://wa.me/5511999999999?text=Ola!%20Quero%20falar%20com%20a%20ARCANINE%20Tecnologia%20sobre%20uma%20solucao%20para%20minha%20empresa.',
+    whatsapp: null,
   },
   seo: {
     title: 'ARCANINE Tecnologia | Arquitetura, automação e software sob medida',
@@ -26,21 +26,11 @@ export const siteConfig = {
   },
 }
 
-export const conversionCtas = {
-  budget: {
-    label: 'Solicitar orçamento',
-    href: '/solicitar-orcamento',
-  },
-  meeting: {
-    label: 'Agendar reunião técnica',
-    href: '/agendar-reuniao',
-  },
-  whatsapp: {
-    label: 'Falar no WhatsApp',
-  },
-}
-
 export function buildWhatsAppUrl(message: string) {
+  if (!siteConfig.contact.phoneE164) {
+    return '/contact'
+  }
+
   const encoded = encodeURIComponent(message)
   return `https://wa.me/${siteConfig.contact.phoneE164}?text=${encoded}`
 }

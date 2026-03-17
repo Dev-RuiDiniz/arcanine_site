@@ -7,6 +7,8 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 'use client'
 
 import Link from 'next/link'
+import type { Role } from '@prisma/client'
+import { useSession } from 'next-auth/react'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -29,36 +31,43 @@ const menuItems = [
     title: 'Visão geral',
     icon: LayoutDashboard,
     href: '/admin',
+    roles: ['ADMIN', 'EDITOR'] as Role[],
   },
   {
     title: 'Cases',
     icon: FolderKanban,
     href: '/admin/projects',
+    roles: ['ADMIN', 'EDITOR'] as Role[],
   },
   {
     title: 'Serviços',
     icon: Layers,
     href: '/admin/services',
+    roles: ['ADMIN', 'EDITOR'] as Role[],
   },
   {
     title: 'Leads',
     icon: Mail,
     href: '/admin/contacts',
+    roles: ['ADMIN'] as Role[],
   },
   {
     title: 'Páginas',
     icon: FileText,
     href: '/admin/pages',
+    roles: ['ADMIN', 'EDITOR'] as Role[],
   },
   {
     title: 'CTAs globais',
     icon: Megaphone,
     href: '/admin/pages/ctas',
+    roles: ['ADMIN', 'EDITOR'] as Role[],
   },
   {
     title: 'Configurações',
     icon: Settings,
     href: '/admin/settings',
+    roles: ['ADMIN'] as Role[],
   },
 ]
 
@@ -69,6 +78,9 @@ interface SidebarProps {
 
 export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
   const pathname = usePathname()
+  const { data: session } = useSession()
+  const role = session?.user?.role ?? 'EDITOR'
+  const visibleItems = menuItems.filter((item) => item.roles.includes(role))
 
   return (
     <motion.aside
@@ -108,7 +120,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
 
       <nav className="flex-1 py-4 px-3 overflow-y-auto">
         <ul className="space-y-1">
-          {menuItems.map((item) => {
+          {visibleItems.map((item) => {
             const isActive = pathname === item.href || 
               (item.href !== '/admin' && pathname.startsWith(item.href))
             

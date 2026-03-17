@@ -79,6 +79,9 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
                 <p className="font-inter text-sm text-white">
                   {session?.user?.name || 'Admin'}
                 </p>
+                <p className="font-inter text-[11px] uppercase tracking-[0.14em] text-slate-500">
+                  {session?.user?.role || 'Sessão'}
+                </p>
               </div>
               <ChevronDown size={14} className="text-slate-500" />
             </button>
@@ -97,6 +100,9 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
                     </p>
                     <p className="font-inter text-xs text-slate-400">
                       {session?.user?.email}
+                    </p>
+                    <p className="mt-2 font-inter text-[11px] uppercase tracking-[0.14em] text-slate-500">
+                      {session?.user?.role || 'Sessão'}
                     </p>
                   </div>
                   <div className="py-2">

@@ -8,18 +8,21 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { GDPRBanner } from "@/components/ui/gdpr-banner"
 import { FloatingChat } from "@/components/ui/floating-chat"
+import { getGlobalConversionCtas } from '@/lib/page-content'
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const ctas = await getGlobalConversionCtas()
+
   return (
     <>
-      <Header />
+      <Header ctas={ctas} />
       <main className="overflow-x-clip">{children}</main>
-      <Footer />
-      <FloatingChat />
+      <Footer ctas={ctas} />
+      <FloatingChat action={ctas.whatsapp} />
       <GDPRBanner />
     </>
   )

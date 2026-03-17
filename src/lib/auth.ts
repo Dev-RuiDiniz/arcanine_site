@@ -1,31 +1,23 @@
-/*
-Arquivo: src/lib/auth.ts
-Objetivo: Funcoes utilitarias e integracoes compartilhadas.
-Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a exportacao principal.
-*/
-
-import { NextAuthOptions } from 'next-auth'
+import bcrypt from 'bcryptjs'
+import type { Role } from '@prisma/client'
+import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { prisma } from '@/lib/prisma'
 
-type SessionUserWithId = {
+const isProduction = process.env.NODE_ENV === 'production'
+const nextAuthSecret = process.env.NEXTAUTH_SECRET || 'local-dev-auth-secret'
+
+function getAuthEnvironmentError() {
+  if (!process.env.NEXTAUTH_SECRET && isProduction) {
+    return 'NEXTAUTH_SECRET is required to enable admin authentication in production.'
+  }
+
+  return null
+}
+
+type SessionUserWithMeta = {
   id?: string
-}
-
-const nextAuthSecret = process.env.NEXTAUTH_SECRET
-
-if (!nextAuthSecret) {
-  console.warn(
-    'NEXTAUTH_SECRET not configured. Using fallback secret (configure this in staging/production).'
-  )
-}
-
-// Usuário admin temporário (depois migrar para banco de dados)
-const ADMIN_USER = {
-  id: '1',
-  name: 'Admin',
-  email: 'admin@arcanine.tech',
-  // Senha: admin123 (hash bcrypt)
-  password: '$2a$10$8K1p/a0dL1LXMIgoEDFrwOex5F3c.0P6T5Q5Q5Q5Q5Q5Q5Q5Q5Q5u',
+  role?: Role
 }
 
 export const authOptions: NextAuthOptions = {
@@ -41,25 +33,40 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Email and password are required')
         }
 
-        // Verificar credenciais (temporário - depois usar Prisma)
-        if (credentials.email === ADMIN_USER.email) {
-          // Para desenvolvimento, aceitar qualquer senha "admin123"
-          if (credentials.password === 'admin123') {
-            return {
-              id: ADMIN_USER.id,
-              name: ADMIN_USER.name,
-              email: ADMIN_USER.email,
-            }
-          }
+        const authEnvironmentError = getAuthEnvironmentError()
+        if (authEnvironmentError) {
+          throw new Error(authEnvironmentError)
         }
 
-        throw new Error('Invalid credentials')
+        if (!prisma) {
+          throw new Error('Admin authentication requires DATABASE_URL configured.')
+        }
+
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email.trim().toLowerCase() },
+        })
+
+        if (!user?.password) {
+          throw new Error('Invalid credentials')
+        }
+
+        const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
+        if (!isPasswordValid) {
+          throw new Error('Invalid credentials')
+        }
+
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        }
       },
     }),
   ],
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 dias
+    maxAge: 30 * 24 * 60 * 60,
   },
   pages: {
     signIn: '/login',
@@ -69,15 +76,20 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id
+        token.role = (user as SessionUserWithMeta).role
       }
+
       return token
     },
     async session({ session, token }) {
       if (session.user) {
-        ;(session.user as SessionUserWithId).id = token.id as string | undefined
+        ;(session.user as SessionUserWithMeta).id =
+          (token.id as string | undefined) || token.sub || undefined
+        ;(session.user as SessionUserWithMeta).role = token.role as Role | undefined
       }
+
       return session
     },
   },
-  secret: nextAuthSecret || 'dev-only-nextauth-secret',
+  secret: nextAuthSecret,
 }

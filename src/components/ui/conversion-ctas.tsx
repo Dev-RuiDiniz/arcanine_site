@@ -3,14 +3,14 @@
 import Link from 'next/link'
 import { CalendarDays, FileText, MessageCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { buildWhatsAppUrl, conversionCtas } from '@/lib/site-config'
-
-const WHATSAPP_MESSAGE = 'Olá! Quero falar com a ARCANINE Tecnologia sobre uma solução para a minha empresa.'
+import type { ConversionActionConfig, ConversionCtaConfig } from '@/lib/cta-config'
+import { defaultConversionCtas } from '@/lib/cta-config'
 
 type ConversionAction = 'budget' | 'meeting' | 'whatsapp'
 type ConversionSurface = 'light' | 'dark'
 
 interface ConversionCTAsProps {
+  ctas?: ConversionCtaConfig
   className?: string
   compact?: boolean
   primaryAction?: ConversionAction
@@ -18,34 +18,37 @@ interface ConversionCTAsProps {
   surface?: ConversionSurface
 }
 
-const actionConfig = {
-  budget: {
-    label: conversionCtas.budget.label,
-    href: conversionCtas.budget.href,
-    icon: FileText,
-    kind: 'link',
-  },
-  meeting: {
-    label: conversionCtas.meeting.label,
-    href: conversionCtas.meeting.href,
-    icon: CalendarDays,
-    kind: 'link',
-  },
-  whatsapp: {
-    label: conversionCtas.whatsapp.label,
-    href: buildWhatsAppUrl(WHATSAPP_MESSAGE),
-    icon: MessageCircle,
-    kind: 'external',
-  },
-} as const
+type ActionButtonConfig = ConversionActionConfig & {
+  icon: typeof FileText
+  kind: 'link' | 'external'
+}
 
 export function ConversionCTAs({
+  ctas = defaultConversionCtas,
   className,
   compact = false,
   primaryAction = 'budget',
   secondaryAction = 'meeting',
   surface = 'dark',
 }: ConversionCTAsProps) {
+  const actionConfig: Record<ConversionAction, ActionButtonConfig> = {
+    budget: {
+      ...ctas.budget,
+      icon: FileText,
+      kind: ctas.budget.href.startsWith('http') ? 'external' : 'link',
+    },
+    meeting: {
+      ...ctas.meeting,
+      icon: CalendarDays,
+      kind: ctas.meeting.href.startsWith('http') ? 'external' : 'link',
+    },
+    whatsapp: {
+      ...ctas.whatsapp,
+      icon: MessageCircle,
+      kind: ctas.whatsapp.href.startsWith('http') ? 'external' : 'link',
+    },
+  }
+
   const wrapperClasses = compact
     ? 'flex flex-wrap items-center gap-2'
     : 'flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3'
@@ -86,7 +89,7 @@ function ActionButton({
   className,
   compact,
 }: {
-  action: (typeof actionConfig)[ConversionAction]
+  action: ActionButtonConfig
   className: string
   compact: boolean
 }) {

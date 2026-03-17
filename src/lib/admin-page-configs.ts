@@ -197,7 +197,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         helperText: 'Título e data da página.',
         fields: [
           { id: 'privacy_title', label: 'Título', type: 'text', defaultValue: 'Política de Privacidade' },
-          { id: 'privacy_last_update', label: 'Última atualização', type: 'text', defaultValue: '2 de março de 2026' },
+          { id: 'privacy_last_update', label: 'Última atualização', type: 'text', defaultValue: '17 de março de 2026' },
         ],
       },
       {
@@ -224,7 +224,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         helperText: 'Título e data de referência.',
         fields: [
           { id: 'terms_title', label: 'Título', type: 'text', defaultValue: 'Termos de Uso' },
-          { id: 'terms_last_update', label: 'Última atualização', type: 'text', defaultValue: '2 de março de 2026' },
+          { id: 'terms_last_update', label: 'Última atualização', type: 'text', defaultValue: '17 de março de 2026' },
         ],
       },
       {
@@ -256,7 +256,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         helperText: 'Título e data da página.',
         fields: [
           { id: 'cookies_title', label: 'Título', type: 'text', defaultValue: 'Política de Cookies' },
-          { id: 'cookies_last_update', label: 'Última atualização', type: 'text', defaultValue: '2 de março de 2026' },
+          { id: 'cookies_last_update', label: 'Última atualização', type: 'text', defaultValue: '17 de março de 2026' },
         ],
       },
       {
@@ -305,8 +305,8 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         title: 'CTA WhatsApp',
         helperText: 'Mensagem e link do canal rápido.',
         fields: [
-          { id: 'cta_whatsapp_label', label: 'Texto', type: 'text', defaultValue: 'Falar no WhatsApp' },
-          { id: 'cta_whatsapp_url', label: 'URL', type: 'url', defaultValue: 'https://wa.me/5511999999999' },
+          { id: 'cta_whatsapp_label', label: 'Texto', type: 'text', defaultValue: 'Abrir contato comercial' },
+          { id: 'cta_whatsapp_url', label: 'URL', type: 'url', defaultValue: '/contact' },
         ],
       },
     ],
