@@ -7,6 +7,10 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+type SessionUserWithId = {
+  id?: string
+}
+
 const nextAuthSecret = process.env.NEXTAUTH_SECRET
 
 if (!nextAuthSecret) {
@@ -70,7 +74,7 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).id = token.id
+        ;(session.user as SessionUserWithId).id = token.id as string | undefined
       }
       return session
     },

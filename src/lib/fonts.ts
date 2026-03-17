@@ -5,7 +5,6 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 */
 
 import { Cormorant_Garamond, Inter, Playfair_Display } from 'next/font/google'
-import localFont from 'next/font/local'
 
 // Fonte elegante para títulos e textos destacados
 export const cormorant = Cormorant_Garamond({

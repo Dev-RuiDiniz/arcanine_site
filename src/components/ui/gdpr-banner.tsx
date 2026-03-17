@@ -63,7 +63,7 @@ export function GDPRBanner() {
                       </h3>
                       <p className="font-inter text-sm text-stone-600 leading-relaxed">
                         Utilizamos cookies para operação essencial, análise de tráfego e melhoria da experiência.
-                        Ao clicar em "Aceitar todos", você concorda com o uso completo de cookies.{' '}
+                        Ao clicar em &quot;Aceitar todos&quot;, você concorda com o uso completo de cookies.{' '}
                         <Link
                           href="/cookies"
                           className="text-stone-900 underline underline-offset-2 hover:text-stone-600"
