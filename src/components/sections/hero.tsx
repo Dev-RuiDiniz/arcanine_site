@@ -110,7 +110,8 @@ export function Hero({
           </>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/35 to-black/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.2),transparent_32%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/82 via-slate-950/46 to-slate-950/88" />
       </div>
 
       <div
@@ -128,6 +129,9 @@ export function Hero({
             className="max-w-5xl"
           >
             <h1 className="font-cormorant text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-[1.2] tracking-wide">
+              <span className="mb-5 inline-flex items-center border border-white/15 bg-white/8 px-3 py-1 font-inter text-[10px] uppercase tracking-[0.22em] text-brand-cyan backdrop-blur-md">
+                Engenharia para operação crítica
+              </span>
               <motion.span
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -146,7 +150,7 @@ export function Hero({
               </motion.span>
             </h1>
 
-            <p className="mt-6 font-inter text-sm lg:text-base text-white/85 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-6 font-inter text-sm lg:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed">
               Projetamos plataformas, automações e integrações para empresas que precisam reduzir atrito operacional,
               ganhar previsibilidade e crescer com base técnica sólida.
             </p>
@@ -161,7 +165,7 @@ export function Hero({
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                index === currentIndex ? 'bg-white' : 'bg-white/30 hover:bg-white/50'
+                index === currentIndex ? 'bg-brand-cyan' : 'bg-white/25 hover:bg-white/45'
               }`}
               aria-label={`Ir para slide ${index + 1}`}
             />

@@ -27,9 +27,8 @@ interface FeaturedProjectsProps {
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
-    <section className="bg-[#e3dfdc] py-16 lg:py-20">
+    <section className="section-shell-dark py-16 lg:py-20">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Header - Minimalista, sem h1 grande */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,13 +36,13 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           transition={{ duration: 0.6 }}
           className="flex items-center justify-between mb-8"
         >
-          <span className="font-inter text-[10px] tracking-[0.2em] uppercase text-stone-500">
+          <span className="font-inter text-[10px] tracking-[0.2em] uppercase text-brand-cyan">
             Cases em destaque
           </span>
 
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.15em] uppercase text-stone-500 hover:text-stone-700 transition-colors group"
+            className="inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.15em] uppercase text-slate-300 hover:text-white transition-colors group"
           >
             <span>Ver todos os cases</span>
             <ArrowRight
@@ -53,7 +52,6 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           </Link>
         </motion.div>
 
-        {/* Projects Grid - Grafismo igual ao menu de projetos */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
           {projects.map((project, index) => (
             <motion.div
@@ -82,11 +80,10 @@ function ProjectCard({ project }: { project: Project }) {
     <Link
       href={isComingSoon ? '#' : `/projects/${project.slug}`}
       className={cn(
-        'group block relative overflow-hidden bg-stone-300 aspect-[4/3]',
+        'group block relative overflow-hidden bg-slate-900 aspect-[4/3] border border-white/10',
         isComingSoon && 'cursor-default'
       )}
     >
-      {/* Image */}
       <div className="absolute inset-0">
         <Image
           src={project.coverImage}
@@ -97,18 +94,16 @@ function ProjectCard({ project }: { project: Project }) {
             !isComingSoon && 'group-hover:scale-105'
           )}
         />
-        {/* Overlay - sem preto puro */}
         <div
           className={cn(
             'absolute inset-0 transition-opacity duration-500',
             isComingSoon
-              ? 'bg-stone-900/50'
-              : 'bg-stone-900/20 group-hover:bg-stone-900/30'
+              ? 'bg-slate-950/68'
+              : 'bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.76)_100%)] group-hover:bg-[linear-gradient(180deg,rgba(8,145,178,0.18)_0%,rgba(15,23,42,0.82)_100%)]'
           )}
         />
       </div>
 
-      {/* Content - Centrado, grafismo igual ao menu projetos */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full p-4 text-center">
         <h3 className="font-cormorant text-sm sm:text-base lg:text-lg font-light text-white leading-tight tracking-wide">
           {project.title}
@@ -119,7 +114,7 @@ function ProjectCard({ project }: { project: Project }) {
         
         {/* Status Badge */}
         {statusLabel && (
-          <span className="mt-1 font-inter text-[7px] sm:text-[8px] tracking-[0.1em] lowercase text-white/60 italic">
+          <span className="mt-1 font-inter text-[7px] sm:text-[8px] tracking-[0.1em] lowercase text-brand-cyan/80 italic">
             {statusLabel}
           </span>
         )}

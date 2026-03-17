@@ -22,7 +22,7 @@ const featuredProjects = cases.slice(0, 4).map((item) => ({
 
 export default function Home() {
   return (
-    <div className="bg-[#F1E7DE]">
+    <div className="bg-background">
       <Hero />
       <IntroSection />
       <FeaturedProjects projects={featuredProjects} />

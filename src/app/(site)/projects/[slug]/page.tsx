@@ -41,20 +41,20 @@ export default function ProjectDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="py-14 lg:py-18 bg-[#E3DFDD]">
+      <section className="section-shell py-14 lg:py-18">
         <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-3 gap-8 lg:gap-10">
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="lg:col-span-2 border border-stone-300/45 bg-white/70 p-6 lg:p-7"
+            className="lg:col-span-2 panel-shell p-6 lg:p-7"
           >
-            <h2 className="font-cormorant text-3xl text-stone-900">Desafio</h2>
-            <p className="mt-3 font-inter text-sm text-stone-700 leading-relaxed">{project.challenge}</p>
+            <h2 className="font-cormorant text-3xl text-slate-950">Desafio</h2>
+            <p className="mt-3 font-inter text-sm text-slate-700 leading-relaxed">{project.challenge}</p>
 
-            <h2 className="mt-8 font-cormorant text-3xl text-stone-900">Solução implementada</h2>
-            <p className="mt-3 font-inter text-sm text-stone-700 leading-relaxed">{project.solution}</p>
+            <h2 className="mt-8 font-cormorant text-3xl text-slate-950">Solução implementada</h2>
+            <p className="mt-3 font-inter text-sm text-slate-700 leading-relaxed">{project.solution}</p>
           </motion.article>
 
           <motion.aside
@@ -62,28 +62,28 @@ export default function ProjectDetailPage({ params }: PageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="border border-stone-300/45 bg-white/70 p-6"
+            className="panel-shell p-6"
           >
-            <h3 className="font-inter text-[11px] tracking-[0.2em] uppercase text-stone-500">Dados do case</h3>
+            <h3 className="font-inter text-[11px] tracking-[0.2em] uppercase text-brand-cyan-strong">Dados do case</h3>
             <ul className="mt-4 space-y-4">
               <li>
-                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-stone-500">Duração</span>
-                <span className="font-inter text-sm text-stone-800">{project.duration}</span>
+                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-slate-500">Duração</span>
+                <span className="font-inter text-sm text-slate-800">{project.duration}</span>
               </li>
               <li>
-                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-stone-500">Status</span>
-                <span className="font-inter text-sm text-stone-800">{project.stage}</span>
+                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-slate-500">Status</span>
+                <span className="font-inter text-sm text-slate-800">{project.stage}</span>
               </li>
               <li>
-                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-stone-500">Stack</span>
-                <span className="font-inter text-sm text-stone-800">{project.stack.join(' | ')}</span>
+                <span className="block font-inter text-[10px] tracking-[0.16em] uppercase text-slate-500">Stack</span>
+                <span className="font-inter text-sm text-slate-800">{project.stack.join(' | ')}</span>
               </li>
             </ul>
           </motion.aside>
         </div>
       </section>
 
-      <section className="py-12 lg:py-16 bg-[#F1E7DE]">
+      <section className="section-shell-alt py-12 lg:py-16">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -92,10 +92,10 @@ export default function ProjectDetailPage({ params }: PageProps) {
             transition={{ duration: 0.55 }}
             className="max-w-3xl"
           >
-            <h2 className="font-cormorant text-3xl text-stone-900">Impacto mensurável</h2>
+            <h2 className="font-cormorant text-3xl text-slate-950">Impacto mensurável</h2>
             <ul className="mt-4 space-y-3">
               {project.outcomes.map((outcome) => (
-                <li key={outcome} className="font-inter text-sm text-stone-700 leading-relaxed">
+                <li key={outcome} className="font-inter text-sm text-slate-700 leading-relaxed">
                   {outcome}
                 </li>
               ))}
@@ -104,12 +104,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="py-10 lg:py-14 bg-[#B4ADA8] border-t border-stone-500/20">
+      <section className="cta-shell py-10 lg:py-14 border-t border-brand-cyan/10">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-3 font-inter text-xs tracking-[0.2em] uppercase text-stone-700 hover:text-stone-900 transition-colors group"
+              className="inline-flex items-center gap-3 font-inter text-xs tracking-[0.2em] uppercase text-slate-300 hover:text-brand-cyan transition-colors group"
             >
               <ArrowLeft size={15} className="transform group-hover:-translate-x-1 transition-transform" />
               Voltar para cases
@@ -118,8 +118,8 @@ export default function ProjectDetailPage({ params }: PageProps) {
             <div className="flex items-center gap-8">
               {prevProject && (
                 <Link href={`/projects/${prevProject.slug}`} className="group text-right">
-                  <span className="block font-inter text-[10px] tracking-[0.18em] uppercase text-stone-500">Anterior</span>
-                  <span className="font-cormorant text-lg text-stone-700 group-hover:text-stone-900 transition-colors">
+                  <span className="block font-inter text-[10px] tracking-[0.18em] uppercase text-slate-500">Anterior</span>
+                  <span className="font-cormorant text-lg text-slate-200 group-hover:text-brand-cyan transition-colors">
                     {prevProject.title}
                   </span>
                 </Link>
@@ -127,12 +127,12 @@ export default function ProjectDetailPage({ params }: PageProps) {
               {nextProject && (
                 <Link href={`/projects/${nextProject.slug}`} className="group text-left inline-flex items-center gap-2">
                   <div>
-                    <span className="block font-inter text-[10px] tracking-[0.18em] uppercase text-stone-500">Próximo</span>
-                    <span className="font-cormorant text-lg text-stone-700 group-hover:text-stone-900 transition-colors">
+                    <span className="block font-inter text-[10px] tracking-[0.18em] uppercase text-slate-500">Próximo</span>
+                    <span className="font-cormorant text-lg text-slate-200 group-hover:text-brand-cyan transition-colors">
                       {nextProject.title}
                     </span>
                   </div>
-                  <ArrowRight size={15} className="text-stone-600 group-hover:text-stone-900 transition-colors" />
+                  <ArrowRight size={15} className="text-slate-300 group-hover:text-brand-cyan transition-colors" />
                 </Link>
               )}
             </div>

@@ -21,23 +21,23 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <section className="bg-[#F1E7DE] min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-20">
+    <section className="section-shell min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-20">
       <div className="container mx-auto px-6 lg:px-12 max-w-4xl">
-        <Link href="/blog" className="font-inter text-[11px] tracking-[0.15em] uppercase text-stone-500 hover:text-stone-700 transition-colors">
+        <Link href="/blog" className="font-inter text-[11px] tracking-[0.15em] uppercase text-slate-500 hover:text-brand-cyan-strong transition-colors">
           Voltar para blog
         </Link>
 
         <header className="mt-6">
-          <p className="font-inter text-[10px] tracking-[0.16em] uppercase text-stone-500">
+          <p className="font-inter text-[10px] tracking-[0.16em] uppercase text-brand-cyan-strong">
             {post.category} | {post.readingTime} | {post.publishedAt}
           </p>
-          <h1 className="mt-3 font-cormorant text-3xl lg:text-5xl text-stone-900 leading-tight">{post.title}</h1>
-          <p className="mt-4 font-inter text-sm lg:text-base text-stone-600 leading-relaxed">{post.excerpt}</p>
+          <h1 className="mt-3 font-cormorant text-3xl lg:text-5xl text-slate-950 leading-tight">{post.title}</h1>
+          <p className="mt-4 font-inter text-sm lg:text-base text-slate-600 leading-relaxed">{post.excerpt}</p>
         </header>
 
         <article className="mt-8 space-y-6">
           {post.content.map((paragraph) => (
-            <p key={paragraph} className="font-inter text-sm lg:text-base text-stone-700 leading-relaxed">
+            <p key={paragraph} className="font-inter text-sm lg:text-base text-slate-700 leading-relaxed">
               {paragraph}
             </p>
           ))}

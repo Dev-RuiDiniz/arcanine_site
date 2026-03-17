@@ -13,7 +13,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function AboutPreview() {
   return (
-    <section className="bg-[#F1E7DE] py-20 lg:py-28">
+    <section className="section-shell py-20 lg:py-28">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
@@ -21,7 +21,7 @@ export function AboutPreview() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75 }}
-            className="relative aspect-[4/5] overflow-hidden"
+            className="relative aspect-[4/5] overflow-hidden border border-line-subtle"
           >
             <Image
               src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80&auto=format&fit=crop"
@@ -29,7 +29,7 @@ export function AboutPreview() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-stone-900/35 flex items-end justify-center pb-8">
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.72)_100%)] flex items-end justify-center pb-8">
               <span className="font-cormorant text-xl lg:text-2xl text-white tracking-wide">
                 Engenharia com visão estratégica
               </span>
@@ -43,7 +43,7 @@ export function AboutPreview() {
             transition={{ duration: 0.75, delay: 0.15 }}
             className="text-center lg:text-left"
           >
-            <p className="font-cormorant text-lg sm:text-xl lg:text-2xl font-light text-stone-800 leading-relaxed">
+            <p className="font-cormorant text-lg sm:text-xl lg:text-2xl font-light text-slate-900 leading-relaxed">
               Não entregamos apenas software. Entregamos <span className="uppercase">clareza operacional</span>,{' '}
               <span className="uppercase">controle gerencial</span> e <span className="uppercase">capacidade de escala</span>{' '}
               para empresas que precisam transformar tecnologia em vantagem competitiva.
@@ -58,7 +58,7 @@ export function AboutPreview() {
             >
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.2em] uppercase text-stone-600 hover:text-stone-800 transition-colors group"
+                className="inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.2em] uppercase text-slate-500 hover:text-brand-cyan-strong transition-colors group"
               >
                 <span>Sobre a ARCANINE</span>
                 <ArrowRight

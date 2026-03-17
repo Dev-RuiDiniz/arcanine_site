@@ -15,7 +15,7 @@ import { serviceProcessSteps, services } from '@/lib/site-content/services'
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative pt-32 pb-10 lg:pt-40 lg:pb-14 bg-[#E3DFDD]">
+      <section className="relative section-shell-dark pt-32 pb-10 lg:pt-40 lg:pb-14">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -23,11 +23,11 @@ export default function ServicesPage() {
             transition={{ duration: 0.7 }}
             className="max-w-4xl"
           >
-            <span className="font-inter text-[11px] tracking-[0.22em] uppercase text-stone-500">Serviços</span>
-            <h1 className="mt-4 font-cormorant text-3xl lg:text-5xl text-stone-900 leading-tight">
+            <span className="eyebrow font-inter text-[11px]">Serviços</span>
+            <h1 className="mt-4 font-cormorant text-3xl lg:text-5xl text-white leading-tight">
               Serviços de tecnologia para destravar operação, receita e escala.
             </h1>
-            <p className="mt-5 font-inter text-sm lg:text-base text-stone-600 leading-relaxed max-w-3xl">
+            <p className="mt-5 font-inter text-sm lg:text-base text-slate-300 leading-relaxed max-w-3xl">
               Ofertas estruturadas para empresas que precisam eliminar gargalos, integrar sistemas críticos e crescer
               com previsibilidade técnica e comercial.
             </p>
@@ -35,7 +35,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-12 bg-[#E3DFDD]">
+      <section className="section-shell py-8 lg:py-12">
         <div className="px-2 lg:px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-3">
             {services.map((service, index) => (
@@ -48,7 +48,7 @@ export default function ServicesPage() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group block relative aspect-[4/3] overflow-hidden bg-stone-300"
+                  className="group block relative aspect-[4/3] overflow-hidden bg-slate-900 border border-slate-900/10"
                 >
                   <Image
                     src={service.image}
@@ -56,12 +56,12 @@ export default function ServicesPage() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-stone-900/40 group-hover:bg-stone-900/55 transition-colors" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.82)_100%)] group-hover:bg-[linear-gradient(180deg,rgba(8,145,178,0.16)_0%,rgba(15,23,42,0.88)_100%)] transition-colors" />
 
                   <div className="absolute inset-0 flex flex-col justify-end p-5 lg:p-6">
                     <h2 className="font-cormorant text-2xl lg:text-3xl text-white leading-tight">{service.title}</h2>
-                    <p className="mt-2 font-inter text-xs lg:text-sm text-white/80 leading-relaxed">{service.excerpt}</p>
-                    <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.18em] uppercase text-white/90">
+                    <p className="mt-2 font-inter text-xs lg:text-sm text-slate-200 leading-relaxed">{service.excerpt}</p>
+                    <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.18em] uppercase text-brand-cyan">
                       Ver aplicações e benefícios
                       <ArrowRight size={13} />
                     </span>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 bg-[#F1E7DE]">
+      <section className="section-shell-alt py-16 lg:py-24">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -82,8 +82,8 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h2 className="font-cormorant text-2xl lg:text-4xl text-stone-900">Processo de trabalho em 7 etapas</h2>
-            <p className="mt-3 font-inter text-sm text-stone-600">
+            <h2 className="font-cormorant text-2xl lg:text-4xl text-slate-950">Processo de trabalho em 7 etapas</h2>
+            <p className="mt-3 font-inter text-sm text-slate-600">
               Método claro para reduzir risco técnico, acelerar entrega e capturar resultado de negócio.
             </p>
           </motion.div>
@@ -96,18 +96,18 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="border border-stone-300/45 bg-white/70 p-5"
+                className="panel-shell p-5"
               >
-                <span className="font-inter text-[11px] tracking-[0.24em] text-stone-500">{step.number}</span>
-                <h3 className="mt-2 font-cormorant text-2xl text-stone-900">{step.title}</h3>
-                <p className="mt-3 font-inter text-sm text-stone-600 leading-relaxed">{step.description}</p>
+                <span className="font-inter text-[11px] tracking-[0.24em] text-brand-cyan-strong">{step.number}</span>
+                <h3 className="mt-2 font-cormorant text-2xl text-slate-950">{step.title}</h3>
+                <p className="mt-3 font-inter text-sm text-slate-600 leading-relaxed">{step.description}</p>
               </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 lg:py-20 bg-[#C7B6AA]">
+      <section className="cta-shell py-16 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -120,7 +120,7 @@ export default function ServicesPage() {
             </p>
             <Link
               href="/solicitar-orcamento"
-              className="inline-block px-9 py-3 border border-white/60 text-white font-inter text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-stone-800 transition-all duration-300"
+              className="inline-block px-9 py-3 border border-brand-cyan/55 text-white font-inter text-[11px] tracking-[0.2em] uppercase hover:bg-brand-cyan hover:text-slate-950 transition-all duration-300"
             >
               Solicitar escopo inicial
             </Link>

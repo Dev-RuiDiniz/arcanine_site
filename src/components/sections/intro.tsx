@@ -13,7 +13,7 @@ import { ArtisticText } from '@/components/ui/artistic-text'
 
 export function IntroSection() {
   return (
-    <section className="bg-[#F1E7DE] py-20 lg:py-28">
+    <section className="section-shell py-20 lg:py-28">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
@@ -25,8 +25,8 @@ export function IntroSection() {
             <ArtisticText
               as="p"
               highlightWords={['GARGALOS', 'PLATAFORMAS', 'RESULTADO', 'ESCALA', 'SEGURANÇA', 'CONTROLE']}
-              className="font-cormorant text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-stone-800 leading-relaxed"
-              highlightClassName="uppercase text-[#7A4A2F]"
+              className="font-cormorant text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-slate-900 leading-relaxed"
+              highlightClassName="uppercase text-brand-cyan-strong"
             >
               Transformamos GARGALOS operacionais em PLATAFORMAS orientadas a RESULTADO, com base técnica para ESCALA,
               SEGURANÇA e CONTROLE executivo.
@@ -42,7 +42,7 @@ export function IntroSection() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 font-inter text-[11px] tracking-[0.2em] uppercase text-stone-600 hover:text-stone-800 transition-colors group"
+              className="inline-flex items-center gap-3 font-inter text-[11px] tracking-[0.2em] uppercase text-slate-500 hover:text-brand-cyan-strong transition-colors group"
             >
               <span>Conheça a ARCANINE</span>
               <ArrowRight

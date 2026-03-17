@@ -53,7 +53,9 @@ export function Header() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-          isScrolled ? 'bg-[#EFE5DE]/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+          isScrolled
+            ? 'bg-slate-950/86 backdrop-blur-xl border-b border-white/10 shadow-[0_18px_48px_-32px_rgba(15,23,42,0.85)]'
+            : 'bg-transparent'
         )}
       >
         <div className="container mx-auto px-6 lg:px-12">
@@ -68,7 +70,7 @@ export function Header() {
                 <span
                   className={cn(
                     'block font-cormorant text-2xl lg:text-3xl tracking-[0.22em] transition-colors',
-                    useDarkText ? 'text-[#2A2421]' : 'text-white'
+                    useDarkText ? 'text-slate-950' : 'text-white'
                   )}
                 >
                   {siteConfig.brand.shortName}
@@ -76,7 +78,7 @@ export function Header() {
                 <span
                   className={cn(
                     'block mt-1 font-inter text-[10px] tracking-[0.36em] uppercase transition-colors',
-                    useDarkText ? 'text-[#5B5049]' : 'text-white/85'
+                    useDarkText ? 'text-brand-cyan-strong' : 'text-white/70'
                   )}
                 >
                   {siteConfig.brand.subLabel}
@@ -100,10 +102,10 @@ export function Header() {
                         'relative font-inter text-[11px] tracking-[0.18em] uppercase transition-colors duration-300 group',
                         isItemActive(item.href)
                           ? useDarkText
-                            ? 'text-[#2A2421]'
+                            ? 'text-brand-cyan-strong'
                             : 'text-white'
                           : useDarkText
-                            ? 'text-stone-600 hover:text-[#2A2421]'
+                            ? 'text-slate-500 hover:text-slate-950'
                             : 'text-white/80 hover:text-white'
                       )}
                     >
@@ -126,7 +128,7 @@ export function Header() {
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
                 'xl:hidden relative z-50 p-2 transition-colors duration-300',
-                useDarkText ? 'text-[#2A2421]' : 'text-white'
+                useDarkText ? 'text-slate-950' : 'text-white'
               )}
               aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
             >
@@ -150,7 +152,7 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35 }}
-              className="absolute inset-0 bg-[#F7F0EA]"
+              className="absolute inset-0 section-shell-dark"
             >
               <div className="flex flex-col items-center justify-center h-full px-8">
                 <nav className="flex flex-col items-center gap-7 mb-10">
@@ -166,8 +168,8 @@ export function Header() {
                         className={cn(
                           'font-cormorant text-4xl tracking-[0.08em] transition-colors duration-300',
                           isItemActive(item.href)
-                            ? 'text-[#2A2421]'
-                            : 'text-stone-500 hover:text-[#2A2421]'
+                            ? 'text-brand-cyan'
+                            : 'text-slate-300 hover:text-white'
                         )}
                       >
                         {item.label}
