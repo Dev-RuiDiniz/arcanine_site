@@ -65,6 +65,7 @@ export function ContactLeadPage({
   successTitle = 'Solicitação recebida',
   successMessage = 'Recebemos seu briefing. Nosso time vai analisar o contexto e retornar com os próximos passos.',
 }: ContactLeadPageProps) {
+  const isFrontendOnly = process.env.NEXT_PUBLIC_FRONTEND_ONLY === 'true'
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState('')
@@ -95,6 +96,11 @@ export function ContactLeadPage({
   }, [intent, setValue])
 
   const onSubmit = async (data: ContactFormData) => {
+    if (isFrontendOnly) {
+      setSubmitError('Os formulários ficam indisponíveis na versão de verificação publicada em frontend-only.')
+      return
+    }
+
     if (requiresBudget && (!data.budgetRange || data.budgetRange.trim().length < 2)) {
       setError('budgetRange', {
         type: 'manual',
@@ -246,6 +252,14 @@ export function ContactLeadPage({
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  {isFrontendOnly && (
+                    <div className="p-4 bg-blue-50 border border-blue-200">
+                      <p className="font-inter text-sm text-blue-700">
+                        Versão de verificação: os formulários públicos ficam desativados quando o deploy está em modo frontend-only.
+                      </p>
+                    </div>
+                  )}
+
                   {submitError && (
                     <div className="p-4 bg-red-50 border border-red-200">
                       <p className="font-inter text-sm text-red-600">{submitError}</p>
@@ -369,7 +383,7 @@ export function ContactLeadPage({
 
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || isFrontendOnly}
                     className="w-full sm:w-auto h-14 px-10 bg-stone-900 text-white font-inter text-xs tracking-[0.2em] uppercase hover:bg-stone-800 rounded-none disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (

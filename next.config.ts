@@ -8,6 +8,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  env: {
+    NEXT_PUBLIC_FRONTEND_ONLY: process.env.FRONTEND_ONLY === 'true' ? 'true' : 'false',
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
