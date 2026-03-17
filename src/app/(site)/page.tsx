@@ -18,8 +18,8 @@ export default function Home() {
     <div className="bg-background">
       <Hero />
       <IntroSection />
-      <FeaturedProjects projects={featuredProjects} />
       <ServicesPreview />
+      <FeaturedProjects projects={featuredProjects} />
       <AboutPreview />
     </div>
   )

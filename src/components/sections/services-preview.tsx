@@ -10,100 +10,123 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { ArtisticText } from '@/components/ui/artistic-text'
 import { services } from '@/lib/site-content/services'
+
+const spotlightServices = [
+  {
+    slug: 'sistemas-web-personalizados',
+    signal: 'Operação e governança',
+  },
+  {
+    slug: 'ia-automacoes-comerciais',
+    signal: 'Receita e produtividade',
+  },
+  {
+    slug: 'automacao-integracoes-hardware',
+    signal: 'Integração com o mundo físico',
+  },
+  {
+    slug: 'sites-premium',
+    signal: 'Posicionamento e demanda',
+  },
+].map(({ slug, signal }) => ({
+  ...services.find((service) => service.slug === slug)!,
+  signal,
+}))
 
 export function ServicesPreview() {
   return (
-    <section className="section-shell-alt py-24 lg:py-32">
+    <section className="section-shell-alt py-24 lg:py-[7.5rem]">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.75 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-xl"
           >
-            <span className="font-inter text-xs tracking-[0.3em] uppercase text-brand-cyan-strong">
-              O que fazemos
-            </span>
+            <span className="section-kicker">Capacidades principais</span>
+            <h2 className="mt-5 font-cormorant text-[2.2rem] leading-[1.02] text-slate-950 lg:text-[3.1rem]">
+              Escolha o eixo onde sua operação mais precisa ganhar consistência.
+            </h2>
+            <p className="mt-5 font-inter text-sm leading-relaxed text-slate-700 lg:text-base">
+              Nossas ofertas são organizadas para responder a problemas diferentes: estrutura operacional, aceleração
+              comercial, integração com hardware e posicionamento digital premium.
+            </p>
 
-            <div className="mt-6">
-              <ArtisticText
-                as="h2"
-                highlightWords={['ARQUITETURA', 'SOFTWARE', 'AUTOMAÇÃO', 'INTEGRAÇÃO', 'IA', 'RECEITA']}
-                className="font-inter text-xl sm:text-2xl lg:text-3xl font-light text-slate-900 leading-relaxed"
-                highlightClassName="text-brand-cyan-strong"
-              >
-                Combinamos ARQUITETURA de SOFTWARE, AUTOMAÇÃO de processos, INTEGRAÇÃO com a operação real e IA aplicada
-                para acelerar RECEITA, eficiência e governança.
-              </ArtisticText>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="mt-10"
-            >
+            <div className="mt-8 space-y-4">
+              <div className="panel-shell rounded-[1.5rem] p-5">
+                <p className="font-inter text-[10px] uppercase tracking-[0.18em] text-brand-cyan-strong">
+                  Como atuamos
+                </p>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-slate-700">
+                  Entramos com descoberta técnica, desenho da solução, implementação estruturada e evolução orientada a
+                  resultado, sem separar produto, engenharia e operação.
+                </p>
+              </div>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-3 font-inter text-xs tracking-[0.2em] uppercase text-slate-500 hover:text-brand-cyan-strong transition-colors group"
+                className="group inline-flex items-center gap-3 font-inter text-[11px] uppercase tracking-[0.18em] text-slate-600 transition-colors hover:text-brand-cyan-strong"
               >
-                <span>Explorar serviços</span>
-                <ArrowRight
-                  size={16}
-                  className="text-slate-500 group-hover:text-brand-cyan-strong transform group-hover:translate-x-1 transition-transform"
-                />
+                Explorar todas as ofertas
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.75, delay: 0.15 }}
-            className="space-y-3"
-          >
-            {services.map((service, index) => (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {spotlightServices.map((service, index) => (
               <motion.div
                 key={service.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.2 + index * 0.08 }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group panel-shell flex items-center justify-between gap-5 px-5 py-6 transition-all hover:-translate-y-0.5 hover:border-brand-cyan/40 hover:shadow-[0_24px_44px_-32px_rgba(15,23,42,0.28)]"
+                  className="group panel-shell relative flex h-full min-h-[24rem] flex-col overflow-hidden rounded-[1.8rem] p-4 transition-all hover:-translate-y-1 hover:border-brand-cyan/35 hover:shadow-[0_34px_80px_-44px_rgba(7,17,31,0.24)]"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="relative hidden h-20 w-28 overflow-hidden border border-line-subtle md:block">
+                  <div className="relative overflow-hidden rounded-[1.35rem] border border-white/50 bg-slate-950/5">
+                    <div className="absolute left-4 top-4 z-10 rounded-full border border-white/65 bg-white/82 px-3 py-1 font-inter text-[10px] uppercase tracking-[0.18em] text-slate-600 backdrop-blur-md">
+                      {service.signal}
+                    </div>
+                    <div className="relative h-48">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.3)_100%)]" />
-                    </div>
-                    <div>
-                      <span className="font-cormorant text-xl lg:text-2xl text-slate-950 group-hover:text-slate-950 transition-colors">
-                        {service.title}
-                      </span>
-                      <p className="mt-2 max-w-xl font-inter text-sm text-slate-700">{service.excerpt}</p>
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,17,31,0.08)_0%,rgba(7,17,31,0.44)_100%)]" />
                     </div>
                   </div>
-                  <ArrowRight
-                    size={20}
-                    className="text-slate-500 group-hover:text-brand-cyan-strong transform group-hover:translate-x-2 transition-all"
-                  />
+
+                  <div className="flex flex-1 flex-col justify-between px-2 pb-2 pt-5">
+                    <div>
+                      <h3 className="font-cormorant text-[2rem] leading-tight text-slate-950">
+                        {service.title}
+                      </h3>
+                      <p className="mt-3 font-inter text-sm leading-relaxed text-slate-700">
+                        {service.excerpt}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-between gap-3">
+                      <p className="max-w-[16rem] font-inter text-[11px] uppercase tracking-[0.14em] text-slate-500">
+                        {service.subtitle}
+                      </p>
+                      <span className="inline-flex items-center gap-2 font-inter text-[11px] uppercase tracking-[0.18em] text-brand-cyan-strong">
+                        Ver detalhes
+                        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </div>
                 </Link>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
