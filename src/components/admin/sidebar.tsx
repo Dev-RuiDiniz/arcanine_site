@@ -14,15 +14,12 @@ import {
   LayoutDashboard,
   FolderKanban,
   Layers,
-  Users,
   Mail,
   Settings,
   ChevronLeft,
   ChevronRight,
   LogOut,
-  Image as ImageIcon,
   FileText,
-  Bell,
   Megaphone,
 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
@@ -45,19 +42,9 @@ const menuItems = [
     href: '/admin/services',
   },
   {
-    title: 'Media',
-    icon: ImageIcon,
-    href: '/admin/media',
-  },
-  {
     title: 'Contacts',
     icon: Mail,
     href: '/admin/contacts',
-  },
-  {
-    title: 'Newsletter',
-    icon: Users,
-    href: '/admin/newsletter',
   },
   {
     title: 'Pages',
@@ -68,11 +55,6 @@ const menuItems = [
     title: 'CTA Config',
     icon: Megaphone,
     href: '/admin/pages/ctas',
-  },
-  {
-    title: 'Notifications',
-    icon: Bell,
-    href: '/admin/notifications',
   },
   {
     title: 'Settings',

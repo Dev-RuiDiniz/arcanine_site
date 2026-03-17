@@ -110,10 +110,10 @@ model ProjectImage {
 }
 
 enum ProjectCategory {
-  RESIDENTIAL
-  COMMERCIAL
-  HOSPITALITY
-  RETAIL
+  SOFTWARE_PLATFORM
+  AUTOMATION
+  COMMERCE
+  DATA_AI
 }
 
 enum ProjectStatus {
@@ -167,43 +167,6 @@ enum ContactStatus {
 }
 
 // ============================================
-// NEWSLETTER
-// ============================================
-
-model Newsletter {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  active    Boolean  @default(true)
-  createdAt DateTime @default(now())
-}
-
-// ============================================
-// INSTAGRAM FEED
-// ============================================
-
-model InstagramPost {
-  id               String    @id @default(cuid())
-  postId           String    @unique
-  shortCode        String?
-  type             String    @default("Image")
-  url              String
-  displayUrl       String
-  videoUrl         String?
-  caption          String?   @db.Text
-  hashtags         String[]  @default([])
-  mentions         String[]  @default([])
-  likesCount       Int       @default(0)
-  commentsCount    Int       @default(0)
-  videoViewCount   Int?
-  dimensionsWidth  Int?
-  dimensionsHeight Int?
-  timestamp        DateTime?
-  isActive         Boolean   @default(true)
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-}
-
-// ============================================
 // CONFIGURAÇÕES DO SITE
 // ============================================
 
@@ -214,10 +177,7 @@ model SiteSettings {
   email           String?
   phone           String?
   address         String?
-  instagram       String?
-  pinterest       String?
   linkedin        String?
-  facebook        String?
   aboutText       String?  @db.Text
   aboutImage      String?
   heroVideoUrl    String?

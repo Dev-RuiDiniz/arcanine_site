@@ -15,7 +15,6 @@ export const siteConfig = {
     city: 'Sao Paulo, Brasil',
   },
   links: {
-    instagram: 'https://www.instagram.com/arcanine.tecnologia',
     linkedin: 'https://www.linkedin.com/company/arcanine-tecnologia',
     whatsapp: 'https://wa.me/5511999999999?text=Ola!%20Quero%20falar%20com%20a%20ARCANINE%20Tecnologia%20sobre%20uma%20solucao%20para%20minha%20empresa.',
   },

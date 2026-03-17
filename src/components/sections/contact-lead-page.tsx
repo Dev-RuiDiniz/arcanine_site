@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Mail, MapPin, Send, Instagram, Linkedin } from 'lucide-react'
+import { Mail, MapPin, Send, Linkedin } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
@@ -40,10 +40,7 @@ const contactInfo = [
   },
 ]
 
-const socialLinks = [
-  { icon: Instagram, href: siteConfig.links.instagram, label: 'Instagram' },
-  { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
-]
+const socialLinks = [{ icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' }]
 
 type ContactIntent = 'orcamento' | 'reuniao-tecnica'
 

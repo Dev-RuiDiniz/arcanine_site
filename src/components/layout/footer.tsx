@@ -8,12 +8,11 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react'
+import { Linkedin, Mail, MapPin } from 'lucide-react'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
 import { siteConfig } from '@/lib/site-config'
 
 const socialLinks = [
-  { icon: Instagram, href: siteConfig.links.instagram, label: 'Instagram' },
   { icon: Linkedin, href: siteConfig.links.linkedin, label: 'LinkedIn' },
 ]
 

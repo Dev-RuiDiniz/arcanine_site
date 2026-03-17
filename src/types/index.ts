@@ -8,7 +8,7 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 // ARCANINE - TYPES
 // ===========================================
 
-export type ProjectCategory = 'RESIDENTIAL' | 'COMMERCIAL' | 'HOSPITALITY' | 'RETAIL'
+export type ProjectCategory = 'SOFTWARE_PLATFORM' | 'AUTOMATION' | 'COMMERCE' | 'DATA_AI'
 export type ProjectStatus = 'DRAFT' | 'PUBLISHED' | 'COMING_SOON' | 'WORK_IN_PROGRESS'
 
 export interface Project {
@@ -74,10 +74,7 @@ export interface SiteSettings {
   email?: string | null
   phone?: string | null
   address?: string | null
-  instagram?: string | null
-  pinterest?: string | null
   linkedin?: string | null
-  facebook?: string | null
   aboutText?: string | null
   aboutImage?: string | null
   heroVideoUrl?: string | null
