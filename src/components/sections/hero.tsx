@@ -6,17 +6,10 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
-
-const featuredCase = {
-  image: '/projects/fintech-ledger.jpg',
-  label: 'Case em destaque',
-  title: 'Core financeiro com rastreabilidade ponta a ponta',
-}
 
 interface HeroProps {
   videoUrl?: string
@@ -76,30 +69,23 @@ export function Hero({ videoUrl, slideshow }: HeroProps) {
         >
           <div className="absolute -left-8 top-12 hidden h-28 w-28 rounded-full bg-brand-cyan/18 blur-3xl lg:block" />
 
-          <div className="panel-shell-dark relative overflow-hidden rounded-[2rem] p-4 lg:p-5">
-            <motion.article
+          <div className="panel-shell-dark rounded-[2rem] p-8 lg:p-10">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.16 }}
-              className="group relative min-h-[24rem] overflow-hidden rounded-[1.6rem] border border-white/10"
+              className="max-w-xl"
             >
-              <Image
-                src={featuredCase.image}
-                alt={featuredCase.title}
-                fill
-                priority
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,17,31,0.1)_0%,rgba(7,17,31,0.78)_58%,rgba(7,17,31,0.96)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
-                <p className="font-inter text-[10px] uppercase tracking-[0.18em] text-brand-cyan">
-                  {featuredCase.label}
-                </p>
-                <h2 className="mt-2 max-w-md font-cormorant text-[2rem] leading-tight text-white">
-                  {featuredCase.title}
-                </h2>
-              </div>
-            </motion.article>
+              <p className="font-inter text-[10px] uppercase tracking-[0.18em] text-brand-cyan">
+                Chamada principal
+              </p>
+              <h2 className="mt-4 font-cormorant text-[2.1rem] leading-tight text-white lg:text-[3rem]">
+                Menos ruído operacional. Mais clareza para executar e evoluir.
+              </h2>
+              <p className="mt-4 font-inter text-sm leading-relaxed text-slate-300 lg:text-base">
+                Construímos a base técnica para que a operação funcione melhor hoje e continue saudável conforme o negócio cresce.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>

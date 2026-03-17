@@ -124,16 +124,6 @@ export function Header() {
               </div>
 
               <div className="hidden 2xl:flex items-center gap-3">
-                <span
-                  className={cn(
-                    'inline-flex items-center gap-2 rounded-full border px-3 py-2 font-inter text-[10px] uppercase tracking-[0.18em] transition-colors',
-                    useDarkText
-                      ? 'border-slate-300/90 bg-white/70 text-slate-600'
-                      : 'border-white/12 bg-white/6 text-white/72'
-                  )}
-                >
-                  Operação crítica, engenharia autoral
-                </span>
                 <a
                   href={`mailto:${siteConfig.contact.salesEmail}`}
                   className={cn(
