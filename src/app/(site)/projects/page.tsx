@@ -112,6 +112,7 @@ function ProjectCard({ project }: { project: CaseItem }) {
           alt={project.coverAlt}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ objectPosition: project.coverPosition ?? 'center center' }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.62)_100%)]" />
         <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-slate-950/55 px-3 py-1 font-inter text-[10px] tracking-[0.16em] uppercase text-cyan-100 backdrop-blur-md">

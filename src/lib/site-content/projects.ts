@@ -22,6 +22,7 @@ export interface CaseItem {
   stack: string[]
   coverImage: string
   coverAlt: string
+  coverPosition?: string
   featured: boolean
   confidentialityNote?: string
 }
@@ -59,6 +60,7 @@ export const cases: CaseItem[] = [
     stack: ['AWS', 'Microsserviços', 'Ledger double-entry', 'EVM', 'Mensageria', 'Observabilidade'],
     coverImage: '/projects/fintech-ledger.jpg',
     coverAlt: 'Moedas digitais sobre gráfico financeiro representando operação fintech com componente web3.',
+    coverPosition: 'center center',
     featured: true,
     confidentialityNote:
       'Algumas denominações internas e referências ao contexto do cliente foram abstraídas para preservar confidencialidade comercial.',
@@ -86,6 +88,7 @@ export const cases: CaseItem[] = [
     stack: ['Python', 'FastAPI', 'Engine de execução', 'Risk management', 'Filas', 'Dashboards operacionais'],
     coverImage: '/projects/trading-bot.jpg',
     coverAlt: 'Operador acompanhando múltiplos monitores com gráficos de mercado e performance.',
+    coverPosition: '38% center',
     featured: false,
     confidentialityNote:
       'A nomenclatura pública do case foi mantida em formato descritivo para evitar exposição de produto e estratégia proprietária.',
@@ -113,6 +116,7 @@ export const cases: CaseItem[] = [
     stack: ['WhatsApp API', 'LLM', 'Orquestração de sessões', 'Análise de sentimento', 'Ranking automático'],
     coverImage: '/projects/ia-entrevistas.jpg',
     coverAlt: 'Mão segurando smartphone com tela do WhatsApp aberta para interação conversacional.',
+    coverPosition: 'center 26%',
     featured: true,
   },
   {
@@ -138,6 +142,7 @@ export const cases: CaseItem[] = [
     stack: ['SaaS analytics', 'IA aplicada', 'Comparativos competitivos', 'Catálogo', 'Pricing intelligence'],
     coverImage: '/projects/marketplace-ml.jpg',
     coverAlt: 'Notebook com interface de loja online e smartphone ao lado em contexto de marketplace.',
+    coverPosition: '58% center',
     featured: false,
     confidentialityNote:
       'Referências operacionais foram descritas por função e contexto, sem expor conta, seller ou estrutura comercial do cliente.',
@@ -165,6 +170,7 @@ export const cases: CaseItem[] = [
     stack: ['Power Automate', 'State management', 'Auditoria', 'Integrações de e-mail', 'Workflows'],
     coverImage: '/projects/cadencia-emails.jpg',
     coverAlt: 'Smartphone exibindo atalho de e-mail em contexto de comunicação e cadência digital.',
+    coverPosition: 'center 22%',
     featured: false,
   },
   {
@@ -190,6 +196,7 @@ export const cases: CaseItem[] = [
     stack: ['ESP32', 'LoRa', 'IoT backend', 'Predição de consumo', 'Dashboards'],
     coverImage: '/projects/gasnow.jpg',
     coverAlt: 'Placa eletrônica e componentes de hardware representando telemetria e IoT.',
+    coverPosition: 'center center',
     featured: true,
   },
   {
@@ -215,6 +222,7 @@ export const cases: CaseItem[] = [
     stack: ['MQTT', 'HTTPS', 'ESL', 'Mensageria', 'Operação de pricing'],
     coverImage: '/projects/esl-pricing.jpg',
     coverAlt: 'Setor de supermercado com placas e etiquetas de preço visíveis em ambiente de varejo.',
+    coverPosition: 'center center',
     featured: false,
   },
   {
@@ -240,6 +248,7 @@ export const cases: CaseItem[] = [
     stack: ['React', 'FastAPI', 'LGPD', 'RBAC', 'Auditoria', 'Workflows operacionais'],
     coverImage: '/projects/acao-social.jpg',
     coverAlt: 'Equipe reunida ao redor de mesa com notebooks e tablets em contexto de gestão colaborativa.',
+    coverPosition: 'center center',
     featured: true,
     confidentialityNote:
       'O nome do case foi mantido em formato descritivo para preservar instituições, territórios e dados operacionais sensíveis do contexto real.',
@@ -267,6 +276,7 @@ export const cases: CaseItem[] = [
     stack: ['SaaS', 'Multitenancy', 'Gestão financeira', 'Gestão de alunos', 'Aplicação web'],
     coverImage: '/projects/personal-trainers.jpg',
     coverAlt: 'Pessoa em academia consultando tablet durante rotina de treino e acompanhamento físico.',
+    coverPosition: 'center 32%',
     featured: false,
   },
 ]

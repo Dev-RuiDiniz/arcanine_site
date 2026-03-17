@@ -84,6 +84,7 @@ function ProjectCard({ project, featured }: { project: CaseItem; featured: boole
           alt={project.coverAlt}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ objectPosition: project.coverPosition ?? 'center center' }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.14)_0%,rgba(2,6,23,0.82)_55%,rgba(2,6,23,0.97)_100%)] transition-opacity duration-500 group-hover:opacity-90" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.24),transparent_30%)] opacity-90" />

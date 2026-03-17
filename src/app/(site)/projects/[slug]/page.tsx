@@ -28,7 +28,14 @@ export default function ProjectDetailPage({ params }: PageProps) {
     <>
       <section className="relative overflow-hidden pt-28 lg:pt-32">
         <div className="absolute inset-0">
-          <Image src={project.coverImage} alt={project.coverAlt} fill priority className="object-cover" />
+          <Image
+            src={project.coverImage}
+            alt={project.coverAlt}
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: project.coverPosition ?? 'center center' }}
+          />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.3)_0%,rgba(2,6,23,0.72)_46%,rgba(2,6,23,0.96)_100%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.22),transparent_25%)]" />
         </div>
