@@ -1,7 +1,30 @@
-import 'dotenv/config'
-
 import bcrypt from 'bcryptjs'
+import dotenv from 'dotenv'
+import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@prisma/client'
+
+dotenv.config({ path: '.env.local', quiet: true })
+dotenv.config({ quiet: true })
+
+function buildAdapterConfig(connectionString) {
+  let normalizedConnectionString = connectionString
+
+  try {
+    const databaseUrl = new URL(connectionString)
+
+    if (
+      databaseUrl.hostname.endsWith('.supabase.co') &&
+      databaseUrl.searchParams.get('sslmode') !== 'no-verify'
+    ) {
+      databaseUrl.searchParams.set('sslmode', 'no-verify')
+      normalizedConnectionString = databaseUrl.toString()
+    }
+  } catch {
+    // Keep the default connection config when DATABASE_URL cannot be parsed.
+  }
+
+  return { connectionString: normalizedConnectionString }
+}
 
 function readArg(flag) {
   const directMatch = process.argv.find((entry) => entry.startsWith(`${flag}=`))
@@ -39,7 +62,9 @@ if (!['ADMIN', 'EDITOR'].includes(role)) {
   process.exit(1)
 }
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient({
+  adapter: new PrismaPg(buildAdapterConfig(process.env.DATABASE_URL)),
+})
 
 try {
   const passwordHash = await bcrypt.hash(password, 10)
