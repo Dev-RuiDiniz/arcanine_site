@@ -23,17 +23,17 @@ export default function ProjectsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-stone-900 dark:text-white">
+          <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-white">
             Cases
           </h1>
-          <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1 max-w-2xl">
+          <p className="mt-1 max-w-2xl font-inter text-sm text-slate-400">
             Base editorial dos cases exibidos no site. Use esta visão para revisar narrativa, status e ordem de prioridade comercial.
           </p>
         </div>
 
         <Link
           href="/admin/pages/projects"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-inter text-xs tracking-wide hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors rounded-lg"
+          className="inline-flex items-center gap-2 rounded-lg bg-brand-cyan px-4 py-2.5 font-inter text-xs tracking-wide text-slate-950 transition-colors hover:bg-brand-cyan-strong hover:text-white"
         >
           <FileText size={16} />
           Abrir editor da página
@@ -47,25 +47,25 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25, delay: index * 0.05 }}
-            className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5"
+            className="rounded-xl border border-white/10 bg-slate-900 p-5"
           >
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3">
-                  <h2 className="font-inter text-base font-medium text-stone-900 dark:text-white">{project.title}</h2>
+                  <h2 className="font-inter text-base font-medium text-white">{project.title}</h2>
                   <span className={cn('px-2.5 py-1 rounded-full font-inter text-xs', statusStyles[project.stage])}>
                     {statusLabels[project.stage]}
                   </span>
                 </div>
-                <p className="font-inter text-sm text-stone-500 dark:text-stone-400">{project.segment}</p>
-                <p className="font-inter text-sm text-stone-700 dark:text-stone-300 leading-relaxed max-w-3xl">
+                <p className="font-inter text-sm text-slate-400">{project.segment}</p>
+                <p className="font-inter text-sm text-slate-300 leading-relaxed max-w-3xl">
                   {project.challenge}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.stack.map((item) => (
                     <span
                       key={item}
-                      className="px-2.5 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 font-inter text-xs"
+                      className="rounded-full bg-brand-cyan/12 px-2.5 py-1 font-inter text-xs text-brand-cyan"
                     >
                       {item}
                     </span>
@@ -75,13 +75,13 @@ export default function ProjectsPage() {
 
               <div className="flex items-center gap-4 shrink-0">
                 <div className="text-right">
-                  <p className="font-inter text-xs text-stone-500 dark:text-stone-400">Duração</p>
-                  <p className="font-inter text-sm text-stone-800 dark:text-stone-200">{project.duration}</p>
+                  <p className="font-inter text-xs text-slate-500">Duração</p>
+                  <p className="font-inter text-sm text-slate-200">{project.duration}</p>
                 </div>
                 <Link
                   href={`/projects/${project.slug}`}
                   target="_blank"
-                  className="p-2 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+                  className="p-2 text-slate-500 transition-colors hover:text-brand-cyan"
                   title="Ver case público"
                 >
                   <Eye size={16} />
@@ -89,14 +89,14 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            <div className="mt-5 border-t border-stone-200 dark:border-stone-800 pt-4 flex items-center justify-between gap-3">
-              <p className="font-inter text-xs text-stone-500 dark:text-stone-400">
+            <div className="mt-5 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
+              <p className="font-inter text-xs text-slate-500">
                 Resultado principal: {project.outcomes[0]}
               </p>
               <Link
                 href={`/projects/${project.slug}`}
                 target="_blank"
-                className="inline-flex items-center gap-2 font-inter text-xs tracking-[0.16em] uppercase text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 font-inter text-xs tracking-[0.16em] uppercase text-slate-400 transition-colors hover:text-brand-cyan"
               >
                 Ver case
                 <ArrowRight size={14} />

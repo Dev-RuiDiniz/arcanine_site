@@ -29,7 +29,7 @@ export function FloatingChat() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1, type: 'spring', stiffness: 200 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-slate-950 text-brand-cyan shadow-lg shadow-slate-950/35 transition-all hover:scale-105 hover:bg-slate-900 hover:shadow-xl"
         aria-label="Abrir conversa"
       >
         <AnimatePresence mode="wait">
@@ -65,10 +65,9 @@ export function FloatingChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-80 overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-2xl"
           >
-            {/* Header */}
-            <div className="bg-[#25D366] px-5 py-4">
+            <div className="bg-[linear-gradient(135deg,#0f172a_0%,#162338_55%,#0b85a2_140%)] px-5 py-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                   <FaWhatsapp size={22} className="text-white" />
@@ -85,31 +84,30 @@ export function FloatingChat() {
             </div>
 
             {/* Body */}
-            <div className="p-5 bg-[#ECE5DD]">
-              <div className="bg-white rounded-lg p-4 shadow-sm relative">
-                <div className="absolute -left-2 top-3 w-0 h-0 border-t-8 border-t-transparent border-r-8 border-r-white border-b-8 border-b-transparent" />
-                <p className="font-inter text-sm text-stone-700 leading-relaxed">
+            <div className="bg-slate-900 p-5">
+              <div className="relative rounded-lg border border-white/10 bg-slate-800 p-4 shadow-sm">
+                <div className="absolute -left-2 top-3 h-0 w-0 border-b-8 border-b-transparent border-r-8 border-r-slate-800 border-t-8 border-t-transparent" />
+                <p className="font-inter text-sm leading-relaxed text-slate-200">
                   Olá.
                   <br />
                   <br />
                   Conte rapidamente o desafio técnico do seu negócio e nosso time retorna com os próximos passos.
                 </p>
-                <span className="block text-right font-inter text-[10px] text-stone-400 mt-2">
+                <span className="mt-2 block text-right font-inter text-[10px] text-slate-500">
                   agora
                 </span>
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="p-4 bg-white border-t border-stone-100">
+            <div className="border-t border-white/10 bg-slate-950 p-4">
               <button
                 onClick={handleWhatsAppClick}
-                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-inter text-sm py-3 px-4 rounded-lg transition-colors"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-cyan px-4 py-3 font-inter text-sm text-slate-950 transition-colors hover:bg-brand-cyan-strong hover:text-white"
               >
                 <FaWhatsapp size={18} />
                 Iniciar conversa
               </button>
-              <p className="text-center font-inter text-[10px] text-stone-400 mt-3">
+              <p className="mt-3 text-center font-inter text-[10px] text-slate-500">
                 Abre o WhatsApp em uma nova aba
               </p>
             </div>

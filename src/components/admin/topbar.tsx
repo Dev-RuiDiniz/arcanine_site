@@ -21,7 +21,7 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
   return (
     <header
       className={cn(
-        'fixed top-0 right-0 z-30 h-16 bg-white dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 transition-all duration-300',
+        'fixed top-0 right-0 z-30 h-16 bg-slate-950/92 backdrop-blur-xl border-b border-white/10 transition-all duration-300',
         isSidebarCollapsed ? 'left-20' : 'left-[280px]'
       )}
     >
@@ -29,17 +29,17 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
         <div className="flex items-center gap-3">
           <button
             onClick={onMenuClick}
-            className="lg:hidden p-2 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-white/8 rounded-lg transition-colors"
             aria-label="Abrir menu"
           >
-            <Menu size={20} className="text-stone-600 dark:text-stone-400" />
+            <Menu size={20} className="text-slate-300" />
           </button>
 
           <div>
-            <p className="font-inter text-[11px] uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
+            <p className="font-inter text-[11px] uppercase tracking-[0.18em] text-brand-cyan">
               Administração
             </p>
-            <p className="font-inter text-sm text-stone-900 dark:text-white">
+            <p className="font-inter text-sm text-white">
               Operação e conteúdo ARCANINE
             </p>
           </div>
@@ -49,7 +49,7 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
           <Link
             href="/"
             target="_blank"
-            className="hidden sm:inline-flex items-center gap-2 px-3 py-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 px-3 py-2 text-slate-400 hover:text-brand-cyan transition-colors"
           >
             <ExternalLink size={16} />
             <span className="font-inter text-xs">Ver site</span>
@@ -57,30 +57,30 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
 
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-lg transition-colors"
+            className="p-2 hover:bg-white/8 rounded-lg transition-colors"
             aria-label="Alternar tema"
           >
             {theme === 'dark' ? (
-              <Sun size={18} className="text-stone-400" />
+              <Sun size={18} className="text-brand-cyan" />
             ) : (
-              <Moon size={18} className="text-stone-600" />
+              <Moon size={18} className="text-slate-300" />
             )}
           </button>
 
           <div className="relative">
             <button
               onClick={() => setShowProfile((current) => !current)}
-              className="flex items-center gap-2 px-2 py-1.5 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-2 py-1.5 hover:bg-white/8 rounded-lg transition-colors"
             >
-              <div className="w-8 h-8 bg-stone-200 dark:bg-stone-800 rounded-full flex items-center justify-center">
-                <User size={16} className="text-stone-600 dark:text-stone-400" />
+              <div className="w-8 h-8 bg-brand-cyan/12 rounded-full flex items-center justify-center">
+                <User size={16} className="text-brand-cyan" />
               </div>
               <div className="hidden sm:block text-left">
-                <p className="font-inter text-sm text-stone-900 dark:text-white">
+                <p className="font-inter text-sm text-white">
                   {session?.user?.name || 'Admin'}
                 </p>
               </div>
-              <ChevronDown size={14} className="text-stone-400" />
+              <ChevronDown size={14} className="text-slate-500" />
             </button>
 
             <AnimatePresence>
@@ -89,13 +89,13 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 top-full mt-2 w-56 bg-white dark:bg-stone-900 rounded-lg shadow-xl border border-stone-200 dark:border-stone-800 py-2 z-50"
+                  className="absolute right-0 top-full mt-2 w-56 bg-slate-900 rounded-lg shadow-xl border border-white/10 py-2 z-50"
                 >
-                  <div className="px-4 py-3 border-b border-stone-200 dark:border-stone-800">
-                    <p className="font-inter text-sm font-medium text-stone-900 dark:text-white">
+                  <div className="px-4 py-3 border-b border-white/10">
+                    <p className="font-inter text-sm font-medium text-white">
                       {session?.user?.name || 'Admin'}
                     </p>
-                    <p className="font-inter text-xs text-stone-500 dark:text-stone-400">
+                    <p className="font-inter text-xs text-slate-400">
                       {session?.user?.email}
                     </p>
                   </div>

@@ -75,10 +75,9 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
       initial={false}
       animate={{ width: isCollapsed ? 80 : 280 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="fixed left-0 top-0 z-40 h-screen bg-white dark:bg-stone-950 border-r border-stone-200 dark:border-stone-800 flex flex-col"
+      className="fixed left-0 top-0 z-40 h-screen bg-slate-950 border-r border-white/10 flex flex-col"
     >
-      {/* Logo */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-stone-200 dark:border-stone-800">
+      <div className="h-16 flex items-center justify-between px-4 border-b border-white/10">
         <AnimatePresence mode="wait">
           {!isCollapsed && (
             <motion.div
@@ -88,10 +87,10 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
               transition={{ duration: 0.2 }}
             >
               <Link href="/admin" className="flex items-center gap-2">
-                <span className="font-cormorant text-xl font-light tracking-[0.2em] text-stone-900 dark:text-white">
+                <span className="font-cormorant text-xl font-light tracking-[0.2em] text-white">
                   ARCANINE
                 </span>
-                <span className="font-inter text-[8px] tracking-[0.2em] uppercase text-stone-500 dark:text-stone-400">
+                <span className="font-inter text-[8px] tracking-[0.2em] uppercase text-brand-cyan">
                   Painel
                 </span>
               </Link>
@@ -101,13 +100,12 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
         
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors text-stone-500"
+          className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/8 transition-colors text-slate-400"
         >
           {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 py-4 px-3 overflow-y-auto">
         <ul className="space-y-1">
           {menuItems.map((item) => {
@@ -121,8 +119,8 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
                   className={cn(
                     'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200',
                     isActive
-                      ? 'bg-stone-900 dark:bg-white text-white dark:text-stone-900'
-                      : 'text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-900 dark:hover:text-white'
+                      ? 'bg-brand-cyan text-slate-950 shadow-[0_18px_44px_-30px_rgba(34,211,238,0.9)]'
+                      : 'text-slate-400 hover:bg-white/8 hover:text-white'
                   )}
                 >
                   <item.icon size={20} className="shrink-0" />
@@ -146,11 +144,10 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
         </ul>
       </nav>
 
-      {/* Logout */}
-      <div className="p-3 border-t border-stone-200 dark:border-stone-800">
+      <div className="p-3 border-t border-white/10">
         <button
           onClick={() => signOut({ callbackUrl: '/login' })}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-rose-300 hover:bg-rose-500/10 transition-colors"
         >
           <LogOut size={20} className="shrink-0" />
           <AnimatePresence mode="wait">

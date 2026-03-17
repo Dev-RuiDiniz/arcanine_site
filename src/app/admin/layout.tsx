@@ -32,10 +32,10 @@ export default function AdminLayout({
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-stone-50 dark:bg-stone-950">
+      <div className="min-h-screen flex items-center justify-center bg-slate-950">
         <div className="text-center">
-          <Loader2 size={32} className="animate-spin text-stone-400 mx-auto" />
-          <p className="mt-4 font-inter text-sm text-stone-500">Carregando painel...</p>
+          <Loader2 size={32} className="animate-spin text-brand-cyan mx-auto" />
+          <p className="mt-4 font-inter text-sm text-slate-400">Carregando painel...</p>
         </div>
       </div>
     )
@@ -46,7 +46,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950">
+    <div className="min-h-screen bg-slate-950">
       {/* Sidebar */}
       <div className="hidden lg:block">
         <Sidebar
@@ -78,7 +78,7 @@ export default function AdminLayout({
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className="w-[280px] h-full bg-white dark:bg-stone-950"
+            className="w-[280px] h-full bg-slate-950"
             onClick={(e) => e.stopPropagation()}
           >
             <Sidebar

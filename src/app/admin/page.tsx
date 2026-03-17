@@ -65,17 +65,17 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-stone-900 dark:text-white">
+          <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-white">
             Visão geral
           </h1>
-          <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1 max-w-2xl">
+          <p className="mt-1 max-w-2xl font-inter text-sm text-slate-400">
             Painel consolidado para conteúdo, serviços, cases e operação comercial do site da ARCANINE.
           </p>
         </div>
 
         <Link
           href="/admin/pages"
-          className="inline-flex items-center gap-2 font-inter text-xs tracking-[0.18em] uppercase text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 font-inter text-xs tracking-[0.18em] uppercase text-slate-400 hover:text-brand-cyan transition-colors"
         >
           Abrir páginas
           <ArrowRight size={14} />
@@ -89,24 +89,24 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.06 }}
-            className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5"
+            className="rounded-xl border border-white/10 bg-slate-900 p-5"
           >
-            <div className="w-10 h-10 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-              <stat.icon size={20} className="text-stone-700 dark:text-stone-300" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-cyan/12">
+              <stat.icon size={20} className="text-brand-cyan" />
             </div>
-            <p className="mt-4 font-inter text-2xl font-semibold text-stone-900 dark:text-white">{stat.value}</p>
-            <p className="mt-1 font-inter text-sm text-stone-700 dark:text-stone-300">{stat.title}</p>
-            <p className="mt-2 font-inter text-xs text-stone-500 dark:text-stone-400">{stat.detail}</p>
+            <p className="mt-4 font-inter text-2xl font-semibold text-white">{stat.value}</p>
+            <p className="mt-1 font-inter text-sm text-slate-200">{stat.title}</p>
+            <p className="mt-2 font-inter text-xs text-slate-400">{stat.detail}</p>
           </motion.article>
         ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <section className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5">
+        <section className="rounded-xl border border-white/10 bg-slate-900 p-5">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <h2 className="font-inter text-sm font-medium text-stone-900 dark:text-white">Próximas ações</h2>
-              <p className="font-inter text-xs text-stone-500 dark:text-stone-400 mt-1">
+              <h2 className="font-inter text-sm font-medium text-white">Próximas ações</h2>
+              <p className="mt-1 font-inter text-xs text-slate-400">
                 Atalhos para manter site, posicionamento e captação em ordem.
               </p>
             </div>
@@ -122,21 +122,21 @@ export default function AdminDashboard() {
               >
                 <Link
                   href={action.href}
-                  className="flex items-start justify-between gap-3 rounded-xl border border-stone-200 dark:border-stone-800 px-4 py-4 hover:border-stone-300 dark:hover:border-stone-700 transition-colors"
+                  className="flex items-start justify-between gap-3 rounded-xl border border-white/10 px-4 py-4 transition-colors hover:border-brand-cyan/35 hover:bg-white/3"
                 >
                   <div>
-                    <p className="font-inter text-sm font-medium text-stone-900 dark:text-white">{action.title}</p>
-                    <p className="font-inter text-xs text-stone-500 dark:text-stone-400 mt-1">{action.description}</p>
+                    <p className="font-inter text-sm font-medium text-white">{action.title}</p>
+                    <p className="mt-1 font-inter text-xs text-slate-400">{action.description}</p>
                   </div>
-                  <ArrowRight size={16} className="text-stone-400 shrink-0 mt-0.5" />
+                  <ArrowRight size={16} className="mt-0.5 shrink-0 text-slate-500" />
                 </Link>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5">
-          <h2 className="font-inter text-sm font-medium text-stone-900 dark:text-white">Cobertura do admin MVP</h2>
+        <section className="rounded-xl border border-white/10 bg-slate-900 p-5">
+          <h2 className="font-inter text-sm font-medium text-white">Cobertura do admin MVP</h2>
           <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               'Editor de páginas institucionais e legais',
@@ -146,15 +146,15 @@ export default function AdminDashboard() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-xl bg-stone-50 dark:bg-stone-800/60 border border-stone-200 dark:border-stone-800 px-4 py-4"
+                className="rounded-xl border border-white/10 bg-slate-950 px-4 py-4"
               >
-                <p className="font-inter text-sm text-stone-700 dark:text-stone-300">{item}</p>
+                <p className="font-inter text-sm text-slate-300">{item}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 dark:bg-amber-900/10 dark:border-amber-900 px-4 py-4">
-            <p className="font-inter text-sm text-amber-800 dark:text-amber-300">
+          <div className="mt-5 rounded-xl border border-brand-cyan/18 bg-brand-cyan/8 px-4 py-4">
+            <p className="font-inter text-sm text-cyan-100">
               O painel foi enxugado para o escopo operacional do site de tecnologia. Módulos genéricos do template anterior foram removidos.
             </p>
           </div>

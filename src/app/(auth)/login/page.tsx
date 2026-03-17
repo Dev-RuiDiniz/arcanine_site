@@ -66,7 +66,8 @@ export default function LoginPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.2),transparent_34%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/78 to-slate-950/86" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-12">
           <motion.div
@@ -85,7 +86,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white dark:bg-stone-950">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-slate-950">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -93,17 +94,17 @@ export default function LoginPage() {
           className="w-full max-w-md"
         >
           <div className="lg:hidden text-center mb-12">
-            <h1 className="font-cormorant text-3xl font-light tracking-[0.3em] text-stone-900 dark:text-white">
+            <h1 className="font-cormorant text-3xl font-light tracking-[0.3em] text-white">
               ARCANINE
             </h1>
-            <p className="mt-1 font-inter text-[10px] tracking-[0.3em] uppercase text-stone-500">Tecnologia</p>
+            <p className="mt-1 font-inter text-[10px] tracking-[0.3em] uppercase text-brand-cyan">Tecnologia</p>
           </div>
 
           <div className="mb-10">
-            <h2 className="font-cormorant text-3xl font-light text-stone-900 dark:text-white">
+            <h2 className="font-cormorant text-3xl font-light text-white">
               Acesso ao <span className="italic">painel</span>
             </h2>
-            <p className="mt-2 font-inter text-sm text-stone-500 dark:text-stone-400">
+            <p className="mt-2 font-inter text-sm text-slate-400">
               Entre para gerenciar conteúdo institucional, cases e operação comercial.
             </p>
           </div>
@@ -120,20 +121,20 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
-              <label className="block font-inter text-xs tracking-[0.1em] uppercase text-stone-500 dark:text-stone-400 mb-2">
+              <label className="block font-inter text-xs tracking-[0.1em] uppercase text-slate-400 mb-2">
                 E-mail
               </label>
               <input
                 {...register('email')}
                 type="email"
                 placeholder="admin@arcanine.tech"
-                className="w-full h-14 px-4 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white font-inter text-sm focus:outline-none focus:border-stone-400 dark:focus:border-stone-600 transition-colors"
+                className="w-full h-14 px-4 bg-slate-900 border border-white/10 text-white font-inter text-sm focus:outline-none focus:border-brand-cyan transition-colors"
               />
               {errors.email && <p className="mt-1 font-inter text-xs text-red-500">{errors.email.message}</p>}
             </div>
 
             <div>
-              <label className="block font-inter text-xs tracking-[0.1em] uppercase text-stone-500 dark:text-stone-400 mb-2">
+              <label className="block font-inter text-xs tracking-[0.1em] uppercase text-slate-400 mb-2">
                 Senha
               </label>
               <div className="relative">
@@ -141,12 +142,12 @@ export default function LoginPage() {
                   {...register('password')}
                   type={showPassword ? 'text' : 'password'}
                   placeholder="••••••••"
-                  className="w-full h-14 px-4 pr-12 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white font-inter text-sm focus:outline-none focus:border-stone-400 dark:focus:border-stone-600 transition-colors"
+                  className="w-full h-14 px-4 pr-12 bg-slate-900 border border-white/10 text-white font-inter text-sm focus:outline-none focus:border-brand-cyan transition-colors"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((current) => !current)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-brand-cyan transition-colors"
                   aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -158,7 +159,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full h-14 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-inter text-xs tracking-[0.2em] uppercase hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-14 bg-brand-cyan text-slate-950 font-inter text-xs tracking-[0.2em] uppercase hover:bg-brand-cyan-strong hover:text-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>
@@ -177,14 +178,14 @@ export default function LoginPage() {
           <div className="mt-12 text-center">
             <Link
               href="/"
-              className="font-inter text-sm text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors"
+              className="font-inter text-sm text-slate-400 hover:text-brand-cyan transition-colors"
             >
               ← Voltar para o site
             </Link>
           </div>
 
-          <div className="mt-8 p-4 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg">
-            <p className="font-inter text-xs text-stone-500 dark:text-stone-400 text-center">
+          <div className="mt-8 rounded-lg border border-white/10 bg-slate-900 p-4">
+            <p className="font-inter text-xs text-slate-400 text-center">
               <strong>Acesso local:</strong> admin@arcanine.tech / admin123
             </p>
           </div>
