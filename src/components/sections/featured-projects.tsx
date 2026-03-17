@@ -99,7 +99,7 @@ function ProjectCard({ project }: { project: Project }) {
             'absolute inset-0 transition-opacity duration-500',
             isComingSoon
               ? 'bg-slate-950/68'
-              : 'bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.76)_100%)] group-hover:bg-[linear-gradient(180deg,rgba(8,145,178,0.18)_0%,rgba(15,23,42,0.82)_100%)]'
+              : 'bg-[linear-gradient(180deg,rgba(15,23,42,0.14)_0%,rgba(15,23,42,0.86)_100%)] group-hover:bg-[linear-gradient(180deg,rgba(8,145,178,0.2)_0%,rgba(15,23,42,0.9)_100%)]'
           )}
         />
       </div>
@@ -108,7 +108,7 @@ function ProjectCard({ project }: { project: Project }) {
         <h3 className="font-cormorant text-sm sm:text-base lg:text-lg font-light text-white leading-tight tracking-wide">
           {project.title}
         </h3>
-        <p className="font-inter text-[8px] sm:text-[9px] tracking-[0.12em] uppercase text-white/70 mt-1.5">
+        <p className="mt-1.5 font-inter text-[8px] sm:text-[9px] tracking-[0.12em] uppercase text-white/80">
           {project.location}
         </p>
         

@@ -77,7 +77,7 @@ export function ServicesPreview() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group panel-shell flex items-center justify-between gap-5 px-5 py-6 transition-all hover:-translate-y-0.5 hover:border-brand-cyan/40"
+                  className="group panel-shell flex items-center justify-between gap-5 px-5 py-6 transition-all hover:-translate-y-0.5 hover:border-brand-cyan/40 hover:shadow-[0_24px_44px_-32px_rgba(15,23,42,0.28)]"
                 >
                   <div className="flex items-center gap-4">
                     <div className="relative hidden h-20 w-28 overflow-hidden border border-line-subtle md:block">
@@ -87,13 +87,13 @@ export function ServicesPreview() {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.05)_0%,rgba(15,23,42,0.22)_100%)]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.3)_100%)]" />
                     </div>
                     <div>
-                    <span className="font-cormorant text-xl lg:text-2xl text-slate-950 group-hover:text-slate-950 transition-colors">
-                      {service.title}
-                    </span>
-                    <p className="mt-2 max-w-xl font-inter text-sm text-slate-600">{service.excerpt}</p>
+                      <span className="font-cormorant text-xl lg:text-2xl text-slate-950 group-hover:text-slate-950 transition-colors">
+                        {service.title}
+                      </span>
+                      <p className="mt-2 max-w-xl font-inter text-sm text-slate-700">{service.excerpt}</p>
                     </div>
                   </div>
                   <ArrowRight

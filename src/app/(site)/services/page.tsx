@@ -56,11 +56,11 @@ export default function ServicesPage() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.82)_100%)] group-hover:bg-[linear-gradient(180deg,rgba(8,145,178,0.16)_0%,rgba(15,23,42,0.88)_100%)] transition-colors" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.18)_0%,rgba(15,23,42,0.9)_100%)] group-hover:bg-[linear-gradient(180deg,rgba(8,145,178,0.2)_0%,rgba(15,23,42,0.92)_100%)] transition-colors" />
 
                   <div className="absolute inset-0 flex flex-col justify-end p-5 lg:p-6">
                     <h2 className="font-cormorant text-2xl lg:text-3xl text-white leading-tight">{service.title}</h2>
-                    <p className="mt-2 font-inter text-xs lg:text-sm text-slate-200 leading-relaxed">{service.excerpt}</p>
+                    <p className="mt-2 font-inter text-xs lg:text-sm text-slate-100 leading-relaxed">{service.excerpt}</p>
                     <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] tracking-[0.18em] uppercase text-brand-cyan">
                       Ver aplicações e benefícios
                       <ArrowRight size={13} />

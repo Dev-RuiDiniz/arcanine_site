@@ -209,9 +209,9 @@ html {
   }
 
   .panel-shell {
-    background-color: var(--surface-panel);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 251, 253, 0.98) 100%);
     border: 1px solid var(--line-subtle);
-    box-shadow: 0 24px 60px -40px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 26px 60px -38px rgba(15, 23, 42, 0.24);
   }
 
   .panel-shell-muted {
@@ -222,9 +222,9 @@ html {
   }
 
   .panel-shell-dark {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(22, 35, 56, 0.92) 100%);
-    border: 1px solid rgba(103, 232, 249, 0.16);
-    box-shadow: 0 30px 80px -48px rgba(0, 0, 0, 0.65);
+    background: linear-gradient(180deg, rgba(9, 17, 29, 0.96) 0%, rgba(15, 23, 42, 0.94) 100%);
+    border: 1px solid rgba(103, 232, 249, 0.2);
+    box-shadow: 0 30px 80px -48px rgba(0, 0, 0, 0.72);
   }
 
   .cta-shell {
@@ -246,8 +246,8 @@ html {
   }
 
   .field-shell {
-    background-color: #f8fbfd;
-    border-color: var(--line-subtle);
+    background-color: #ffffff;
+    border-color: #c8d6e4;
   }
 }
 

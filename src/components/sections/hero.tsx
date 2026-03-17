@@ -110,8 +110,8 @@ export function Hero({
           </>
         )}
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.2),transparent_32%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/82 via-slate-950/46 to-slate-950/88" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_28%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/88 via-slate-950/60 to-slate-950/92" />
       </div>
 
       <div
@@ -144,13 +144,13 @@ export function Hero({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.2 }}
-                className="block text-white/90 mt-2"
+                className="mt-2 block text-white/95"
               >
                 {currentSlide.line2}
               </motion.span>
             </h1>
 
-            <p className="mt-6 font-inter text-sm lg:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-6 max-w-3xl mx-auto font-inter text-sm lg:text-base text-slate-100 leading-relaxed">
               Projetamos plataformas, automações e integrações para empresas que precisam reduzir atrito operacional,
               ganhar previsibilidade e crescer com base técnica sólida.
             </p>

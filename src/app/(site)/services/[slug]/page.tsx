@@ -67,7 +67,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
             <div className="relative aspect-[4/3] overflow-hidden border border-white/10 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.88)]">
               <Image src={service.image} alt={service.title} fill className="object-cover" priority />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.22)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.14)_0%,rgba(15,23,42,0.32)_100%)]" />
             </div>
           </div>
         </div>
@@ -148,7 +148,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <section className="cta-shell py-14 lg:py-18">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <p className="font-cormorant text-2xl lg:text-3xl text-white mb-2 italic">{service.cta.title}</p>
-          <p className="font-inter text-sm text-white/85 max-w-2xl mx-auto">{service.cta.description}</p>
+          <p className="mx-auto max-w-2xl font-inter text-sm text-white/92">{service.cta.description}</p>
           <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href={service.cta.primaryHref}

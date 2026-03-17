@@ -268,7 +268,7 @@ export function ContactLeadPage({
 
                   <div className="grid grid-cols-1 gap-6">
                     <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                         Nome *
                       </label>
                       <Input
@@ -280,7 +280,7 @@ export function ContactLeadPage({
                     </div>
 
                     <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                         Empresa *
                       </label>
                       <Input
@@ -294,7 +294,7 @@ export function ContactLeadPage({
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                         E-mail corporativo *
                       </label>
                       <Input
@@ -307,7 +307,7 @@ export function ContactLeadPage({
                     </div>
 
                     <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                         WhatsApp *
                       </label>
                       <Input
@@ -321,7 +321,7 @@ export function ContactLeadPage({
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                         Tipo de projeto *
                       </label>
                       <Input
@@ -334,7 +334,7 @@ export function ContactLeadPage({
 
                     {requiresBudget && (
                       <div>
-                        <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                        <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                           Faixa de investimento *
                         </label>
                         <Input
@@ -348,7 +348,7 @@ export function ContactLeadPage({
                   </div>
 
                   <div>
-                    <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                    <label className="block font-inter text-xs tracking-[0.15em] uppercase text-slate-600 mb-2">
                       Descrição do desafio *
                     </label>
                     <Textarea
