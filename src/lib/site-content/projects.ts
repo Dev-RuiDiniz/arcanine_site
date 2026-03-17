@@ -58,7 +58,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['AWS', 'Microsserviços', 'Ledger double-entry', 'EVM', 'Mensageria', 'Observabilidade'],
     coverImage: '/projects/fintech-ledger.jpg',
-    coverAlt: 'Tela com gráficos financeiros e monitoramento de indicadores em ambiente corporativo.',
+    coverAlt: 'Moedas digitais sobre gráfico financeiro representando operação fintech com componente web3.',
     featured: true,
     confidentialityNote:
       'Algumas denominações internas e referências ao contexto do cliente foram abstraídas para preservar confidencialidade comercial.',
@@ -85,7 +85,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['Python', 'FastAPI', 'Engine de execução', 'Risk management', 'Filas', 'Dashboards operacionais'],
     coverImage: '/projects/trading-bot.jpg',
-    coverAlt: 'Monitor com gráfico de trading e séries temporais de mercado.',
+    coverAlt: 'Operador acompanhando múltiplos monitores com gráficos de mercado e performance.',
     featured: false,
     confidentialityNote:
       'A nomenclatura pública do case foi mantida em formato descritivo para evitar exposição de produto e estratégia proprietária.',
@@ -112,7 +112,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['WhatsApp API', 'LLM', 'Orquestração de sessões', 'Análise de sentimento', 'Ranking automático'],
     coverImage: '/projects/ia-entrevistas.jpg',
-    coverAlt: 'Equipe analisando dados em tela grande durante operação de atendimento digital.',
+    coverAlt: 'Mão segurando smartphone com tela do WhatsApp aberta para interação conversacional.',
     featured: true,
   },
   {
@@ -137,7 +137,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['SaaS analytics', 'IA aplicada', 'Comparativos competitivos', 'Catálogo', 'Pricing intelligence'],
     coverImage: '/projects/marketplace-ml.jpg',
-    coverAlt: 'Profissional analisando gráficos de vendas e desempenho de marketplace em notebook.',
+    coverAlt: 'Notebook com interface de loja online e smartphone ao lado em contexto de marketplace.',
     featured: false,
     confidentialityNote:
       'Referências operacionais foram descritas por função e contexto, sem expor conta, seller ou estrutura comercial do cliente.',
@@ -164,7 +164,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['Power Automate', 'State management', 'Auditoria', 'Integrações de e-mail', 'Workflows'],
     coverImage: '/projects/cadencia-emails.jpg',
-    coverAlt: 'Tela de notebook com interface de e-mail e produtividade digital.',
+    coverAlt: 'Smartphone exibindo atalho de e-mail em contexto de comunicação e cadência digital.',
     featured: false,
   },
   {
@@ -214,7 +214,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['MQTT', 'HTTPS', 'ESL', 'Mensageria', 'Operação de pricing'],
     coverImage: '/projects/esl-pricing.jpg',
-    coverAlt: 'Corredor de varejo com prateleiras e etiquetas de preço em ambiente comercial.',
+    coverAlt: 'Setor de supermercado com placas e etiquetas de preço visíveis em ambiente de varejo.',
     featured: false,
   },
   {
@@ -239,7 +239,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['React', 'FastAPI', 'LGPD', 'RBAC', 'Auditoria', 'Workflows operacionais'],
     coverImage: '/projects/acao-social.jpg',
-    coverAlt: 'Pessoas reunidas em ação colaborativa com foco social e comunitário.',
+    coverAlt: 'Equipe reunida ao redor de mesa com notebooks e tablets em contexto de gestão colaborativa.',
     featured: true,
     confidentialityNote:
       'O nome do case foi mantido em formato descritivo para preservar instituições, territórios e dados operacionais sensíveis do contexto real.',
@@ -266,7 +266,7 @@ export const cases: CaseItem[] = [
     ],
     stack: ['SaaS', 'Multitenancy', 'Gestão financeira', 'Gestão de alunos', 'Aplicação web'],
     coverImage: '/projects/personal-trainers.jpg',
-    coverAlt: 'Personal trainer acompanhando treino com tablet em ambiente fitness.',
+    coverAlt: 'Pessoa em academia consultando tablet durante rotina de treino e acompanhamento físico.',
     featured: false,
   },
 ]
