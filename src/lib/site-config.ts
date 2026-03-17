@@ -4,7 +4,7 @@ export const siteConfig = {
     shortName: 'ARCANINE',
     legalName: 'ARCANINE Tecnologia LTDA',
     subLabel: 'Tecnologia',
-    tagline: 'Tecnologia que organiza, automatiza e escala negócios.',
+    tagline: 'Arquitetura, automação e software sob medida para operações críticas.',
   },
   contact: {
     email: 'contato@arcanine.tech',
@@ -19,9 +19,9 @@ export const siteConfig = {
     whatsapp: 'https://wa.me/5511999999999?text=Ola!%20Quero%20falar%20com%20a%20ARCANINE%20Tecnologia%20sobre%20uma%20solucao%20para%20minha%20empresa.',
   },
   seo: {
-    title: 'ARCANINE Tecnologia | Soluções Digitais Sob Medida',
+    title: 'ARCANINE Tecnologia | Arquitetura, automação e software sob medida',
     description:
-      'Tecnologia que organiza, automatiza e escala negócios. Sistemas sob medida, automações inteligentes e integração entre software e operação real.',
+      'Plataformas, automações e integrações para empresas que precisam reduzir atrito operacional, ganhar previsibilidade técnica e escalar com base autoral de engenharia.',
     ogImage: '/og-arcanine.svg',
   },
 }

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.brand.name }],
   openGraph: {
     title: siteConfig.seo.title,
-    description: "Entregamos estrutura, controle e crescimento atraves de tecnologia estrategica.",
+    description: siteConfig.seo.description,
     type: "website",
     locale: "pt_BR",
     images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: siteConfig.seo.title,
-    description: "Sistemas exclusivos, automacoes e integracao para empresas em crescimento.",
+    description: siteConfig.seo.description,
     images: [siteConfig.seo.ogImage],
   },
 }
@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${cormorant.variable} ${inter.variable} ${playfair.variable} font-inter antialiased`}
+        className={`${cormorant.variable} ${inter.variable} ${playfair.variable} overflow-x-hidden font-inter antialiased`}
       >
         <SessionProvider>
           <ThemeProvider
