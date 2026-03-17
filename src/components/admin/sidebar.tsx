@@ -6,7 +6,6 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -27,37 +26,37 @@ import { cn } from '@/lib/utils'
 
 const menuItems = [
   {
-    title: 'Dashboard',
+    title: 'Visão geral',
     icon: LayoutDashboard,
     href: '/admin',
   },
   {
-    title: 'Projects',
+    title: 'Cases',
     icon: FolderKanban,
     href: '/admin/projects',
   },
   {
-    title: 'Services',
+    title: 'Serviços',
     icon: Layers,
     href: '/admin/services',
   },
   {
-    title: 'Contacts',
+    title: 'Leads',
     icon: Mail,
     href: '/admin/contacts',
   },
   {
-    title: 'Pages',
+    title: 'Páginas',
     icon: FileText,
     href: '/admin/pages',
   },
   {
-    title: 'CTA Config',
+    title: 'CTAs globais',
     icon: Megaphone,
     href: '/admin/pages/ctas',
   },
   {
-    title: 'Settings',
+    title: 'Configurações',
     icon: Settings,
     href: '/admin/settings',
   },
@@ -93,7 +92,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
                   ARCANINE
                 </span>
                 <span className="font-inter text-[8px] tracking-[0.2em] uppercase text-stone-500 dark:text-stone-400">
-                  Admin
+                  Painel
                 </span>
               </Link>
             </motion.div>
@@ -162,7 +161,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
                 exit={{ opacity: 0 }}
                 className="font-inter text-sm"
               >
-                Logout
+                Sair
               </motion.span>
             )}
           </AnimatePresence>

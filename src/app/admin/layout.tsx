@@ -35,7 +35,7 @@ export default function AdminLayout({
       <div className="min-h-screen flex items-center justify-center bg-stone-50 dark:bg-stone-950">
         <div className="text-center">
           <Loader2 size={32} className="animate-spin text-stone-400 mx-auto" />
-          <p className="mt-4 font-inter text-sm text-stone-500">Loading...</p>
+          <p className="mt-4 font-inter text-sm text-stone-500">Carregando painel...</p>
         </div>
       </div>
     )

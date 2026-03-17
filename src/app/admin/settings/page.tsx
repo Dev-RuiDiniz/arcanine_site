@@ -1,355 +1,125 @@
-/*
-Arquivo: src/app/admin/settings/page.tsx
-Objetivo: Pagina do painel administrativo.
-Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a exportacao principal.
-*/
-
 'use client'
 
-import { useState } from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useTheme } from 'next-themes'
-import {
-  Globe,
-  Palette,
-  Bell,
-  Shield,
-  User,
-  Mail,
-  Save,
-  Moon,
-  Sun,
-  Monitor,
-} from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { ExternalLink, Globe, MessageSquareMore, Shield, Wrench } from 'lucide-react'
+import { siteConfig } from '@/lib/site-config'
 
-const tabs = [
-  { id: 'general', label: 'General', icon: Globe },
-  { id: 'appearance', label: 'Appearance', icon: Palette },
-  { id: 'notifications', label: 'Notifications', icon: Bell },
-  { id: 'security', label: 'Security', icon: Shield },
-  { id: 'profile', label: 'Profile', icon: User },
+const blocks = [
+  {
+    title: 'Marca e posicionamento',
+    icon: Globe,
+    items: [
+      ['Nome público', siteConfig.brand.name],
+      ['Tagline', siteConfig.brand.tagline],
+      ['SEO principal', siteConfig.seo.title],
+    ],
+  },
+  {
+    title: 'Contato comercial',
+    icon: MessageSquareMore,
+    items: [
+      ['E-mail geral', siteConfig.contact.email],
+      ['E-mail comercial', siteConfig.contact.salesEmail],
+      ['WhatsApp', siteConfig.contact.phoneDisplay],
+    ],
+  },
+  {
+    title: 'Operação do painel',
+    icon: Wrench,
+    items: [
+      ['Editor de páginas', 'Ativo'],
+      ['Upload de imagens', 'Disponível para o editor'],
+      ['Leads', 'Centralizados na área de contatos'],
+    ],
+  },
+  {
+    title: 'Acesso e segurança',
+    icon: Shield,
+    items: [
+      ['Login admin', 'Protegido por NextAuth'],
+      ['Sessão', 'Persistência por JWT'],
+      ['Produção', 'Exige NEXTAUTH_SECRET configurado'],
+    ],
+  },
 ]
 
 export default function SettingsPage() {
-  const { theme, setTheme } = useTheme()
-  const [activeTab, setActiveTab] = useState('general')
-  const [isSaving, setIsSaving] = useState(false)
-
-  const handleSave = async () => {
-    setIsSaving(true)
-    await new Promise((r) => setTimeout(r, 1000))
-    setIsSaving(false)
-  }
-
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-stone-900 dark:text-white">
-            Settings
-          </h1>
-          <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1">
-            Manage your site settings and preferences
-          </p>
-        </div>
-        <button
-          onClick={handleSave}
-          disabled={isSaving}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-inter text-xs tracking-wide hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors rounded-lg disabled:opacity-50"
-        >
-          <Save size={16} />
-          {isSaving ? 'Saving...' : 'Save Changes'}
-        </button>
+      <div>
+        <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-stone-900 dark:text-white">
+          Configurações
+        </h1>
+        <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1 max-w-2xl">
+          Visão consolidada das informações operacionais e institucionais que sustentam o site e o painel administrativo.
+        </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Tabs */}
-        <div className="lg:w-56 shrink-0">
-          <nav className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  'flex items-center gap-3 px-4 py-2.5 rounded-lg font-inter text-sm whitespace-nowrap transition-colors',
-                  activeTab === tab.id
-                    ? 'bg-stone-900 dark:bg-white text-white dark:text-stone-900'
-                    : 'text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800'
-                )}
-              >
-                <tab.icon size={18} />
-                {tab.label}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {blocks.map((block, index) => (
+          <motion.section
+            key={block.title}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-6"
+            transition={{ duration: 0.25, delay: index * 0.05 }}
+            className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5"
           >
-            {activeTab === 'general' && (
-              <div className="space-y-6">
-                <h2 className="font-inter text-lg font-medium text-stone-900 dark:text-white">
-                  General Settings
-                </h2>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Site Name
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue="ARCANINE Tecnologia"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Site Description
-                    </label>
-                    <textarea
-                      rows={3}
-                      defaultValue="Tecnologia que organiza, automatiza e escala negocios com engenharia e visao operacional."
-                      className="w-full px-4 py-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400 resize-none"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                        Contact Email
-                      </label>
-                      <input
-                        type="email"
-                        defaultValue="contato@arcanine.tech"
-                        className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        defaultValue="+55 11 99999-9999"
-                        className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Address
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue="Sao Paulo, Brasil"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-                </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
+                <block.icon size={18} className="text-stone-700 dark:text-stone-300" />
               </div>
-            )}
+              <h2 className="font-inter text-sm font-medium text-stone-900 dark:text-white">{block.title}</h2>
+            </div>
 
-            {activeTab === 'appearance' && (
-              <div className="space-y-6">
-                <h2 className="font-inter text-lg font-medium text-stone-900 dark:text-white">
-                  Appearance
-                </h2>
-
-                <div>
-                  <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-4">
-                    Theme
-                  </label>
-                  <div className="grid grid-cols-3 gap-4">
-                    {[
-                      { value: 'light', icon: Sun, label: 'Light' },
-                      { value: 'dark', icon: Moon, label: 'Dark' },
-                      { value: 'system', icon: Monitor, label: 'System' },
-                    ].map((option) => (
-                      <button
-                        key={option.value}
-                        onClick={() => setTheme(option.value)}
-                        className={cn(
-                          'flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all',
-                          theme === option.value
-                            ? 'border-stone-900 dark:border-white bg-stone-50 dark:bg-stone-800'
-                            : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-600'
-                        )}
-                      >
-                        <option.icon
-                          size={24}
-                          className={cn(
-                            theme === option.value
-                              ? 'text-stone-900 dark:text-white'
-                              : 'text-stone-400'
-                          )}
-                        />
-                        <span
-                          className={cn(
-                            'font-inter text-sm',
-                            theme === option.value
-                              ? 'text-stone-900 dark:text-white'
-                              : 'text-stone-500 dark:text-stone-400'
-                          )}
-                        >
-                          {option.label}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
+            <div className="mt-5 space-y-3">
+              {block.items.map(([label, value]) => (
+                <div
+                  key={label}
+                  className="flex items-start justify-between gap-4 rounded-lg bg-stone-50 dark:bg-stone-800/60 px-4 py-3"
+                >
+                  <span className="font-inter text-xs uppercase tracking-[0.14em] text-stone-500 dark:text-stone-400">
+                    {label}
+                  </span>
+                  <span className="font-inter text-sm text-stone-800 dark:text-stone-200 text-right">{value}</span>
                 </div>
+              ))}
+            </div>
+          </motion.section>
+        ))}
+      </div>
 
-                <div>
-                  <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-4">
-                    Primary Color
-                  </label>
-                  <div className="flex gap-3">
-                    {['#78716c', '#1c1917', '#0ea5e9', '#8b5cf6', '#f59e0b'].map((color) => (
-                      <button
-                        key={color}
-                        className="w-10 h-10 rounded-full border-2 border-white dark:border-stone-800 shadow-md"
-                        style={{ backgroundColor: color }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
+      <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className="font-inter text-sm font-medium text-stone-900 dark:text-white">Ajustes frequentes</h2>
+            <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1">
+              O conteúdo institucional do site é gerenciado nas páginas editáveis e os CTAs globais ficam centralizados em uma rota específica do painel.
+            </p>
+          </div>
 
-            {activeTab === 'notifications' && (
-              <div className="space-y-6">
-                <h2 className="font-inter text-lg font-medium text-stone-900 dark:text-white">
-                  Notification Settings
-                </h2>
-
-                <div className="space-y-4">
-                  {[
-                    { label: 'Email notifications for new contacts', defaultChecked: true },
-                    { label: 'Email notifications for new subscribers', defaultChecked: true },
-                    { label: 'Weekly summary report', defaultChecked: false },
-                    { label: 'Browser push notifications', defaultChecked: false },
-                  ].map((option) => (
-                    <label
-                      key={option.label}
-                      className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800 rounded-lg cursor-pointer"
-                    >
-                      <span className="font-inter text-sm text-stone-700 dark:text-stone-300">
-                        {option.label}
-                      </span>
-                      <input
-                        type="checkbox"
-                        defaultChecked={option.defaultChecked}
-                        className="w-5 h-5 rounded border-stone-300 dark:border-stone-600"
-                      />
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'security' && (
-              <div className="space-y-6">
-                <h2 className="font-inter text-lg font-medium text-stone-900 dark:text-white">
-                  Security Settings
-                </h2>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Current Password
-                    </label>
-                    <input
-                      type="password"
-                      placeholder="••••••••"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      New Password
-                    </label>
-                    <input
-                      type="password"
-                      placeholder="••••••••"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Confirm New Password
-                    </label>
-                    <input
-                      type="password"
-                      placeholder="••••••••"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-                </div>
-
-                <button className="px-4 py-2.5 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-inter text-xs tracking-wide hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors rounded-lg">
-                  Update Password
-                </button>
-              </div>
-            )}
-
-            {activeTab === 'profile' && (
-              <div className="space-y-6">
-                <h2 className="font-inter text-lg font-medium text-stone-900 dark:text-white">
-                  Profile Settings
-                </h2>
-
-                <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 bg-stone-200 dark:bg-stone-700 rounded-full flex items-center justify-center">
-                    <User size={32} className="text-stone-400" />
-                  </div>
-                  <div>
-                    <button className="px-4 py-2 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-inter text-xs tracking-wide rounded-lg hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors">
-                      Upload Photo
-                    </button>
-                    <p className="mt-2 font-inter text-xs text-stone-500 dark:text-stone-400">
-                      JPG, PNG or GIF. Max 2MB.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue="Admin"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-inter text-xs uppercase tracking-wide text-stone-500 dark:text-stone-400 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      defaultValue="admin@arcanine.tech"
-                      className="w-full h-12 px-4 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg font-inter text-sm text-stone-900 dark:text-white focus:outline-none focus:border-stone-400"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-          </motion.div>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/admin/pages/ctas"
+              className="inline-flex items-center gap-2 px-3 py-2 bg-stone-900 dark:bg-white text-white dark:text-stone-900 rounded-lg hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors font-inter text-xs tracking-wide"
+            >
+              CTAs globais
+            </Link>
+            <Link
+              href="/admin/pages/home"
+              className="inline-flex items-center gap-2 px-3 py-2 border border-stone-200 dark:border-stone-700 rounded-lg hover:border-stone-300 dark:hover:border-stone-600 transition-colors font-inter text-xs tracking-wide text-stone-700 dark:text-stone-300"
+            >
+              Editar home
+            </Link>
+            <Link
+              href="/"
+              target="_blank"
+              className="inline-flex items-center gap-2 px-3 py-2 border border-stone-200 dark:border-stone-700 rounded-lg hover:border-stone-300 dark:hover:border-stone-600 transition-colors font-inter text-xs tracking-wide text-stone-700 dark:text-stone-300"
+            >
+              Ver site
+              <ExternalLink size={14} />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

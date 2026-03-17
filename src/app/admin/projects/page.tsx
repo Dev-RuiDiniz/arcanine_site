@@ -1,351 +1,110 @@
-/*
-Arquivo: src/app/admin/projects/page.tsx
-Objetivo: Pagina do painel administrativo.
-Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a exportacao principal.
-*/
-
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
-import {
-  Plus,
-  Search,
-  Filter,
-  MoreVertical,
-  Edit,
-  Trash2,
-  Eye,
-  Copy,
-  ChevronDown,
-} from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Eye, FileText } from 'lucide-react'
+import { cases } from '@/lib/site-content/projects'
 import { cn } from '@/lib/utils'
 
-const projects = [
-  {
-    id: '1',
-    title: 'Beach House in Troia',
-    slug: 'beach-house-troia',
-    location: 'Pestana Troia Eco Resort',
-    category: 'Residential',
-    status: 'WORK_IN_PROGRESS',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80',
-    updatedAt: '2024-01-15',
-  },
-  {
-    id: '2',
-    title: 'Summer House in Comporta',
-    slug: 'summer-house-comporta',
-    location: 'Comporta Retreat',
-    category: 'Residential',
-    status: 'PUBLISHED',
-    featured: true,
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80',
-    updatedAt: '2024-01-14',
-  },
-  {
-    id: '3',
-    title: 'Contemporary City House',
-    slug: 'contemporary-city-house',
-    location: 'Almada, Portugal',
-    category: 'Residential',
-    status: 'PUBLISHED',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80',
-    updatedAt: '2024-01-12',
-  },
-  {
-    id: '4',
-    title: 'Elegant & Timeless Duplex',
-    slug: 'elegant-timeless-duplex',
-    location: 'Braga, Portugal',
-    category: 'Residential',
-    status: 'DRAFT',
-    featured: false,
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80',
-    updatedAt: '2024-01-10',
-  },
-]
+const statusLabels: Record<(typeof cases)[number]['stage'], string> = {
+  PUBLISHED: 'Publicado',
+  WORK_IN_PROGRESS: 'Em implantação',
+  COMING_SOON: 'Em breve',
+}
 
-const statusColors: Record<string, { bg: string; text: string }> = {
-  PUBLISHED: { bg: 'bg-emerald-100 dark:bg-emerald-900/30', text: 'text-emerald-700 dark:text-emerald-400' },
-  DRAFT: { bg: 'bg-stone-100 dark:bg-stone-800', text: 'text-stone-600 dark:text-stone-400' },
-  WORK_IN_PROGRESS: { bg: 'bg-amber-100 dark:bg-amber-900/30', text: 'text-amber-700 dark:text-amber-400' },
-  COMING_SOON: { bg: 'bg-blue-100 dark:bg-blue-900/30', text: 'text-blue-700 dark:text-blue-400' },
+const statusStyles: Record<(typeof cases)[number]['stage'], string> = {
+  PUBLISHED: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
+  WORK_IN_PROGRESS: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+  COMING_SOON: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
 }
 
 export default function ProjectsPage() {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [statusFilter, setStatusFilter] = useState('all')
-  const [selectedProjects, setSelectedProjects] = useState<string[]>([])
-  const [showDropdown, setShowDropdown] = useState<string | null>(null)
-
-  const filteredProjects = projects.filter((project) => {
-    const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesStatus = statusFilter === 'all' || project.status === statusFilter
-    return matchesSearch && matchesStatus
-  })
-
-  const toggleSelect = (id: string) => {
-    setSelectedProjects((prev) =>
-      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
-    )
-  }
-
-  const toggleSelectAll = () => {
-    if (selectedProjects.length === filteredProjects.length) {
-      setSelectedProjects([])
-    } else {
-      setSelectedProjects(filteredProjects.map((p) => p.id))
-    }
-  }
-
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <h1 className="font-cormorant text-2xl lg:text-3xl font-light text-stone-900 dark:text-white">
-            Projects
+            Cases
           </h1>
-          <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1">
-            Manage your portfolio projects
+          <p className="font-inter text-sm text-stone-500 dark:text-stone-400 mt-1 max-w-2xl">
+            Base editorial dos cases exibidos no site. Use esta visão para revisar narrativa, status e ordem de prioridade comercial.
           </p>
         </div>
+
         <Link
-          href="/admin/projects/new"
+          href="/admin/pages/projects"
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-inter text-xs tracking-wide hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors rounded-lg"
         >
-          <Plus size={16} />
-          New Project
+          <FileText size={16} />
+          Abrir editor da página
         </Link>
       </div>
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        {/* Search */}
-        <div className="flex-1 flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg">
-          <Search size={18} className="text-stone-400" />
-          <input
-            type="text"
-            placeholder="Search projects..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 bg-transparent font-inter text-sm text-stone-900 dark:text-white placeholder-stone-400 focus:outline-none"
-          />
-        </div>
-
-        {/* Status Filter */}
-        <div className="relative">
-          <button
-            onClick={() => setShowDropdown(showDropdown === 'filter' ? null : 'filter')}
-            className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg font-inter text-sm text-stone-600 dark:text-stone-400 hover:border-stone-300 dark:hover:border-stone-700 transition-colors"
+      <div className="grid gap-4">
+        {cases.map((project, index) => (
+          <motion.article
+            key={project.id}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25, delay: index * 0.05 }}
+            className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-5"
           >
-            <Filter size={16} />
-            Status
-            <ChevronDown size={14} />
-          </button>
-
-          {showDropdown === 'filter' && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-stone-900 rounded-lg shadow-xl border border-stone-200 dark:border-stone-800 py-2 z-10"
-            >
-              {['all', 'PUBLISHED', 'DRAFT', 'WORK_IN_PROGRESS', 'COMING_SOON'].map((status) => (
-                <button
-                  key={status}
-                  onClick={() => {
-                    setStatusFilter(status)
-                    setShowDropdown(null)
-                  }}
-                  className={cn(
-                    'w-full px-4 py-2 text-left font-inter text-sm transition-colors',
-                    statusFilter === status
-                      ? 'bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-white'
-                      : 'text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800'
-                  )}
-                >
-                  {status === 'all' ? 'All Statuses' : status.replace(/_/g, ' ')}
-                </button>
-              ))}
-            </motion.div>
-          )}
-        </div>
-      </div>
-
-      {/* Bulk Actions */}
-      {selectedProjects.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 p-4 bg-stone-100 dark:bg-stone-800 rounded-lg"
-        >
-          <span className="font-inter text-sm text-stone-600 dark:text-stone-400">
-            {selectedProjects.length} selected
-          </span>
-          <button className="font-inter text-sm text-red-600 hover:text-red-700 transition-colors">
-            Delete
-          </button>
-          <button className="font-inter text-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors">
-            Change Status
-          </button>
-        </motion.div>
-      )}
-
-      {/* Projects Table */}
-      <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-800/50">
-                <th className="px-5 py-4 text-left">
-                  <input
-                    type="checkbox"
-                    checked={selectedProjects.length === filteredProjects.length && filteredProjects.length > 0}
-                    onChange={toggleSelectAll}
-                    className="w-4 h-4 rounded border-stone-300 dark:border-stone-600"
-                  />
-                </th>
-                <th className="px-5 py-4 text-left font-inter text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
-                  Project
-                </th>
-                <th className="px-5 py-4 text-left font-inter text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
-                  Category
-                </th>
-                <th className="px-5 py-4 text-left font-inter text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-5 py-4 text-left font-inter text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
-                  Featured
-                </th>
-                <th className="px-5 py-4 text-left font-inter text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
-                  Updated
-                </th>
-                <th className="px-5 py-4 text-right font-inter text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-100 dark:divide-stone-800">
-              {filteredProjects.map((project) => (
-                <tr
-                  key={project.id}
-                  className="hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors"
-                >
-                  <td className="px-5 py-4">
-                    <input
-                      type="checkbox"
-                      checked={selectedProjects.includes(project.id)}
-                      onChange={() => toggleSelect(project.id)}
-                      className="w-4 h-4 rounded border-stone-300 dark:border-stone-600"
-                    />
-                  </td>
-                  <td className="px-5 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-800 shrink-0">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div>
-                        <p className="font-inter text-sm font-medium text-stone-900 dark:text-white">
-                          {project.title}
-                        </p>
-                        <p className="font-inter text-xs text-stone-500 dark:text-stone-400">
-                          {project.location}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className="font-inter text-sm text-stone-600 dark:text-stone-400">
-                      {project.category}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h2 className="font-inter text-base font-medium text-stone-900 dark:text-white">{project.title}</h2>
+                  <span className={cn('px-2.5 py-1 rounded-full font-inter text-xs', statusStyles[project.stage])}>
+                    {statusLabels[project.stage]}
+                  </span>
+                </div>
+                <p className="font-inter text-sm text-stone-500 dark:text-stone-400">{project.segment}</p>
+                <p className="font-inter text-sm text-stone-700 dark:text-stone-300 leading-relaxed max-w-3xl">
+                  {project.challenge}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.stack.map((item) => (
                     <span
-                      className={cn(
-                        'inline-flex px-2.5 py-1 rounded-full font-inter text-xs',
-                        statusColors[project.status]?.bg,
-                        statusColors[project.status]?.text
-                      )}
+                      key={item}
+                      className="px-2.5 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 font-inter text-xs"
                     >
-                      {project.status.replace(/_/g, ' ')}
+                      {item}
                     </span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className={cn(
-                      'inline-flex w-8 h-5 rounded-full transition-colors',
-                      project.featured ? 'bg-emerald-500' : 'bg-stone-300 dark:bg-stone-700'
-                    )}>
-                      <span className={cn(
-                        'w-4 h-4 mt-0.5 rounded-full bg-white shadow transition-transform',
-                        project.featured ? 'translate-x-3.5' : 'translate-x-0.5'
-                      )} />
-                    </span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className="font-inter text-sm text-stone-500 dark:text-stone-400">
-                      {new Date(project.updatedAt).toLocaleDateString()}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <div className="flex items-center justify-end gap-2">
-                      <a
-                        href={`/projects/${project.slug}`}
-                        target="_blank"
-                        className="p-2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
-                        title="View"
-                      >
-                        <Eye size={16} />
-                      </a>
-                      <Link
-                        href={`/admin/projects/${project.id}`}
-                        className="p-2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
-                        title="Edit"
-                      >
-                        <Edit size={16} />
-                      </Link>
-                      <button
-                        className="p-2 text-stone-400 hover:text-red-500 transition-colors"
-                        title="Delete"
-                      >
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  ))}
+                </div>
+              </div>
 
-        {/* Pagination */}
-        <div className="px-5 py-4 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between">
-          <p className="font-inter text-sm text-stone-500 dark:text-stone-400">
-            Showing {filteredProjects.length} of {projects.length} projects
-          </p>
-          <div className="flex items-center gap-2">
-            <button className="px-3 py-1.5 font-inter text-sm text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white border border-stone-200 dark:border-stone-700 rounded transition-colors">
-              Previous
-            </button>
-            <button className="px-3 py-1.5 font-inter text-sm bg-stone-900 dark:bg-white text-white dark:text-stone-900 rounded">
-              1
-            </button>
-            <button className="px-3 py-1.5 font-inter text-sm text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white border border-stone-200 dark:border-stone-700 rounded transition-colors">
-              Next
-            </button>
-          </div>
-        </div>
+              <div className="flex items-center gap-4 shrink-0">
+                <div className="text-right">
+                  <p className="font-inter text-xs text-stone-500 dark:text-stone-400">Duração</p>
+                  <p className="font-inter text-sm text-stone-800 dark:text-stone-200">{project.duration}</p>
+                </div>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  target="_blank"
+                  className="p-2 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
+                  title="Ver case público"
+                >
+                  <Eye size={16} />
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-5 border-t border-stone-200 dark:border-stone-800 pt-4 flex items-center justify-between gap-3">
+              <p className="font-inter text-xs text-stone-500 dark:text-stone-400">
+                Resultado principal: {project.outcomes[0]}
+              </p>
+              <Link
+                href={`/projects/${project.slug}`}
+                target="_blank"
+                className="inline-flex items-center gap-2 font-inter text-xs tracking-[0.16em] uppercase text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white transition-colors"
+              >
+                Ver case
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </motion.article>
+        ))}
       </div>
     </div>
   )
 }
-
