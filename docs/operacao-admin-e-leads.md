@@ -19,7 +19,6 @@ Rotas principais do editor:
 - `/admin/pages/services`
 - `/admin/pages/projects`
 - `/admin/pages/about`
-- `/admin/pages/blog`
 - `/admin/pages/privacy`
 - `/admin/pages/terms`
 - `/admin/pages/cookies`

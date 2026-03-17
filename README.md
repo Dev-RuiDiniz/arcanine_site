@@ -6,7 +6,7 @@ O projeto foi consolidado para o domínio de tecnologia B2B. O escopo atual cobr
 
 - site público institucional
 - catálogo de serviços
-- cases e blog
+- cases
 - editor de páginas do admin
 - captura e acompanhamento de leads
 - modo `frontend-only` para verificação visual na Vercel
@@ -30,8 +30,6 @@ O projeto foi consolidado para o domínio de tecnologia B2B. O escopo atual cobr
   - `/services/[slug]`
   - `/projects`
   - `/projects/[slug]`
-  - `/blog`
-  - `/blog/[slug]`
   - `/contact`
   - `/solicitar-orcamento`
   - `/agendar-reuniao`
@@ -186,6 +184,7 @@ Isso é adequado apenas para desenvolvimento e verificação interna. Produção
 - validar rotas públicas principais
 - validar envio de contato, orçamento e reunião técnica
 - validar leitura dos leads em `/admin/contacts`
+- confirmar ausência total de `/blog` e `/admin/pages/blog`
 
 ## Atualização de ferramentas no Windows
 
