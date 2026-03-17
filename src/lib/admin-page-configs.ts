@@ -1,4 +1,4 @@
-import { Briefcase, FileText, Globe, Home, Lock, Megaphone, Users } from 'lucide-react'
+import { Briefcase, Globe, Home, Lock, Megaphone, Users } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 export type EditorFieldType = 'text' | 'textarea' | 'url' | 'image' | 'color'
@@ -27,7 +27,6 @@ export interface AdminPageEditorConfig {
     | 'privacy'
     | 'terms'
     | 'cookies'
-    | 'blog'
     | 'ctas'
   title: string
   publicPath: string
@@ -271,30 +270,6 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
             type: 'textarea',
             defaultValue:
               'Descreva cookies essenciais, analíticos e de marketing, incluindo como o usuário pode revisar o consentimento.',
-          },
-        ],
-      },
-    ],
-  },
-  blog: {
-    pageId: 'blog',
-    title: 'Blog',
-    publicPath: '/blog',
-    description: 'Edite a apresentação e as chamadas do blog institucional.',
-    icon: FileText,
-    sections: [
-      {
-        id: 'blog_header',
-        title: 'Cabeçalho',
-        helperText: 'Texto principal da página de blog.',
-        fields: [
-          { id: 'blog_title', label: 'Título', type: 'text', defaultValue: 'Conteúdo técnico para decisão de negócio.' },
-          {
-            id: 'blog_description',
-            label: 'Descrição',
-            type: 'textarea',
-            defaultValue:
-              'Publicações objetivas sobre engenharia, automação e IA aplicada em operações reais.',
           },
         ],
       },

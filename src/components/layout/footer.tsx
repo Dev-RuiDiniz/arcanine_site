@@ -19,7 +19,6 @@ const socialLinks = [
 const navLinks = [
   { label: 'Servicos', href: '/services' },
   { label: 'Cases', href: '/projects' },
-  { label: 'Blog', href: '/blog' },
   { label: 'Sobre', href: '/about' },
   { label: 'Contato', href: '/contact' },
 ]
