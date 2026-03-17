@@ -15,6 +15,7 @@ export interface CaseItem {
   segment: string
   stage: CaseStage
   excerpt: string
+  challengePoints: string[]
   context: string
   solution: string
   architecture: string
@@ -46,6 +47,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Core financeiro em AWS com ledger double-entry, microsserviços e integração EVM para produtos que exigem consistência contábil e trilha confiável de eventos.',
+    challengePoints: [
+      'Consolidar eventos financeiros críticos em uma base única e auditável',
+      'Separar regras de negócio transacionais da evolução de novos produtos',
+      'Manter rastreabilidade entre lançamentos internos, saldos e eventos on-chain',
+    ],
     context:
       'A operação precisava consolidar eventos financeiros críticos em uma base única, auditável e preparada para evoluir produtos digitais sem depender de controles paralelos ou reconciliações manuais frágeis.',
     solution:
@@ -74,6 +80,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Engine profissional para execução spot com ordens idempotentes, regras de risco parametrizadas e dashboard operacional para acompanhamento em tempo real.',
+    challengePoints: [
+      'Evitar duplicidade operacional no fluxo de ordens',
+      'Aplicar regras de risco antes de cada execução sem aumentar ruído',
+      'Dar visibilidade contínua para posições, incidentes e comportamento da estratégia',
+    ],
     context:
       'A estratégia dependia de uma camada de execução mais previsível, com tratamento consistente de eventos, proteção contra duplicidade de ordens e visibilidade operacional para revisão de posições e comportamento da engine.',
     solution:
@@ -102,6 +113,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Orquestração de entrevistas via WhatsApp com sessões guiadas por IA, leitura de sentimento e ranking automático para acelerar triagem em escala.',
+    challengePoints: [
+      'Escalar triagem sem perder consistência entre candidatos e vagas',
+      'Consolidar sinais qualitativos sem aumentar o trabalho manual do recrutador',
+      'Manter revisão humana com melhor contexto para priorização',
+    ],
     context:
       'O processo de triagem exigia alto esforço manual para conduzir entrevistas iniciais, consolidar impressões qualitativas e manter padrão de avaliação entre candidatos em diferentes vagas e volumes de demanda.',
     solution:
@@ -128,6 +144,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Plataforma de análise competitiva para Mercado Livre com sugestões orientadas por IA para títulos, preços e posicionamento comercial.',
+    challengePoints: [
+      'Ler o cenário competitivo com velocidade suficiente para agir por SKU',
+      'Padronizar otimizações sem depender de revisão manual anúncio por anúncio',
+      'Dar suporte editorial e analítico para decisões de pricing e posicionamento',
+    ],
     context:
       'A operação precisava reagir com mais velocidade à dinâmica competitiva do marketplace, identificando oportunidades de otimização sem depender de revisão manual extensa de anúncio por anúncio.',
     solution:
@@ -156,6 +177,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Cadência profissional via Power Automate com controle de estado, governança de disparos e histórico auditável para processos comerciais recorrentes.',
+    challengePoints: [
+      'Evitar reprocessamento indevido e ambiguidades de estado por contato',
+      'Auditar com clareza cada etapa da jornada comercial automatizada',
+      'Criar governança operacional sem travar a rotina do time',
+    ],
     context:
       'A equipe precisava organizar cadências recorrentes sem perder rastreabilidade sobre quem entrou em cada fluxo, em qual etapa se encontrava e quais eventos já haviam sido processados ou bloqueados.',
     solution:
@@ -182,6 +208,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Solução conectada com ESP32 e LoRa para monitoramento remoto de gás, consolidação de telemetria e predição de consumo.',
+    challengePoints: [
+      'Transformar leituras físicas e reativas em telemetria confiável',
+      'Consolidar dados de ativos distribuídos em uma base operacional útil',
+      'Criar uma camada de predição e alerta sem perder simplicidade de operação',
+    ],
     context:
       'A operação precisava transformar leituras físicas e rotinas reativas em acompanhamento contínuo, com dados confiáveis para planejar reposição, identificar variações e antecipar comportamento de consumo.',
     solution:
@@ -208,6 +239,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Camada operacional para atualização massiva de preços em ESL, com distribuição via MQTT e HTTPS para ambientes que exigem sincronismo e escala.',
+    challengePoints: [
+      'Reduzir latência e inconsistência entre decisão comercial e ponto de venda',
+      'Distribuir updates em massa com confirmação e capacidade de reenvio',
+      'Manter rastreabilidade operacional em uma rotina de pricing sensível',
+    ],
     context:
       'A atualização de preços em loja exigia um fluxo mais confiável entre decisão comercial e ponta física, reduzindo latência, inconsistências e dependência de processos manuais para publicação em massa.',
     solution:
@@ -234,6 +270,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'Plataforma React + FastAPI para organizar atendimentos, fluxos sociais e trilhas de dados sensíveis com governança aderente à LGPD.',
+    challengePoints: [
+      'Organizar fluxos sociais com histórico confiável de atendimento',
+      'Tratar dados sensíveis com melhor controle de acesso e rastreabilidade',
+      'Dar previsibilidade operacional sem degradar a experiência das equipes',
+    ],
     context:
       'O processo social exigia maior controle sobre cadastro, histórico de atendimento, fluxos internos e tratamento de dados pessoais, com necessidade de rastreabilidade sem comprometer a experiência operacional das equipes.',
     solution:
@@ -262,6 +303,11 @@ export const cases: CaseItem[] = [
     stage: 'PUBLISHED',
     excerpt:
       'SaaS para gestão financeira e de alunos com isolamento de dados por usuário, voltado a profissionais que precisam operar rotina e recorrência em uma base própria.',
+    challengePoints: [
+      'Garantir isolamento lógico de dados em uma base multitenant',
+      'Unificar rotina financeira e operação diária em uma única experiência',
+      'Preparar o produto para expansão funcional sem comprometer simplicidade',
+    ],
     context:
       'O produto precisava combinar simplicidade de uso com separação segura entre contas, oferecendo ao profissional visão integrada de alunos, cobranças e rotina operacional sem misturar dados entre usuários.',
     solution:
