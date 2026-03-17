@@ -11,9 +11,12 @@ function buildAdapterConfig(connectionString) {
 
   try {
     const databaseUrl = new URL(connectionString)
+    const isSupabaseHost =
+      databaseUrl.hostname.endsWith('.supabase.co') ||
+      databaseUrl.hostname.endsWith('.supabase.com')
 
     if (
-      databaseUrl.hostname.endsWith('.supabase.co') &&
+      isSupabaseHost &&
       databaseUrl.searchParams.get('sslmode') !== 'no-verify'
     ) {
       databaseUrl.searchParams.set('sslmode', 'no-verify')
