@@ -16,7 +16,7 @@ import { siteConfig } from '@/lib/site-config'
 const contactSchema = z.object({
   name: z.string().min(2, 'Informe seu nome completo'),
   company: z.string().min(2, 'Informe a empresa'),
-  email: z.string().email('Informe um e-mail valido'),
+  email: z.string().email('Informe um e-mail válido'),
   phone: z.string().min(8, 'Informe um WhatsApp para retorno'),
   projectType: z.string().min(2, 'Informe o tipo de projeto'),
   budgetRange: z.string().optional(),
@@ -28,13 +28,13 @@ type ContactFormData = z.infer<typeof contactSchema>
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
+    label: 'E-mail',
     value: siteConfig.contact.email,
     href: `mailto:${siteConfig.contact.email}`,
   },
   {
     icon: MapPin,
-    label: 'Localizacao',
+    label: 'Localização',
     value: siteConfig.contact.city,
     href: null,
   },
@@ -57,16 +57,17 @@ interface ContactLeadPageProps {
 
 export function ContactLeadPage({
   defaultIntent,
-  objectiveLabel = 'Contato',
-  heroTitle = 'Vamos estruturar sua proxima solucao',
-  heroDescription = 'Fale com nosso time tecnico-comercial para mapear seu desafio e definir o melhor caminho de implementacao.',
-  formTitle = 'Enviar Mensagem',
-  submitLabel = 'Enviar Mensagem',
-  successTitle = 'Recebido',
-  successMessage = 'Mensagem enviada com sucesso. Nosso time retorna em breve.',
+  objectiveLabel = 'Contato comercial',
+  heroTitle = 'Vamos estruturar sua próxima solução',
+  heroDescription = 'Fale com nosso time técnico-comercial para mapear seu desafio e definir o melhor caminho de implementação.',
+  formTitle = 'Enviar briefing',
+  submitLabel = 'Enviar briefing',
+  successTitle = 'Solicitação recebida',
+  successMessage = 'Recebemos seu briefing. Nosso time vai analisar o contexto e retornar com os próximos passos.',
 }: ContactLeadPageProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const searchParams = useSearchParams()
 
   const {
@@ -86,10 +87,10 @@ export function ContactLeadPage({
 
   useEffect(() => {
     if (intent === 'orcamento') {
-      setValue('projectType', 'Solicitacao de orcamento tecnico')
+      setValue('projectType', 'Solicitação de orçamento técnico')
     }
     if (intent === 'reuniao-tecnica') {
-      setValue('projectType', 'Agendamento de reuniao tecnica')
+      setValue('projectType', 'Agendamento de reunião técnica')
     }
   }, [intent, setValue])
 
@@ -97,22 +98,46 @@ export function ContactLeadPage({
     if (requiresBudget && (!data.budgetRange || data.budgetRange.trim().length < 2)) {
       setError('budgetRange', {
         type: 'manual',
-        message: 'Selecione uma faixa de investimento',
+        message: 'Informe uma faixa de investimento',
       })
       return
     }
-    clearErrors('budgetRange')
 
+    clearErrors('budgetRange')
+    setSubmitError('')
     setIsSubmitting(true)
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          company: data.company,
+          email: data.email,
+          phone: data.phone,
+          projectType: data.projectType,
+          budgetRange: data.budgetRange,
+          message: data.message,
+          subject: objectiveLabel,
+          intent: intent || defaultIntent || 'contato-comercial',
+          source: intent === 'orcamento' ? 'solicitar-orcamento' : 'agendar-reuniao',
+        }),
+      })
 
-    console.log('Form submitted:', data)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    reset()
+      const result = (await response.json()) as { success: boolean; error?: string }
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Não foi possível enviar sua solicitação.')
+      }
 
-    setTimeout(() => setIsSubmitted(false), 5000)
+      setIsSubmitted(true)
+      reset()
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Não foi possível enviar sua solicitação.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -131,9 +156,7 @@ export function ContactLeadPage({
             <h1 className="mt-4 font-cormorant text-3xl lg:text-4xl font-light text-stone-800 leading-tight">
               {heroTitle}
             </h1>
-            <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed max-w-lg">
-              {heroDescription}
-            </p>
+            <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed max-w-lg">{heroDescription}</p>
           </motion.div>
         </div>
       </section>
@@ -148,7 +171,7 @@ export function ContactLeadPage({
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">
-                Canal de <span className="italic">Contato</span>
+                Canal de <span className="italic">contato</span>
               </h2>
 
               <div className="space-y-8 mb-12">
@@ -169,16 +192,11 @@ export function ContactLeadPage({
                         {item.label}
                       </span>
                       {item.href ? (
-                        <a
-                          href={item.href}
-                          className="font-inter text-base text-stone-800 hover:text-stone-600 transition-colors"
-                        >
+                        <a href={item.href} className="font-inter text-base text-stone-800 hover:text-stone-600 transition-colors">
                           {item.value}
                         </a>
                       ) : (
-                        <span className="font-inter text-base text-stone-800">
-                          {item.value}
-                        </span>
+                        <span className="font-inter text-base text-stone-800">{item.value}</span>
                       )}
                     </div>
                   </motion.div>
@@ -191,9 +209,7 @@ export function ContactLeadPage({
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <h3 className="font-inter text-xs tracking-[0.2em] uppercase text-stone-500 mb-4">
-                  Redes
-                </h3>
+                <h3 className="font-inter text-xs tracking-[0.2em] uppercase text-stone-500 mb-4">Rede</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
                     <a
@@ -217,9 +233,7 @@ export function ContactLeadPage({
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">
-                {formTitle}
-              </h2>
+              <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">{formTitle}</h2>
 
               {isSubmitted ? (
                 <motion.div
@@ -227,15 +241,17 @@ export function ContactLeadPage({
                   animate={{ opacity: 1, scale: 1 }}
                   className="p-8 bg-green-50 border border-green-200 text-center"
                 >
-                  <h3 className="font-cormorant text-2xl text-green-800 mb-2">
-                    {successTitle}
-                  </h3>
-                  <p className="font-inter text-sm text-green-700">
-                    {successMessage}
-                  </p>
+                  <h3 className="font-cormorant text-2xl text-green-800 mb-2">{successTitle}</h3>
+                  <p className="font-inter text-sm text-green-700">{successMessage}</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  {submitError && (
+                    <div className="p-4 bg-red-50 border border-red-200">
+                      <p className="font-inter text-sm text-red-600">{submitError}</p>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
@@ -249,9 +265,7 @@ export function ContactLeadPage({
                           errors.name && 'border-red-400'
                         )}
                       />
-                      {errors.name && (
-                        <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
-                      )}
+                      {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
                     </div>
 
                     <div>
@@ -266,9 +280,7 @@ export function ContactLeadPage({
                           errors.company && 'border-red-400'
                         )}
                       />
-                      {errors.company && (
-                        <p className="mt-1 text-xs text-red-500">{errors.company.message}</p>
-                      )}
+                      {errors.company && <p className="mt-1 text-xs text-red-500">{errors.company.message}</p>}
                     </div>
                   </div>
 
@@ -286,13 +298,9 @@ export function ContactLeadPage({
                           errors.email && 'border-red-400'
                         )}
                       />
-                      {errors.email && (
-                        <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
-                      )}
+                      {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>}
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
                         WhatsApp *
@@ -300,63 +308,63 @@ export function ContactLeadPage({
                       <Input
                         {...register('phone')}
                         placeholder="+55 (11) 99999-9999"
-                        className="h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm"
+                        className={cn(
+                          'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
+                          errors.phone && 'border-red-400'
+                        )}
                       />
+                      {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>}
                     </div>
+                  </div>
 
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
                         Tipo de projeto *
                       </label>
                       <Input
                         {...register('projectType')}
-                        placeholder="Ex.: Sistema web, IA, integracao"
+                        placeholder="Ex.: sistema web, IA, integração"
                         className={cn(
                           'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
                           errors.projectType && 'border-red-400'
                         )}
                       />
-                      {errors.projectType && (
-                        <p className="mt-1 text-xs text-red-500">{errors.projectType.message}</p>
-                      )}
+                      {errors.projectType && <p className="mt-1 text-xs text-red-500">{errors.projectType.message}</p>}
                     </div>
-                  </div>
 
-                  {requiresBudget && (
-                    <div>
-                      <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                        Faixa de investimento *
-                      </label>
-                      <Input
-                        {...register('budgetRange')}
-                        placeholder="Ex.: 20k-60k, 60k-120k, acima de 120k"
-                        className={cn(
-                          'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
-                          errors.budgetRange && 'border-red-400'
-                        )}
-                      />
-                      {errors.budgetRange && (
-                        <p className="mt-1 text-xs text-red-500">{errors.budgetRange.message}</p>
-                      )}
-                    </div>
-                  )}
+                    {requiresBudget && (
+                      <div>
+                        <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
+                          Faixa de investimento *
+                        </label>
+                        <Input
+                          {...register('budgetRange')}
+                          placeholder="Ex.: 20k-60k, 60k-120k, acima de 120k"
+                          className={cn(
+                            'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
+                            errors.budgetRange && 'border-red-400'
+                          )}
+                        />
+                        {errors.budgetRange && <p className="mt-1 text-xs text-red-500">{errors.budgetRange.message}</p>}
+                      </div>
+                    )}
+                  </div>
 
                   <div>
                     <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
-                      Descricao do desafio *
+                      Descrição do desafio *
                     </label>
                     <Textarea
                       {...register('message')}
-                      placeholder="Contexto atual, problema, objetivo e prazo desejado."
+                      placeholder="Explique o contexto atual, o problema, o objetivo e o prazo desejado."
                       rows={6}
                       className={cn(
                         'bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm resize-none',
                         errors.message && 'border-red-400'
                       )}
                     />
-                    {errors.message && (
-                      <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>
-                    )}
+                    {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>}
                   </div>
 
                   <Button

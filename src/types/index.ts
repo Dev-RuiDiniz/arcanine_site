@@ -59,12 +59,29 @@ export interface Contact {
   id: string
   name: string
   email: string
+  company?: string | null
   phone?: string | null
   subject?: string | null
+  intent?: string | null
+  projectType?: string | null
+  budgetRange?: string | null
   message: string
   status: 'NEW' | 'READ' | 'REPLIED' | 'ARCHIVED'
   source?: string | null
   createdAt: Date
+}
+
+export interface LeadPayload {
+  name: string
+  email: string
+  phone?: string
+  message: string
+  source: string
+  company?: string
+  subject?: string
+  intent?: string
+  projectType?: string
+  budgetRange?: string
 }
 
 export interface SiteSettings {

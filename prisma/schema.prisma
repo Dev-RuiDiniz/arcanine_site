@@ -150,8 +150,12 @@ model Contact {
   id        String        @id @default(cuid())
   name      String
   email     String
+  company   String?
   phone     String?
   subject   String?
+  intent    String?
+  projectType String?
+  budgetRange String?
   message   String        @db.Text
   status    ContactStatus @default(NEW)
   source    String?

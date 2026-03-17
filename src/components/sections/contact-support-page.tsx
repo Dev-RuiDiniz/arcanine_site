@@ -14,10 +14,10 @@ import { siteConfig } from '@/lib/site-config'
 
 const supportSchema = z.object({
   name: z.string().min(2, 'Informe seu nome completo'),
-  email: z.string().email('Informe um e-mail valido'),
+  email: z.string().email('Informe um e-mail válido'),
   phone: z.string().optional(),
   subject: z.string().min(3, 'Informe o assunto'),
-  message: z.string().min(10, 'Descreva sua duvida com mais detalhes'),
+  message: z.string().min(10, 'Descreva sua dúvida com mais detalhes'),
 })
 
 type SupportFormData = z.infer<typeof supportSchema>
@@ -25,13 +25,13 @@ type SupportFormData = z.infer<typeof supportSchema>
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
+    label: 'E-mail',
     value: siteConfig.contact.email,
     href: `mailto:${siteConfig.contact.email}`,
   },
   {
     icon: MapPin,
-    label: 'Localizacao',
+    label: 'Localização',
     value: siteConfig.contact.city,
     href: null,
   },
@@ -42,6 +42,7 @@ const socialLinks = [{ icon: Linkedin, href: siteConfig.links.linkedin, label: '
 export function ContactSupportPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const {
     register,
@@ -53,16 +54,37 @@ export function ContactSupportPage() {
   })
 
   const onSubmit = async (data: SupportFormData) => {
+    setSubmitError('')
     setIsSubmitting(true)
 
-    await new Promise((resolve) => setTimeout(resolve, 1200))
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          subject: data.subject,
+          message: data.message,
+          source: 'contact',
+          intent: 'contato-geral',
+        }),
+      })
 
-    console.log('Support form submitted:', data)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    reset()
+      const result = (await response.json()) as { success: boolean; error?: string }
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Não foi possível enviar sua mensagem.')
+      }
 
-    setTimeout(() => setIsSubmitted(false), 5000)
+      setIsSubmitted(true)
+      reset()
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Não foi possível enviar sua mensagem.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -82,8 +104,7 @@ export function ContactSupportPage() {
               Fale com a ARCANINE
             </h1>
             <p className="mt-4 font-inter text-sm text-stone-600 leading-relaxed max-w-2xl">
-              Este canal e para duvidas, informacoes institucionais e atendimento geral.
-              Para valores e proposta comercial, use a pagina de solicitar orcamento.
+              Este canal é para dúvidas, informações institucionais e atendimento geral. Para valores e proposta comercial, use a página de solicitar orçamento.
             </p>
           </motion.div>
         </div>
@@ -99,7 +120,7 @@ export function ContactSupportPage() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">
-                Canais de <span className="italic">Contato</span>
+                Canais de <span className="italic">contato</span>
               </h2>
 
               <div className="space-y-8 mb-12">
@@ -120,16 +141,11 @@ export function ContactSupportPage() {
                         {item.label}
                       </span>
                       {item.href ? (
-                        <a
-                          href={item.href}
-                          className="font-inter text-base text-stone-800 hover:text-stone-600 transition-colors"
-                        >
+                        <a href={item.href} className="font-inter text-base text-stone-800 hover:text-stone-600 transition-colors">
                           {item.value}
                         </a>
                       ) : (
-                        <span className="font-inter text-base text-stone-800">
-                          {item.value}
-                        </span>
+                        <span className="font-inter text-base text-stone-800">{item.value}</span>
                       )}
                     </div>
                   </motion.div>
@@ -142,9 +158,7 @@ export function ContactSupportPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.35 }}
               >
-                <h3 className="font-inter text-xs tracking-[0.2em] uppercase text-stone-500 mb-4">
-                  Redes
-                </h3>
+                <h3 className="font-inter text-xs tracking-[0.2em] uppercase text-stone-500 mb-4">Rede</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
                     <a
@@ -168,9 +182,7 @@ export function ContactSupportPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">
-                Enviar duvida
-              </h2>
+              <h2 className="font-cormorant text-xl lg:text-2xl font-light text-stone-800 mb-6">Enviar mensagem</h2>
 
               {isSubmitted ? (
                 <motion.div
@@ -178,15 +190,19 @@ export function ContactSupportPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="p-8 bg-green-50 border border-green-200 text-center"
                 >
-                  <h3 className="font-cormorant text-2xl text-green-800 mb-2">
-                    Mensagem recebida
-                  </h3>
+                  <h3 className="font-cormorant text-2xl text-green-800 mb-2">Mensagem recebida</h3>
                   <p className="font-inter text-sm text-green-700">
                     Obrigado. Retornaremos em breve pelo canal informado.
                   </p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  {submitError && (
+                    <div className="p-4 bg-red-50 border border-red-200">
+                      <p className="font-inter text-sm text-red-600">{submitError}</p>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 gap-6">
                     <div>
                       <label className="block font-inter text-xs tracking-[0.15em] uppercase text-stone-500 mb-2">
@@ -238,7 +254,7 @@ export function ContactSupportPage() {
                       </label>
                       <Input
                         {...register('subject')}
-                        placeholder="Ex.: suporte, parceria, duvida"
+                        placeholder="Ex.: suporte, parceria, dúvida"
                         className={cn(
                           'h-12 bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm',
                           errors.subject && 'border-red-400'
@@ -254,7 +270,7 @@ export function ContactSupportPage() {
                     </label>
                     <Textarea
                       {...register('message')}
-                      placeholder="Descreva sua duvida ou solicitacao."
+                      placeholder="Descreva sua dúvida ou solicitação."
                       rows={6}
                       className={cn(
                         'bg-stone-50 border-stone-200 focus:border-stone-400 rounded-none font-inter text-sm resize-none',
@@ -280,7 +296,7 @@ export function ContactSupportPage() {
                       </span>
                     ) : (
                       <span className="flex items-center gap-2">
-                        Enviar duvida
+                        Enviar mensagem
                         <Send size={14} />
                       </span>
                     )}

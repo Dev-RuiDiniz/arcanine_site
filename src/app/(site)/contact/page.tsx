@@ -5,7 +5,7 @@ import { ContactSupportPage } from '@/components/sections/contact-support-page'
 export const metadata: Metadata = {
   title: 'Contato | ARCANINE Tecnologia',
   description:
-    'Entre em contato com a ARCANINE para tirar duvidas, solicitar informacoes ou iniciar uma conversa sobre seu desafio.',
+    'Entre em contato com a ARCANINE para tirar dúvidas, solicitar informações ou iniciar uma conversa sobre o seu desafio.',
 }
 
 export default function ContactPage() {

@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { ContactLeadPage } from '@/components/sections/contact-lead-page'
 
 export const metadata: Metadata = {
-  title: 'Solicitar Orcamento | ARCANINE Tecnologia',
+  title: 'Solicitar Orçamento | ARCANINE Tecnologia',
   description:
-    'Solicite um orcamento tecnico para sistemas sob medida, automacoes e integracoes com foco em resultado.',
+    'Solicite um orçamento técnico para sistemas sob medida, automações e integrações com foco em resultado.',
 }
 
 export default function RequestQuotePage() {
@@ -14,12 +14,12 @@ export default function RequestQuotePage() {
       <ContactLeadPage
         objectiveLabel="Solicitar orcamento"
         defaultIntent="orcamento"
-        heroTitle="Solicite seu orcamento tecnico"
+        heroTitle="Solicite seu orçamento técnico"
         heroDescription="Compartilhe o contexto do seu projeto para receber uma proposta alinhada a escopo, prazo e impacto esperado."
         formTitle="Formulário de orçamento"
-        submitLabel="Solicitar orcamento"
-        successTitle="Orcamento solicitado"
-        successMessage="Recebemos seu briefing. Em breve enviaremos os proximos passos para estruturar sua proposta."
+        submitLabel="Solicitar orçamento"
+        successTitle="Orçamento solicitado"
+        successMessage="Recebemos seu briefing. Em breve enviaremos os próximos passos para estruturar sua proposta."
       />
     </Suspense>
   )
