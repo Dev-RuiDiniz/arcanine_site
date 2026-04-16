@@ -8,7 +8,6 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { ArrowUpRight, Linkedin, Mail, MapPin } from 'lucide-react'
 import { ConversionCTAs } from '@/components/ui/conversion-ctas'
 import type { ConversionCtaConfig } from '@/lib/cta-config'
@@ -79,23 +78,13 @@ export function Footer({ ctas }: { ctas: ConversionCtaConfig }) {
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
           >
-            <Link href="/" className="inline-flex items-center gap-5">
-              <div className="relative h-11 w-11 lg:h-12 lg:w-12 shrink-0">
-                <Image
-                  src="/arcane-logo-icon.png"
-                  alt="Arcane Valknut Logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="leading-none">
-                <span className="block font-cormorant text-2xl tracking-[0.24em] text-brand-outlined lg:text-3xl">
-                  {siteConfig.brand.shortName}
-                </span>
-                <span className="mt-1 block font-inter text-[10px] uppercase tracking-[0.3em] text-brand-outlined">
-                  {siteConfig.brand.subLabel}
-                </span>
-              </div>
+            <Link href="/" className="inline-block">
+              <span className="block font-cormorant text-2xl tracking-[0.24em] text-brand-outlined lg:text-3xl">
+                {siteConfig.brand.shortName}
+              </span>
+              <span className="mt-1 block font-inter text-[10px] uppercase tracking-[0.3em] text-brand-outlined">
+                {siteConfig.brand.subLabel}
+              </span>
             </Link>
             <p className="mt-4 max-w-md font-inter text-sm leading-relaxed text-slate-300">
               Engenharia de software, automação e integração para negócios que precisam transformar complexidade em
