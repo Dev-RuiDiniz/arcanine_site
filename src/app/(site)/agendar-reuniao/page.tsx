@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import { ContactLeadPage } from '@/components/sections/contact-lead-page'
 
-export const metadata: Metadata = {
+export const dynamic = 'force-dynamic';
   title: 'Agendar Reunião Técnica | Arcane Tecnologia',
   description:
     'Agende uma reunião técnica para diagnosticar seu desafio, alinhar escopo e definir os próximos passos com a Arcane.',

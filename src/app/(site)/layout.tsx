@@ -10,6 +10,8 @@ import { GDPRBanner } from "@/components/ui/gdpr-banner"
 import { FloatingChat } from "@/components/ui/floating-chat"
 import { getGlobalConversionCtas } from '@/lib/page-content'
 
+export const dynamic = 'force-dynamic';
+
 export default async function SiteLayout({
   children,
 }: {
