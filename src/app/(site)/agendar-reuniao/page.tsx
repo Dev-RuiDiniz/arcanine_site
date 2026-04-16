@@ -2,8 +2,6 @@ import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import { ContactLeadPage } from '@/components/sections/contact-lead-page'
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: 'Agendar Reunião Técnica | Arcane Tecnologia',
   description:

@@ -12,6 +12,10 @@ const globalForPrisma = globalThis as unknown as {
 }
 
 const buildAdapterConfig = (connectionString: string) => {
+  if (process.env.NODE_ENV === 'production') {
+    return { connectionString }
+  }
+
   let normalizedConnectionString = connectionString
 
   try {

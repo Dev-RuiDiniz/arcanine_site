@@ -131,12 +131,17 @@ function toJsonInput(values: PageContentValueMap): Prisma.InputJsonValue {
 
 export async function getPageContent(pageId: PageContentId | string): Promise<PageContentEntry> {
   if (prisma) {
-    const record = await prisma.pageContent.findUnique({
-      where: { pageId },
-    })
+    try {
+      const record = await prisma.pageContent.findUnique({
+        where: { pageId },
+      })
 
-    if (record) {
-      return serializeRecord(record)
+      if (record) {
+        return serializeRecord(record)
+      }
+    } catch (error) {
+      console.error(`[DB Error] Failed to fetch page content for "${pageId}":`, error)
+      // Prossegue para o fallback local se o banco estiver inacessível
     }
   }
 
