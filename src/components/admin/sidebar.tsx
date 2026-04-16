@@ -100,7 +100,7 @@ export function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
             >
               <Link href="/admin" className="flex items-center gap-2">
                 <span className="font-cormorant text-xl font-light tracking-[0.2em] text-white">
-                  ARCANINE
+                  Arcane
                 </span>
                 <span className="font-inter text-[8px] tracking-[0.2em] uppercase text-brand-cyan">
                   Painel

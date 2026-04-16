@@ -21,7 +21,7 @@ export function AboutPreview() {
           transition={{ duration: 0.65 }}
           className="panel-shell-muted mx-auto max-w-4xl rounded-[2rem] p-8 text-center lg:p-10"
         >
-          <span className="section-kicker justify-center">Sobre a ARCANINE</span>
+          <span className="section-kicker justify-center">Sobre a Arcane</span>
           <h2 className="mt-5 font-cormorant text-[2.1rem] leading-[1.02] text-slate-950 lg:text-[3rem]">
             Engenharia com leitura real de operação.
           </h2>
@@ -33,7 +33,7 @@ export function AboutPreview() {
             href="/about"
             className="group mt-8 inline-flex items-center gap-3 font-inter text-[11px] uppercase tracking-[0.18em] text-slate-600 transition-colors hover:text-brand-cyan-strong"
           >
-            Conhecer a ARCANINE
+            Conhecer a Arcane
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>

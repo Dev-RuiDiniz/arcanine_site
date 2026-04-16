@@ -11,7 +11,7 @@ const termsDefaults = {
   terms_title: 'Termos de Uso',
   terms_last_update: '17 de março de 2026',
   terms_body:
-    'O uso deste site implica concordância com estes termos. O conteúdo publicado é informativo e pode ser atualizado sem aviso prévio. Propostas comerciais e serviços da ARCANINE Tecnologia são formalizados somente por contrato específico entre as partes. É proibido reproduzir conteúdo integral deste site para fins comerciais sem autorização expressa.',
+    'O uso deste site implica concordância com estes termos. O conteúdo publicado é informativo e pode ser atualizado sem aviso prévio. Propostas comerciais e serviços da Arcane Tecnologia são formalizados somente por contrato específico entre as partes. É proibido reproduzir conteúdo integral deste site para fins comerciais sem autorização expressa.',
 }
 
 export default async function TermsPage() {
@@ -34,7 +34,7 @@ export default async function TermsPage() {
       <section className="section-shell min-h-screen py-12 lg:py-16">
         <div className="container mx-auto max-w-4xl px-6 lg:px-12">
           <div className="panel-shell rounded-[2rem] space-y-6 p-6 font-inter text-sm leading-relaxed text-slate-700 lg:p-8">
-            <p>{content.terms_body.replace('ARCANINE Tecnologia', siteConfig.brand.name)}</p>
+            <p>{content.terms_body.replace('Arcane Tecnologia', siteConfig.brand.name)}</p>
           </div>
         </div>
       </section>

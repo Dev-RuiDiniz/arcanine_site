@@ -140,7 +140,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
       {
         id: 'services_process',
         title: 'Processo',
-        helperText: 'Modelo de execução da ARCANINE.',
+        helperText: 'Modelo de execução da Arcane.',
         fields: [
           { id: 'process_step_1', label: 'Etapa 1', type: 'text', defaultValue: 'Imersão no negócio' },
           { id: 'process_step_2', label: 'Etapa 2', type: 'text', defaultValue: 'Diagnóstico de gargalos' },
@@ -162,13 +162,13 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         title: 'Institucional',
         helperText: 'Bloco de abertura da página Sobre.',
         fields: [
-          { id: 'about_heading', label: 'Título', type: 'text', defaultValue: 'Sobre a ARCANINE' },
+          { id: 'about_heading', label: 'Título', type: 'text', defaultValue: 'Sobre a Arcane' },
           {
             id: 'about_manifesto',
             label: 'Texto institucional',
             type: 'textarea',
             defaultValue:
-              'A ARCANINE nasceu para resolver desafios reais de operação com engenharia de software, automação e integração aplicada ao negócio.',
+              'A Arcane nasceu para resolver desafios reais de operação com engenharia de software, automação e integração aplicada ao negócio.',
           },
         ],
       },
@@ -205,7 +205,7 @@ export const adminPageEditorConfigs: Record<AdminPageEditorConfig['pageId'], Adm
         title: 'Canal de contato',
         helperText: 'E-mail do responsável por privacidade.',
         fields: [
-          { id: 'privacy_email', label: 'E-mail', type: 'text', defaultValue: 'privacy@arcanine.tech' },
+          { id: 'privacy_email', label: 'E-mail', type: 'text', defaultValue: 'privacy@arcane.tech' },
           { id: 'privacy_response_sla', label: 'SLA de resposta', type: 'text', defaultValue: 'Até 15 dias úteis' },
         ],
       },

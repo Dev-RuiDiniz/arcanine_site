@@ -44,7 +44,7 @@ export function Footer({ ctas }: { ctas: ConversionCtaConfig }) {
                 Estruture tecnologia com rigor executivo, sem abrir mão de velocidade.
               </h2>
               <p className="mt-4 max-w-2xl font-inter text-sm leading-relaxed text-slate-300 lg:text-base">
-                A ARCANINE desenha sistemas, automações e integrações para empresas que precisam reduzir fricção
+                A Arcane desenha sistemas, automações e integrações para empresas que precisam reduzir fricção
                 operacional e ganhar capacidade real de escala.
               </p>
             </div>

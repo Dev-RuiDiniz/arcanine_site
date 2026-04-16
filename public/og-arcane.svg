@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="ARCANINE Tecnologia">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Arcane Tecnologia">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#F3E4D7" />
@@ -7,7 +7,7 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect x="82" y="82" width="1036" height="466" fill="none" stroke="#2A2421" stroke-opacity="0.24" stroke-width="2" />
-  <text x="120" y="276" fill="#2A2421" font-family="Georgia, serif" font-size="78" letter-spacing="8">ARCANINE</text>
+  <text x="120" y="276" fill="#2A2421" font-family="Georgia, serif" font-size="78" letter-spacing="8">Arcane</text>
   <text x="124" y="334" fill="#5B5049" font-family="Arial, sans-serif" font-size="32" letter-spacing="12">TECNOLOGIA</text>
   <text x="124" y="422" fill="#4A3E37" font-family="Arial, sans-serif" font-size="30">Arquitetura estratégica para software, automação e escala.</text>
 </svg>

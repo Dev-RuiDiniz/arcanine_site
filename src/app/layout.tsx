@@ -12,7 +12,7 @@ import { SessionProvider } from "@/components/providers/session-provider"
 import { siteConfig } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arcanine.tech"),
+  metadataBase: new URL("https://arcane.tech"),
   title: siteConfig.seo.title,
   description: siteConfig.seo.description,
   keywords: [

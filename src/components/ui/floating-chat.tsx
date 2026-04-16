@@ -84,7 +84,7 @@ export function FloatingChat({ action = defaultConversionCtas.whatsapp }: Floati
                   <p className="mt-1 font-inter text-xs leading-relaxed text-white/78">
                     {isWhatsAppAction
                       ? 'Atendimento comercial para diagnóstico técnico e próximos passos.'
-                      : 'Canal rápido para abrir uma conversa comercial com o time da ARCANINE.'}
+                      : 'Canal rápido para abrir uma conversa comercial com o time da Arcane.'}
                   </p>
                 </div>
               </div>

@@ -40,7 +40,7 @@ export function Topbar({ onMenuClick, isSidebarCollapsed }: TopbarProps) {
               Administração
             </p>
             <p className="font-inter text-sm text-white">
-              Operação e conteúdo ARCANINE
+              Operação e conteúdo Arcane
             </p>
           </div>
         </div>

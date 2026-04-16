@@ -76,7 +76,7 @@ export default function AdminDashboard() {
             Visão geral
           </h1>
           <p className="mt-1 max-w-2xl font-inter text-sm text-slate-400">
-            Painel consolidado para conteúdo, serviços, cases e operação comercial do site da ARCANINE.
+            Painel consolidado para conteúdo, serviços, cases e operação comercial do site da Arcane.
           </p>
         </div>
 

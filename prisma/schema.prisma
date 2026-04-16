@@ -4,7 +4,7 @@ Objetivo: Schema do banco de dados para o Prisma ORM.
 Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a exportacao principal.
 */
 
-// ARCANINE Tecnologia - Schema do Banco de Dados
+// Arcane Tecnologia - Schema do Banco de Dados
 // Plataforma institucional e operacional
 
 generator client {
@@ -178,7 +178,7 @@ enum ContactStatus {
 
 model SiteSettings {
   id              String   @id @default(cuid())
-  siteName        String   @default("ARCANINE Tecnologia")
+  siteName        String   @default("Arcane Tecnologia")
   tagline         String?
   email           String?
   phone           String?

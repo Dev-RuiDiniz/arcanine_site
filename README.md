@@ -1,6 +1,6 @@
-# ARCANINE Tecnologia
+# Arcane Tecnologia
 
-Site institucional e painel administrativo da ARCANINE Tecnologia, construídos com Next.js App Router, Prisma e NextAuth.
+Site institucional e painel administrativo da Arcane Tecnologia, construídos com Next.js App Router, Prisma e NextAuth.
 
 O projeto foi consolidado para o domínio de tecnologia B2B. O escopo atual cobre:
 
@@ -107,7 +107,7 @@ Campos relevantes:
 - `pnpm prisma:generate`
 - `pnpm prisma:migrate:deploy`
 - `pnpm prisma:migrate:status`
-- `pnpm create:admin -- --email admin@empresa.com --password "senha-forte" --name "Admin"`
+- `pnpm create:admin -- --email admin@arcane.tech --password "senha-forte" --name "Admin"`
 
 ## Leads
 
@@ -197,7 +197,7 @@ Fluxo recomendado para o Supabase:
 1. configure `DATABASE_URL` com a connection string Postgres do projeto Supabase
 2. rode `pnpm prisma:migrate:deploy`
 3. confirme com `pnpm prisma:migrate:status`
-4. crie o primeiro usuário admin com `pnpm create:admin -- --email admin@empresa.com --password "senha-forte"`
+4. crie o primeiro usuário admin com `pnpm create:admin -- --email admin@arcane.tech --password "senha-forte"`
 
 Se preferir aplicar manualmente no SQL Editor do Supabase, use o conteúdo de `migration.sql`.
 
@@ -212,7 +212,7 @@ Fluxo recomendado:
 3. crie o primeiro usuário com:
 
 ```bash
-pnpm create:admin -- --email admin@empresa.com --password "senha-forte" --name "Admin"
+pnpm create:admin -- --email admin@arcane.tech --password "senha-forte" --name "Admin"
 ```
 
 Sem `DATABASE_URL`, a autenticação admin não fica disponível. Em produção, `NEXTAUTH_SECRET` é obrigatório.

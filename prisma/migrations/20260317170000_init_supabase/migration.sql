@@ -141,7 +141,7 @@ CREATE TABLE "Contact" (
 -- CreateTable
 CREATE TABLE "SiteSettings" (
     "id" TEXT NOT NULL,
-    "siteName" TEXT NOT NULL DEFAULT 'ARCANINE Tecnologia',
+    "siteName" TEXT NOT NULL DEFAULT 'Arcane Tecnologia',
     "tagline" TEXT,
     "email" TEXT,
     "phone" TEXT,

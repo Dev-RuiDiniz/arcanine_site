@@ -44,7 +44,7 @@ export default async function ServicesPage() {
         <div className="container relative z-10 mx-auto px-6 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.92fr] lg:items-end">
             <div className="max-w-4xl">
-              <span className="section-kicker text-brand-cyan">Serviços ARCANINE</span>
+              <span className="section-kicker text-brand-cyan">Serviços Arcane</span>
               <h1 className="mt-5 font-cormorant text-[2.6rem] leading-[0.98] text-white lg:text-[4.75rem]">
                 {content.services_heading}
               </h1>

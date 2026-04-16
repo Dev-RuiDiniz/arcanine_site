@@ -1,28 +1,28 @@
 export const siteConfig = {
   brand: {
-    name: 'ARCANINE Tecnologia',
-    shortName: 'ARCANINE',
-    legalName: 'ARCANINE Tecnologia LTDA',
+    name: 'Arcane Tecnologia',
+    shortName: 'Arcane',
+    legalName: 'Arcane Tecnologia LTDA',
     subLabel: 'Tecnologia',
     tagline: 'Arquitetura, automação e software sob medida para operações críticas.',
   },
   contact: {
-    email: 'contato@arcanine.tech',
-    salesEmail: 'comercial@arcanine.tech',
-    privacyEmail: 'privacy@arcanine.tech',
+    email: 'contato@arcane.tech',
+    salesEmail: 'comercial@arcane.tech',
+    privacyEmail: 'privacy@arcane.tech',
     phoneDisplay: null,
     phoneE164: null,
     city: 'Sao Paulo, Brasil',
   },
   links: {
-    linkedin: 'https://www.linkedin.com/company/arcanine-tecnologia',
+    linkedin: 'https://www.linkedin.com/company/arcane-tecnologia',
     whatsapp: null,
   },
   seo: {
-    title: 'ARCANINE Tecnologia | Arquitetura, automação e software sob medida',
+    title: 'Arcane Tecnologia | Arquitetura, automação e software sob medida',
     description:
       'Plataformas, automações e integrações para empresas que precisam reduzir atrito operacional, ganhar previsibilidade técnica e escalar com base autoral de engenharia.',
-    ogImage: '/og-arcanine.svg',
+    ogImage: '/og-arcane.svg',
   },
 }
 

@@ -2,7 +2,7 @@
 
 ## Objetivo da revisão
 
-Elevar a área pública do site da ARCANINE para um patamar mais premium, autoral e orientado a conversão, preservando o núcleo da marca atual e fortalecendo a percepção de autoridade técnica.
+Elevar a área pública do site da Arcane para um patamar mais premium, autoral e orientado a conversão, preservando o núcleo da marca atual e fortalecendo a percepção de autoridade técnica.
 
 ## Tese visual
 

@@ -5,7 +5,7 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 */
 
 // ===========================================
-// ARCANINE - TYPES
+// Arcane - TYPES
 // ===========================================
 
 export type ProjectCategory = 'SOFTWARE_PLATFORM' | 'AUTOMATION' | 'COMMERCE' | 'DATA_AI'

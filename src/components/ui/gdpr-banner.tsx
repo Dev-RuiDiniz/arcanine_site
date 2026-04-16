@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { X, Cookie } from 'lucide-react'
 
-const COOKIE_CONSENT_KEY = 'arcanine-cookie-consent'
+const COOKIE_CONSENT_KEY = 'arcane-cookie-consent'
 
 type ConsentType = 'all' | 'essential' | null
 

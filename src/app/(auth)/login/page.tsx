@@ -76,7 +76,7 @@ export default function LoginPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="font-cormorant text-5xl font-light tracking-[0.3em]">ARCANINE</h1>
+            <h1 className="font-cormorant text-5xl font-light tracking-[0.3em]">Arcane</h1>
             <p className="mt-2 font-inter text-xs tracking-[0.4em] uppercase text-white/70">Tecnologia</p>
             <div className="mt-8 w-16 h-px bg-white/30 mx-auto" />
             <p className="mt-8 font-cormorant text-xl italic text-white/80 max-w-md">
@@ -95,7 +95,7 @@ export default function LoginPage() {
         >
           <div className="lg:hidden text-center mb-12">
             <h1 className="font-cormorant text-3xl font-light tracking-[0.3em] text-white">
-              ARCANINE
+              Arcane
             </h1>
             <p className="mt-1 font-inter text-[10px] tracking-[0.3em] uppercase text-brand-cyan">Tecnologia</p>
           </div>

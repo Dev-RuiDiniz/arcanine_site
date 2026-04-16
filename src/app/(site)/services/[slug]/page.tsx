@@ -27,12 +27,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!service) {
     return {
-      title: 'Serviço não encontrado | ARCANINE Tecnologia',
+      title: 'Serviço não encontrado | Arcane Tecnologia',
     }
   }
 
   return {
-    title: `${service.title} | ARCANINE Tecnologia`,
+    title: `${service.title} | Arcane Tecnologia`,
     description: service.excerpt,
   }
 }

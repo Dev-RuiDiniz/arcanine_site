@@ -116,7 +116,7 @@ export function ContactSupportPage() {
                 Contato geral
               </span>
               <h1 className="mt-5 font-cormorant text-[2.6rem] leading-[0.98] text-white lg:text-[4.2rem]">
-                Fale com a ARCANINE
+                Fale com a Arcane
               </h1>
               <p className="mt-5 max-w-2xl font-inter text-sm leading-relaxed text-slate-300 lg:text-base">
                 Este canal é para dúvidas, informações institucionais e atendimento geral. Para orçamento técnico ou

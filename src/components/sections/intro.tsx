@@ -63,7 +63,7 @@ export function IntroSection({
             href="/about"
             className="group mt-8 inline-flex items-center gap-3 font-inter text-[11px] uppercase tracking-[0.18em] text-slate-600 transition-colors hover:text-brand-cyan-strong"
           >
-            Conhecer a ARCANINE
+            Conhecer a Arcane
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

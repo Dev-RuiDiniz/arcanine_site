@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { ContactLeadPage } from '@/components/sections/contact-lead-page'
 
 export const metadata: Metadata = {
-  title: 'Solicitar Orçamento | ARCANINE Tecnologia',
+  title: 'Solicitar Orçamento | Arcane Tecnologia',
   description:
     'Solicite um orçamento técnico para sistemas sob medida, automações e integrações com foco em resultado.',
 }

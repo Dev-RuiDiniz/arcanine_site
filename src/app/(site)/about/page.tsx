@@ -41,7 +41,7 @@ const workingModel = [
 ]
 
 const aboutDefaults = {
-  about_heading: 'A ARCANINE existe para transformar complexidade operacional em estrutura tecnológica utilizável.',
+  about_heading: 'A Arcane existe para transformar complexidade operacional em estrutura tecnológica utilizável.',
   about_manifesto:
     'Somos uma empresa de engenharia e produto focada em sistemas sob medida, automações, integrações e experiências digitais premium. Entramos quando o negócio já percebeu que improviso técnico custa caro.',
   about_cta_title: 'Se a sua operação exige mais controle, clareza e base técnica, essa conversa já faz sentido.',

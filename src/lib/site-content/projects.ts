@@ -55,7 +55,7 @@ export const cases: CaseItem[] = [
     context:
       'A operação precisava consolidar eventos financeiros críticos em uma base única, auditável e preparada para evoluir produtos digitais sem depender de controles paralelos ou reconciliações manuais frágeis.',
     solution:
-      'A ARCANINE estruturou uma plataforma financeira cloud-native com domínio contábil orientado a ledger imutável, serviços desacoplados por contexto de negócio e integrações blockchain para ativos e liquidações em redes EVM.',
+      'A Arcane estruturou uma plataforma financeira cloud-native com domínio contábil orientado a ledger imutável, serviços desacoplados por contexto de negócio e integrações blockchain para ativos e liquidações em redes EVM.',
     architecture:
       'Arquitetura em AWS com microsserviços, event-driven workflows, ledger double-entry, APIs transacionais, observabilidade operacional e camada de integração on-chain para leitura e escrita de eventos em redes compatíveis com EVM.',
     outcomes: [
@@ -121,7 +121,7 @@ export const cases: CaseItem[] = [
     context:
       'O processo de triagem exigia alto esforço manual para conduzir entrevistas iniciais, consolidar impressões qualitativas e manter padrão de avaliação entre candidatos em diferentes vagas e volumes de demanda.',
     solution:
-      'A ARCANINE desenvolveu um orquestrador de sessões conversacionais via WhatsApp, com prompts por etapa, análise automática de respostas, leitura de sentimento e ranqueamento assistido por LLM para apoiar recrutadores.',
+      'A Arcane desenvolveu um orquestrador de sessões conversacionais via WhatsApp, com prompts por etapa, análise automática de respostas, leitura de sentimento e ranqueamento assistido por LLM para apoiar recrutadores.',
     architecture:
       'Fluxo conversacional integrado ao WhatsApp, orquestração de sessões com controle de estado, pipelines de processamento textual, LLM para análise e ranking, além de painel para revisão humana e priorização de candidatos.',
     outcomes: [
@@ -185,7 +185,7 @@ export const cases: CaseItem[] = [
     context:
       'A equipe precisava organizar cadências recorrentes sem perder rastreabilidade sobre quem entrou em cada fluxo, em qual etapa se encontrava e quais eventos já haviam sido processados ou bloqueados.',
     solution:
-      'A ARCANINE modelou uma automação com estados explícitos de jornada, gatilhos condicionais, auditoria de execuções e proteção contra reprocessamentos indevidos, usando Power Automate como motor operacional.',
+      'A Arcane modelou uma automação com estados explícitos de jornada, gatilhos condicionais, auditoria de execuções e proteção contra reprocessamentos indevidos, usando Power Automate como motor operacional.',
     architecture:
       'Fluxos acionados por eventos e regras de negócio, armazenamento de estado por contato ou processo, checkpoints para auditoria e conectores com serviços de e-mail e bases de suporte ao acompanhamento operacional.',
     outcomes: [
@@ -216,7 +216,7 @@ export const cases: CaseItem[] = [
     context:
       'A operação precisava transformar leituras físicas e rotinas reativas em acompanhamento contínuo, com dados confiáveis para planejar reposição, identificar variações e antecipar comportamento de consumo.',
     solution:
-      'A ARCANINE integrou dispositivos embarcados, comunicação LoRa e backend analítico para captar medições, acompanhar nível e comportamento de uso, além de projetar consumo com base em histórico operacional.',
+      'A Arcane integrou dispositivos embarcados, comunicação LoRa e backend analítico para captar medições, acompanhar nível e comportamento de uso, além de projetar consumo com base em histórico operacional.',
     architecture:
       'Dispositivos ESP32 em campo, comunicação LoRa para transmissão de telemetria, backend para ingestão e normalização de dados, dashboards operacionais e modelos de previsão para apoiar planejamento e alertas.',
     outcomes: [
@@ -278,7 +278,7 @@ export const cases: CaseItem[] = [
     context:
       'O processo social exigia maior controle sobre cadastro, histórico de atendimento, fluxos internos e tratamento de dados pessoais, com necessidade de rastreabilidade sem comprometer a experiência operacional das equipes.',
     solution:
-      'A ARCANINE entregou um sistema completo para gestão de ações sociais, com controle de perfis, histórico por atendimento, organização de fluxos e mecanismos de governança voltados à proteção e uso adequado dos dados.',
+      'A Arcane entregou um sistema completo para gestão de ações sociais, com controle de perfis, histórico por atendimento, organização de fluxos e mecanismos de governança voltados à proteção e uso adequado dos dados.',
     architecture:
       'Frontend em React, APIs em FastAPI, camada de autenticação e autorização, trilhas de auditoria e modelagem orientada a consentimento, acesso contextual e governança sobre dados sensíveis.',
     outcomes: [
@@ -311,7 +311,7 @@ export const cases: CaseItem[] = [
     context:
       'O produto precisava combinar simplicidade de uso com separação segura entre contas, oferecendo ao profissional visão integrada de alunos, cobranças e rotina operacional sem misturar dados entre usuários.',
     solution:
-      'A ARCANINE estruturou uma plataforma SaaS com tenancy por usuário, organização de alunos e finanças, além de fluxos desenhados para operação diária de profissionais autônomos e negócios de treinamento.',
+      'A Arcane estruturou uma plataforma SaaS com tenancy por usuário, organização de alunos e finanças, além de fluxos desenhados para operação diária de profissionais autônomos e negócios de treinamento.',
     architecture:
       'Aplicação web com isolamento lógico de dados por conta, módulos de gestão financeira e operacional, autenticação, políticas de acesso e estrutura preparada para expansão funcional do produto.',
     outcomes: [

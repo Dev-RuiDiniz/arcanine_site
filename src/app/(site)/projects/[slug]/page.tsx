@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 {project.category}
               </span>
               <p className="mt-5 font-inter text-[11px] uppercase tracking-[0.18em] text-white/70">
-                Case ARCANINE / {project.segment}
+                Case Arcane / {project.segment}
               </p>
               <h1 className="mt-3 font-cormorant text-[2.9rem] leading-[0.98] text-white sm:text-[3.6rem] lg:text-[5.2rem]">
                 {project.title}

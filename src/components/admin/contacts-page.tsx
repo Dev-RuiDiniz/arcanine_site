@@ -380,7 +380,7 @@ export function ContactsPage() {
 
               <div className="flex items-center justify-end border-t border-stone-200 p-6 dark:border-stone-800">
                 <a
-                  href={`mailto:${selectedContact.email}?subject=Re: ${selectedContact.subject || 'Contato ARCANINE'}`}
+                  href={`mailto:${selectedContact.email}?subject=Re: ${selectedContact.subject || 'Contato Arcane'}`}
                   className="flex items-center gap-2 rounded-lg bg-stone-900 px-4 py-2.5 font-inter text-sm text-white transition-colors hover:bg-stone-800 dark:bg-white dark:text-stone-900 dark:hover:bg-stone-100"
                 >
                   <Reply size={16} />
