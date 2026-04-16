@@ -8,6 +8,7 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
@@ -62,29 +63,40 @@ export function Header({ ctas }: { ctas: ConversionCtaConfig }) {
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex h-[5.25rem] items-center justify-between gap-6 lg:h-24">
-            <Link href="/" className="relative z-50">
+            <Link href="/" className="relative z-50 flex items-center gap-4">
               <motion.div
                 initial={{ opacity: 0, x: -14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.45 }}
-                className="leading-none"
+                className="flex items-center gap-4"
               >
-                <span
-                  className={cn(
-                    'block font-cormorant text-[1.7rem] tracking-[0.24em] transition-colors lg:text-[2rem]',
-                    'text-brand-outlined'
-                  )}
-                >
-                  {siteConfig.brand.shortName}
-                </span>
-                <span
-                  className={cn(
-                    'mt-1 block font-inter text-[10px] uppercase tracking-[0.34em] transition-colors',
-                    'text-brand-outlined'
-                  )}
-                >
-                  {siteConfig.brand.subLabel}
-                </span>
+                <div className="relative h-11 w-11 lg:h-14 lg:w-14 shrink-0">
+                  <Image
+                    src="/arcane-logo-icon.png"
+                    alt="Arcane Valknut Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div className="leading-none">
+                  <span
+                    className={cn(
+                      'block font-cormorant text-[1.7rem] tracking-[0.24em] transition-colors lg:text-[2rem]',
+                      'text-brand-outlined'
+                    )}
+                  >
+                    {siteConfig.brand.shortName}
+                  </span>
+                  <span
+                    className={cn(
+                      'mt-1 block font-inter text-[10px] uppercase tracking-[0.34em] transition-colors',
+                      'text-brand-outlined'
+                    )}
+                  >
+                    {siteConfig.brand.subLabel}
+                  </span>
+                </div>
               </motion.div>
             </Link>
 
