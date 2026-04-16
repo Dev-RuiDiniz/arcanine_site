@@ -72,7 +72,7 @@ export function Header({ ctas }: { ctas: ConversionCtaConfig }) {
                 <span
                   className={cn(
                     'block font-cormorant text-[1.7rem] tracking-[0.24em] transition-colors lg:text-[2rem]',
-                    useDarkText ? 'text-slate-950' : 'text-white'
+                    'text-brand-outlined'
                   )}
                 >
                   {siteConfig.brand.shortName}
@@ -80,7 +80,7 @@ export function Header({ ctas }: { ctas: ConversionCtaConfig }) {
                 <span
                   className={cn(
                     'mt-1 block font-inter text-[10px] uppercase tracking-[0.34em] transition-colors',
-                    useDarkText ? 'text-brand-cyan-strong' : 'text-white/72'
+                    'text-brand-outlined'
                   )}
                 >
                   {siteConfig.brand.subLabel}

@@ -79,10 +79,10 @@ export function Footer({ ctas }: { ctas: ConversionCtaConfig }) {
             transition={{ duration: 0.55 }}
           >
             <Link href="/" className="inline-block">
-              <span className="font-cormorant text-2xl tracking-[0.24em] text-white lg:text-3xl">
+              <span className="block font-cormorant text-2xl tracking-[0.24em] text-brand-outlined lg:text-3xl">
                 {siteConfig.brand.shortName}
               </span>
-              <span className="mt-1 block font-inter text-[10px] uppercase tracking-[0.3em] text-brand-cyan">
+              <span className="mt-1 block font-inter text-[10px] uppercase tracking-[0.3em] text-brand-outlined">
                 {siteConfig.brand.subLabel}
               </span>
             </Link>

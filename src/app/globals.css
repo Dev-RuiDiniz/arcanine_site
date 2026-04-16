@@ -353,4 +353,18 @@ Guia rapido: consulte imports no topo, depois tipos/constantes, e por fim a expo
       0 0 0 1px rgba(103, 227, 247, 0.1),
       0 0 80px -36px rgba(37, 210, 238, 0.38);
   }
+
+  .text-brand-outlined {
+    @apply text-white;
+    text-shadow:
+      -1px -1px 0 #07111f,
+      1px -1px 0 #07111f,
+      -1px 1px 0 #07111f,
+      1px 1px 0 #07111f,
+      0px -1px 0 #07111f,
+      0px 1px 0 #07111f,
+      -1px 0px 0 #07111f,
+      1px 0px 0 #07111f,
+      0 3px 6px rgba(7, 17, 31, 0.42);
+  }
 }
