@@ -15,6 +15,7 @@ export const leadPayloadSchema = z.object({
   intent: z.string().trim().min(2).optional().or(z.literal('')),
   projectType: z.string().trim().min(2).optional().or(z.literal('')),
   budgetRange: z.string().trim().min(2).optional().or(z.literal('')),
+  website: z.string().trim().max(0, 'Não foi possível registrar o lead.').optional().or(z.literal('')),
 })
 
 export type LeadPayload = z.infer<typeof leadPayloadSchema>
