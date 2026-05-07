@@ -163,6 +163,13 @@ O que foi removido do template antigo:
 - integrações de Instagram/Apify
 - conteúdo e categorias herdadas de outro domínio
 
+## Uploads em produção
+
+O upload administrativo atual grava imagens em `public/uploads/admin`. Esse modelo depende de filesystem persistente e pode não ser adequado para ambientes serverless ou redeploys na Vercel.
+
+Para produção com uploads reais, recomenda-se usar armazenamento persistente externo, como Supabase Storage, Vercel Blob ou S3, mantendo validações de tipo, extensão e tamanho.
+
+
 ## Deploy Vercel
 
 Deploy padrão:
