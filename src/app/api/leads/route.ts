@@ -2,8 +2,14 @@ import { NextResponse } from 'next/server'
 import { ZodError } from 'zod'
 import { requireApiRole, ADMIN_ROLES } from '@/lib/authz'
 import { createLead, leadPayloadSchema, listLeads } from '@/lib/leads'
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit'
 
 export const runtime = 'nodejs'
+
+const LEAD_RATE_LIMIT = {
+  limit: 5,
+  windowMs: 10 * 60 * 1000,
+}
 
 export async function GET() {
   const auth = await requireApiRole(ADMIN_ROLES)
@@ -21,12 +27,44 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const clientIp = getClientIp(request)
+  const rateLimit = checkRateLimit({
+    key: `leads:${clientIp}`,
+    limit: LEAD_RATE_LIMIT.limit,
+    windowMs: LEAD_RATE_LIMIT.windowMs,
+  })
+
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { success: false, error: 'Muitas tentativas. Tente novamente em alguns minutos.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(rateLimit.retryAfterSeconds),
+          'X-RateLimit-Limit': String(LEAD_RATE_LIMIT.limit),
+          'X-RateLimit-Remaining': '0',
+          'X-RateLimit-Reset': String(Math.ceil(rateLimit.resetAt / 1000)),
+        },
+      }
+    )
+  }
+
   try {
     const body = await request.json()
     const payload = leadPayloadSchema.parse(body)
     const lead = await createLead(payload)
 
-    return NextResponse.json({ success: true, data: lead }, { status: 201 })
+    return NextResponse.json(
+      { success: true, data: lead },
+      {
+        status: 201,
+        headers: {
+          'X-RateLimit-Limit': String(LEAD_RATE_LIMIT.limit),
+          'X-RateLimit-Remaining': String(rateLimit.remaining),
+          'X-RateLimit-Reset': String(Math.ceil(rateLimit.resetAt / 1000)),
+        },
+      }
+    )
   } catch (error) {
     if (error instanceof ZodError) {
       return NextResponse.json(
